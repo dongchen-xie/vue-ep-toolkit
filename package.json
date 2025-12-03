@@ -11,7 +11,7 @@
     "build:lib": "pnpm --filter vue-ep-toolkit build",
     "build:docs": "pnpm --filter docs build",
     "dev:docs": "pnpm --filter docs dev",
-    "release": "pnpm build:lib && pnpm --filter vue-ep-toolkit publish"
+    "release": "pnpm build:lib && pnpm --filter vue-ep-toolkit publish --registry https://registry.npmjs.org/"
   },
   "devDependencies": {
     "typescript": "^5.2.2"
