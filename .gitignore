@@ -1,7 +1,6 @@
 # Build & Dependencies
 dist
 node_modules
-*-lock.yaml
 
 # System Files
 .DS_Store
