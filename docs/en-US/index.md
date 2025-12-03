@@ -14,7 +14,7 @@ hero:
       text: Get Started
       link: /en-US/guide/design
     - theme: alt
-      text: View on Github
+      text: View on GitHub
       link: https://github.com/dongchen-xie/vue-ep-toolkit
 
 features:

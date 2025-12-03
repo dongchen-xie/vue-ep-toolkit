@@ -19,7 +19,7 @@ export default defineConfig({
     ...zhCN
   },
   themeConfig: {
-    logo: "/vue-ep-toolkit/favicon.ico",
+    logo: "/favicon.ico",
     search: {
       provider: "local",
       options: {
@@ -28,7 +28,7 @@ export default defineConfig({
         }
       }
     },
-    socialLinks: [{ icon: "gitee", link: "https://gitee.com/xie-dongchen/vue-ep-toolkit" }]
+    socialLinks: [{ icon: "github", link: "https://github.com/dongchen-xie/vue-ep-toolkit" }]
   },
   vite: getViteConfig(),
   markdown: {
