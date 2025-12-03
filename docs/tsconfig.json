@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "lib": ["ESNext", "DOM"],
+    "paths": {
+      "vue-ep-toolkit": ["../packages/vue-ep-toolkit"],
+      "~/*": ["./.vitepress/vitepress/*"],
+      "vue": ["./node_modules/vue"]
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+  },
+  "include": ["**/*", ".vitepress/**/*", "../typings/global.d.ts"],
+  "exclude": ["node_modules"]
+}

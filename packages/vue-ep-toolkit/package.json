@@ -1,0 +1,54 @@
+{
+  "name": "vue-ep-toolkit",
+  "version": "1.0.0",
+  "description": "Vue3 + TypeScript + Element Plus + Lodash component library",
+  "main": "dist/vue-ep-toolkit.umd.js",
+  "module": "dist/vue-ep-toolkit.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "generate:icons": "tsx scripts/generate-icons.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/xie-dongchen/vue-ep-toolkit.git"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "typescript",
+    "element-plus",
+    "lodash",
+    "library"
+  ],
+  "author": "dongchen_xie",
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "element-plus": "^2.11.8",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@iconify-json/tabler": "^1.2.23",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^20.11.19",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "typescript": "^5.2.2",
+    "vite": "^6.0.7",
+    "vite-plugin-dts": "^4.3.0",
+    "vue": "^3.5.13",
+    "vue-tsc": "^1.8.27"
+  },
+  "engines": {
+    "node": ">= 18.0.0",
+    "pnpm": ">=10.0.0"
+  }
+}

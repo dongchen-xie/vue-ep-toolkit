@@ -1,0 +1,16 @@
+{
+  "zh-CN": {
+    "copy-code": "复制代码",
+    "copy-success": "复制成功",
+    "copy-error": "复制失败",
+    "view-source": "查看源码",
+    "hide-source": "隐藏源码"
+  },
+  "en-US": {
+    "copy-code": "Copy Code",
+    "copy-success": "Copy Success",
+    "copy-error": "Copy Error",
+    "view-source": "View Source",
+    "hide-source": "Hide Source"
+  }
+}

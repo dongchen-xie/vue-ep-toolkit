@@ -1,0 +1,17 @@
+// css variables
+:root {
+  --brand-color: var(--el-color-primary);
+
+  --bg-color: var(--el-bg-color);
+  --border-color: var(--el-border-color);
+
+  // code block vars
+  --code-bg-color: var(--el-fill-color-light);
+  --code-tooltip-bg-color: var(--code-bg-color);
+  --code-tooltip-color: #0c61c9;
+}
+
+.dark {
+  --code-tooltip-bg-color: rgba(var(--el-color-primary-rgb), 0.1);
+  --code-tooltip-color: var(--brand-color);
+}

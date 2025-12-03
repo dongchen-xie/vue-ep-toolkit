@@ -1,0 +1,23 @@
+{
+  "name": "vue-ep-toolkit",
+  "version": "1.0.0",
+  "description": "Vue3 + TypeScript + Element Plus + Lodash library",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:lib": "pnpm --filter vue-ep-toolkit build",
+    "build:docs": "pnpm --filter docs build",
+    "dev:docs": "pnpm --filter docs dev",
+    "release": "pnpm build:lib && pnpm --filter vue-ep-toolkit publish"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">= 18.0.0",
+    "pnpm": ">=10.0.0"
+  }
+}

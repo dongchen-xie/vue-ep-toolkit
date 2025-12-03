@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Vue EP Toolkit Documentation",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "NODE_ENV=production && vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@vue/shared": "^3.5.25",
+    "@vueuse/core": "^14.1.0",
+    "vue-ep-toolkit": "workspace:*"
+  },
+  "devDependencies": {
+    "markdown-it-container": "^4.0.0",
+    "unocss": "^66.5.9",
+    "unplugin-vue-components": "^30.0.0",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.13"
+  }
+}
