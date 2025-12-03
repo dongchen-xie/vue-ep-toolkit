@@ -6,8 +6,7 @@
   "module": "dist/vue-ep-toolkit.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "../../README.md"
+    "dist"
   ],
   "sideEffects": false,
   "scripts": {
