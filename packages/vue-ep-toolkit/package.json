@@ -1,12 +1,13 @@
 {
   "name": "vue-ep-toolkit",
-  "version": "0.0.1",
-  "description": "Vue3 + TypeScript + Element Plus + Lodash component library",
+  "version": "0.0.2",
+  "description": "Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash",
   "main": "dist/vue-ep-toolkit.umd.js",
   "module": "dist/vue-ep-toolkit.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "../../README.md"
   ],
   "sideEffects": false,
   "scripts": {
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/xie-dongchen/vue-ep-toolkit.git"
+    "url": "https://github.com/dongchen-xie/vue-ep-toolkit"
   },
   "keywords": [
     "vue",
@@ -27,7 +28,7 @@
     "library"
   ],
   "author": "dongchen_xie",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "vue": "^3.0.0"
   },
