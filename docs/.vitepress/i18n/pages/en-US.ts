@@ -53,24 +53,9 @@ export default {
             link: "/en-US/utils/"
           },
           {
-            text: "Array",
+            text: "Number",
             collapsed: true,
-            items: generateSidebar("en-US", "utils/array")
-          },
-          {
-            text: "Collection",
-            collapsed: true,
-            items: generateSidebar("en-US", "utils/collection")
-          },
-          {
-            text: "Function",
-            collapsed: true,
-            items: generateSidebar("en-US", "utils/function")
-          },
-          {
-            text: "Lang",
-            collapsed: true,
-            items: generateSidebar("en-US", "utils/lang")
+            items: generateSidebar("en-US", "utils/number")
           }
         ]
       },

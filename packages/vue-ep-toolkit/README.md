@@ -21,6 +21,8 @@
 
 <p align="center">Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash</p>
 
+> ⚠️ **Development Status**: This project is currently under active development. APIs may change before the stable release.
+
 ## ✨ Features
 
 - 🚀 **Vue3 + TypeScript** - Built with the latest Vue3 and TypeScript, providing complete type support

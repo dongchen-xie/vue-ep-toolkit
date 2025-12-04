@@ -52,24 +52,9 @@ export default {
             link: "/zh-CN/utils/"
           },
           {
-            text: "Array 数组",
+            text: "Number 数字",
             collapsed: true,
-            items: generateSidebar("zh-CN", "utils/array")
-          },
-          {
-            text: "Collection 集合",
-            collapsed: true,
-            items: generateSidebar("zh-CN", "utils/collection")
-          },
-          {
-            text: "Function 函数",
-            collapsed: true,
-            items: generateSidebar("zh-CN", "utils/function")
-          },
-          {
-            text: "Lang 语言",
-            collapsed: true,
-            items: generateSidebar("zh-CN", "utils/lang")
+            items: generateSidebar("zh-CN", "utils/number")
           }
         ]
       },
