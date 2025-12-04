@@ -56,6 +56,9 @@
   }
   .VPSidebar {
     padding-left: max(48px, calc((100% - (var(--vp-layout-max-width) - 96px)) / 2)) !important;
+    .caret {
+      margin-right: 10px;
+    }
   }
   .VPDoc.has-aside {
     .content-container {

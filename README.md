@@ -41,7 +41,7 @@ pnpm add vue-ep-toolkit
 ```ts
 import { createApp } from "vue"
 import VueEPToolkit from "vue-ep-toolkit"
-import "vue-ep-toolkit/dist/style.css"
+import "vue-ep-toolkit/dist/index.css"
 import App from "./App.vue"
 
 const app = createApp(App)

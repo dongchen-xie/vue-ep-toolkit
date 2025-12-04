@@ -4,14 +4,14 @@
       <div class="el-col el-col-24 el-col-xs-12 el-col-sm-8 is-guttered">
         <div class="card">
           <element-svg m="4" w="20" alt="Element Plus" />
-          <p>Element Plus</p>
+          <p>Element Plus<el-tag round class="ml-10px">2.11.8</el-tag></p>
           <span class="desc">UI Components</span>
         </div>
       </div>
       <div class="el-col el-col-24 el-col-xs-12 el-col-sm-8 is-guttered">
         <div class="card">
           <lodash-svg m="4" w="20" alt="Lodash" />
-          <p>Lodash</p>
+          <p>Lodash<el-tag round class="ml-10px">4.17.21</el-tag></p>
           <span class="desc">Utility Functions</span>
         </div>
       </div>

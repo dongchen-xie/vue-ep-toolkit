@@ -1,6 +1,6 @@
 import DefaultTheme from "vitepress/theme"
 import VueEpToolkit from "vue-ep-toolkit"
-// import "vue-ep-toolkit/dist/vue-ep-toolkit.css"
+// import "vue-ep-toolkit/dist/index.css"
 import "./style.scss"
 import "virtual:uno.css"
 import { globals } from "../vitepress"

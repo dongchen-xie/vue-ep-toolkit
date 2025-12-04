@@ -1,0 +1,10 @@
+{
+  // 控制相关文件嵌套展示
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.env": "$(capture).env.*",
+    "package.json": "package-lock.json,pnpm-lock.yaml,pnpm-workspace.yaml",
+    ".prettierrc.js": ".prettierignore",
+    ".eslintrc.js": ".eslintignore"
+  }
+}

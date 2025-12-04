@@ -1,4 +1,5 @@
 import { LocaleConfig } from "vitepress"
+import { generateSidebar } from "../../utils/generateSidebar"
 
 export default {
   "en-US": {
@@ -9,10 +10,10 @@ export default {
     themeConfig: {
       nav: [
         { text: "Guide", link: "/en-US/guide/design" },
-        { text: "Components", link: "/en-US/components/button" },
+        { text: "Components", link: "/en-US/components/" },
         { text: "Utils", link: "/en-US/utils/" },
         { text: "Element Plus", link: "https://element-plus.org/" },
-        { text: "Lodash", link: "https://www.lodashjs.com/" }
+        { text: "Lodash", link: "https://lodash.com/" }
       ],
       sidebar: {
         "/en-US/guide/": [
@@ -31,6 +32,10 @@ export default {
         ],
         "/en-US/components/": [
           {
+            text: "Introduction",
+            link: "/en-US/components/"
+          },
+          {
             text: "Basic",
             items: [
               { text: "Button", link: "/en-US/components/button" },
@@ -42,7 +47,32 @@ export default {
             items: [{ text: "Table", link: "/en-US/components/table" }]
           }
         ],
-        "/en-US/utils/": []
+        "/en-US/utils/": [
+          {
+            text: "Introduction",
+            link: "/en-US/utils/"
+          },
+          {
+            text: "Array",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/array")
+          },
+          {
+            text: "Collection",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/collection")
+          },
+          {
+            text: "Function",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/function")
+          },
+          {
+            text: "Lang",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/lang")
+          }
+        ]
       },
       outline: {
         level: [2, 6] as [number, number],

@@ -16,7 +16,7 @@ lang: zh-CN
 ```ts [main.ts]
 import { createApp } from "vue"
 import VueEpToolkit from "vue-ep-toolkit"
-import "vue-ep-toolkit/dist/vue-ep-toolkit.css"
+import "vue-ep-toolkit/dist/index.css"
 import App from "./App.vue"
 
 const app = createApp(App)

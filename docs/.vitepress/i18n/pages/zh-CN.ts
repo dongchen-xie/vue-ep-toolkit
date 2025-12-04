@@ -1,3 +1,5 @@
+import { generateSidebar } from "../../utils/generateSidebar"
+
 export default {
   "zh-CN": {
     label: "简体中文",
@@ -7,10 +9,10 @@ export default {
     themeConfig: {
       nav: [
         { text: "指南", link: "/zh-CN/guide/design" },
-        { text: "组件", link: "/zh-CN/components/button" },
+        { text: "组件", link: "/zh-CN/components/" },
         { text: "工具函数", link: "/zh-CN/utils/" },
         { text: "Element Plus", link: "https://element-plus.org/" },
-        { text: "Lodash", link: "https://www.lodashjs.com/" }
+        { text: "Lodash", link: "https://lodash.com/" }
       ],
       sidebar: {
         "/zh-CN/guide/": [
@@ -29,6 +31,10 @@ export default {
         ],
         "/zh-CN/components/": [
           {
+            text: "简介",
+            link: "/zh-CN/components/"
+          },
+          {
             text: "Basic 基础组件",
             items: [
               { text: "Button 按钮", link: "/zh-CN/components/button" },
@@ -40,7 +46,32 @@ export default {
             items: [{ text: "Table 表格", link: "/zh-CN/components/table" }]
           }
         ],
-        "/zh-CN/utils/": []
+        "/zh-CN/utils/": [
+          {
+            text: "简介",
+            link: "/zh-CN/utils/"
+          },
+          {
+            text: "Array 数组",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/array")
+          },
+          {
+            text: "Collection 集合",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/collection")
+          },
+          {
+            text: "Function 函数",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/function")
+          },
+          {
+            text: "Lang 语言",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/lang")
+          }
+        ]
       },
       outline: {
         level: [2, 6] as [number, number],

@@ -14,7 +14,6 @@ pnpm-debug.log*
 
 # Editor & IDE Settings
 .idea/
-.vscode/
 *.suo
 *.ntvs*
 *.njsproj
