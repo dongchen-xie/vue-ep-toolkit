@@ -213,6 +213,16 @@ table/summary
 
 :::
 
+## Rowspan and colspan
+
+Configuring rowspan and colspan allows you to merge cells
+
+:::demo Use the `span-method` attribute to configure rowspan and colspan. It accepts a method, and passes an object to that method including current row `row`, current column `column`, current row index `rowIndex` and current column index `columnIndex`. The method should return an array of two numbers, the first number being `rowspan` and second `colspan`. It can also return an object with `rowspan` and `colspan` props.
+
+table/rowspan-and-colspan
+
+:::
+
 ## Merge Columns
 
 Automatically merge cells with the same values in specified columns.

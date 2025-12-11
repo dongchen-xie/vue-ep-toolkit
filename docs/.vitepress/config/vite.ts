@@ -43,9 +43,12 @@ export const getViteConfig = () => {
         resolvers: [
           (componentName) => {
             if (componentName.startsWith("Ep")) {
-              return {
-                name: componentName,
-                from: "vue-ep-toolkit"
+              const isExampleComponent = /^Ep[A-Z][a-z]+[A-Z]/.test(componentName)
+              if (!isExampleComponent) {
+                return {
+                  name: componentName,
+                  from: "vue-ep-toolkit"
+                }
               }
             }
           }
