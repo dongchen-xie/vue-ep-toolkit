@@ -37,7 +37,7 @@ const getExampleImports = (componentId: string) => {
   for (const item of files) {
     if (!/\.vue$/.test(item)) continue
     const file = item.replace(/\.vue$/, "")
-    const name = camelize(`Ep-${componentId}-${file}`)
+    const name = camelize(`Ex-${componentId}-${file}`)
 
     imports.push(`import ${name} from '../../../examples/${componentId}/${file}.vue'`)
   }

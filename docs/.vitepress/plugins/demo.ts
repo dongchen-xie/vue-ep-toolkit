@@ -35,7 +35,7 @@ function createDemoContainer(md: MarkdownRenderer): ContainerOpts {
         )}" path="${sourceFile}" raw-source="${encodeURIComponent(
           source
         )}" description="${encodeURIComponent(md.render(description))}">
-  <template #source><ep-${sourceFile.replaceAll("/", "-")}/></template>`
+  <template #source><ex-${sourceFile.replaceAll("/", "-")}/></template>`
       } else {
         return "</Demo>\n"
       }
