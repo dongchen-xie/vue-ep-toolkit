@@ -27,7 +27,10 @@ export default {
           },
           {
             text: "Advanced",
-            items: [{ text: "i18n", link: "/en-US/guide/i18n" }]
+            items: [
+              { text: "i18n", link: "/en-US/guide/i18n" },
+              { text: "Dark Mode", link: "/en-US/guide/dark-mode" }
+            ]
           }
         ],
         "/en-US/components/": [
@@ -37,14 +40,11 @@ export default {
           },
           {
             text: "Basic",
-            items: [
-              { text: "Button", link: "/en-US/components/button" },
-              { text: "Icon", link: "/en-US/components/icon" }
-            ]
+            items: generateSidebar("en-US", "components/basic")
           },
           {
             text: "Data",
-            items: [{ text: "Table", link: "/en-US/components/table" }]
+            items: generateSidebar("en-US", "components/data")
           }
         ],
         "/en-US/utils/": [

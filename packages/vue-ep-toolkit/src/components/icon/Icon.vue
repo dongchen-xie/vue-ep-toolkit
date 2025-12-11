@@ -1,18 +1,14 @@
-<!-- 
- @Author: Chen 
- @Description: 
- -->
 <script setup lang="ts">
 import { computed } from "vue"
 import { ElIcon } from "element-plus"
-import type { EpIconProps } from "./types"
+import type { EpIconInternalProps } from "./types"
 
 defineOptions({
   name: "Icon",
   inheritAttrs: false
 })
 
-const props = defineProps<EpIconProps>()
+const props = defineProps<EpIconInternalProps>()
 
 const iconClass = computed(() => {
   return props.icon ? (props.icon.startsWith("i-") ? props.icon : `i-${props.icon}`) : undefined

@@ -22,7 +22,7 @@ importers:
         version: 14.1.0(vue@3.5.25(typescript@5.9.3))
       vue-ep-toolkit:
         specifier: workspace:*
-        version: link:../packages/vue-ep-toolkit
+        version: link:..
     devDependencies:
       markdown-it-container:
         specifier: ^4.0.0
@@ -67,6 +67,9 @@ importers:
       typescript:
         specifier: ^5.2.2
         version: 5.9.3
+      unplugin-vue-components:
+        specifier: ^30.0.0
+        version: 30.0.0(@babel/parser@7.28.5)(vue@3.5.25(typescript@5.9.3))
       vite:
         specifier: ^6.0.7
         version: 6.4.1(@types/node@20.19.25)(jiti@2.6.1)(sass@1.94.2)(tsx@4.20.6)

@@ -5,17 +5,119 @@ lang: en-US
 
 # Button
 
-Enhanced button component based on Element Plus with support for Iconify icons.
-
-For more details please refer to [Element Plus Button](https://element-plus.org/en-US/component/button)
+Button component enhanced based on [Element Plus Button](https://element-plus.org/en-US/component/button) with support for Iconify icons.
 
 ## Basic Usage
 
-Basic button with text and icon support.
-
-:::demo Use `icon` prop to add an icon. Supports both Element Plus icons and Iconify icon names (e.g., 'tabler:refresh').
+:::demo Use `type`, `plain`, `round`, `circle` and `icon` to define button styles. (The `icon` prop supports both Element Plus icons and Iconify icon names (e.g., 'tabler:refresh').)
 
 button/basic
+
+:::
+
+## Disabled Button
+
+The `disabled` attribute determines if the button is disabled.
+
+:::demo Use `disabled` attribute to determine whether a button is disabled. It accepts a `Boolean` value.
+
+button/disabled
+
+:::
+
+## Link Button
+
+:::warning
+
+`type="text"` has been **deprecated**, Element Plus and will be removed in <el-tag round effect="plain" size="small">3.0.0</el-tag>, consider switching to new API.
+
+New API `link` has been added in Element Plus <el-tag round effect="plain" size="small">2.2.1</el-tag>, you can use `type` API to set the theme of your link button
+
+:::
+
+:::demo
+
+button/link
+
+:::
+
+## Text Button
+
+:::tip
+
+Text button has been upgraded with a new design since, if you want to use the
+previous version like button, you might want to check [Link](https://element-plus.org/en-US/component/link#basic) out.
+
+The API is also updated, because the `type` attribute also represents the button's style. So Element Plus have to make a new API
+`text: boolean` for text button.
+
+:::
+
+Buttons without border and background.
+
+:::demo
+
+button/text
+
+:::
+
+## Icon Button
+
+Use icons to add more meaning to Button. You can use icon alone to save some space, or use it with text.
+
+:::demo Use the `icon` attribute to add icon. You can use Iconify icon names (for example, 'tabler:home') or find the icon list in the Element Plus icon component. Adding icons to the right side of the text is achievable with an `<i>` tag. Custom icons can be used as well. The following example uses Iconify.
+
+button/icon
+
+:::
+
+## Button Group
+
+Displayed as a button group, can be used to group a series of similar operations.
+
+:::demo Use tag `<el-button-group>` to group your buttons.
+
+button/group
+
+:::
+
+## Loading Button
+
+Click the button to load data, then the button displays a loading state.
+
+Set `loading` attribute to `true` to display loading state.
+
+:::tip
+
+You can use the `loading` slot or `loadingIcon` to customize your loading component
+
+ps: `loading` slot has higher priority than loadingIcon
+
+:::
+
+:::demo
+
+button/loading
+
+:::
+
+## Sizes
+
+Besides default size, Button component provides three additional sizes for you to choose among different scenarios.
+
+:::demo Use attribute `size` to set additional sizes with `large`, `small`.
+
+button/size
+
+:::
+
+## Tag
+
+You can custom element tag, For example button, div, a, router-link, nuxt-link.
+
+:::demo
+
+button/tag
 
 :::
 
@@ -23,9 +125,10 @@ button/basic
 
 ### Button Attributes
 
-| Name | Description                         | Type                     | Default |
-| ---- | ----------------------------------- | ------------------------ | ------- |
-| icon | Icon component or iconify icon name | ^[string] / ^[Component] | —       |
+| Name         | Description                         | Type                     | Default |
+| ------------ | ----------------------------------- | ------------------------ | ------- |
+| icon         | Icon component or iconify icon name | ^[string] / ^[Component] | —       |
+| loading-icon | customize loading icon component    | ^[string] / ^[Component] | Loading |
 
 <details>
 <summary>Element Plus Button Attributes</summary>
@@ -104,21 +207,5 @@ button/basic
 | Name    | Description                    | Subtags |
 | ------- | ------------------------------ | ------- |
 | default | customize button group content | Button  |
-
-</details>
-
-## Type Declarations
-
-<details>
-  <summary>Show declarations</summary>
-
-```ts
-import type { ButtonProps } from "element-plus"
-import type { Component } from "vue"
-
-export interface EpButtonProps extends Omit<ButtonProps, "icon"> {
-  icon?: string | Component
-}
-```
 
 </details>

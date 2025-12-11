@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import type { EpTableColumnProps } from "vue-ep-toolkit"
+
 const tableData = [
   {
     product: "iPhone 15",
@@ -30,7 +32,7 @@ const tableData = [
   }
 ]
 
-const columns = [
+const columns: EpTableColumnProps[] = [
   {
     prop: "product",
     label: "Product"

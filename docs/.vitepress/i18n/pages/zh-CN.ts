@@ -11,22 +11,25 @@ export default {
         { text: "指南", link: "/zh-CN/guide/design" },
         { text: "组件", link: "/zh-CN/components/" },
         { text: "工具函数", link: "/zh-CN/utils/" },
-        { text: "Element Plus", link: "https://element-plus.org/" },
-        { text: "Lodash", link: "https://lodash.com/" }
+        { text: "Element Plus", link: "https://element-plus.org/zh-CN/" },
+        { text: "Lodash", link: "https://www.lodashjs.com/" }
       ],
       sidebar: {
         "/zh-CN/guide/": [
           {
             text: "基础",
             items: [
-              { text: "设计", link: "/en-US/guide/design" },
-              { text: "安装", link: "/en-US/guide/installation" },
-              { text: "快速开始", link: "/en-US/guide/quickstart" }
+              { text: "设计", link: "/zh-CN/guide/design" },
+              { text: "安装", link: "/zh-CN/guide/installation" },
+              { text: "快速开始", link: "/zh-CN/guide/quickstart" }
             ]
           },
           {
             text: "进阶",
-            items: [{ text: "国际化", link: "/en-US/guide/i18n" }]
+            items: [
+              { text: "国际化", link: "/zh-CN/guide/i18n" },
+              { text: "暗黑模式", link: "/zh-CN/guide/dark-mode" }
+            ]
           }
         ],
         "/zh-CN/components/": [
@@ -36,14 +39,11 @@ export default {
           },
           {
             text: "Basic 基础组件",
-            items: [
-              { text: "Button 按钮", link: "/zh-CN/components/button" },
-              { text: "Icon 图标", link: "/zh-CN/components/icon" }
-            ]
+            items: generateSidebar("zh-CN", "components/basic")
           },
           {
             text: "Data 数据展示",
-            items: [{ text: "Table 表格", link: "/zh-CN/components/table" }]
+            items: generateSidebar("zh-CN", "components/data")
           }
         ],
         "/zh-CN/utils/": [

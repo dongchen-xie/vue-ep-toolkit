@@ -12,32 +12,6 @@
   padding: 10px;
 }
 
-/* 防止 VitePress 的 markdown 样式影响组件示例 */
-.vp-doc .example-showcase {
-  table {
-    margin: 0;
-  }
-  ul {
-    padding-left: 0;
-    margin: 0;
-  }
-}
-
-.vp-table {
-  & > table {
-    th,
-    td {
-      white-space: nowrap;
-      border-top: 1px solid var(--border-color) !important;
-      border-bottom: 1px solid var(--border-color);
-      padding: 0.6em 1em;
-      text-align: left;
-      max-width: 250px;
-      white-space: pre-wrap !important;
-    }
-  }
-}
-
 /* 文档布局 */
 @media (min-width: 768px) {
   .wrapper {

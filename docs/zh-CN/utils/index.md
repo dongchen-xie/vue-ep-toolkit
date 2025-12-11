@@ -37,3 +37,7 @@ Lodash 函数按以下类别组织：
 - **Util** - 实用工具函数
 
 有关每个函数的详细文档，请参阅相应的分类页面。
+
+## Lodash 工具函数
+
+所有 Lodash 工具函数均可直接使用，详细文档请参考 [Lodash 官方文档](https://lodash.com/docs/)。

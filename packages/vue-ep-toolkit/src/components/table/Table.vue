@@ -1,17 +1,14 @@
-<!-- 
- @Author: Chen 
- @Description: 
- -->
 <script setup lang="ts">
-import { ref, computed } from "vue"
-import { ElTable, ElTableColumn, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
-import type { EpTableProps, EpTableEmits } from "./types"
+import { ref, computed, onMounted, watch } from "vue"
+import { ElTable, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
+import type { EpTableInternalProps, EpTableEmits } from "./types"
 import { useTableSearch, useTablePagination, useTableMerge, useTableFormat } from "./composables"
 import { useLocale } from "../../locale"
+import TableColumn from "./TableColumn.vue"
 
 defineOptions({ name: "Table", inheritAttrs: false })
 
-const props = withDefaults(defineProps<EpTableProps>(), {
+const props = withDefaults(defineProps<EpTableInternalProps>(), {
   rawData: () => [],
   columns: () => [],
   mergeColumns: () => [],
@@ -21,7 +18,9 @@ const props = withDefaults(defineProps<EpTableProps>(), {
   showRefresh: false,
   showExport: false,
   pagination: false,
-  numberFormat: false
+  numberFormat: false,
+  defaultSelection: undefined,
+  disabledSelection: undefined
 })
 
 const emit = defineEmits<EpTableEmits>()
@@ -43,6 +42,52 @@ const { shouldFormatNumber, formatCellValue } = useTableFormat(props)
 const locale = useLocale()
 const t = computed(() => locale.value.ep.table)
 
+// Default selection
+const initSelection = () => {
+  if (!props.defaultSelection || !tableRef.value) return
+  const hasSelection = props.columns?.some((col) => col.type === "selection")
+  if (!hasSelection) return
+
+  const rowKey = (tableRef.value as any).rowKey
+  if (props.defaultSelection === true) {
+    filteredData.value.forEach((row: any) => tableRef.value!.toggleRowSelection(row, true))
+  } else if (Array.isArray(props.defaultSelection)) {
+    const selectionIds = props.defaultSelection
+    filteredData.value.forEach((row: any) => {
+      const id = rowKey ? row[rowKey] : row.id
+      if (selectionIds.includes(id)) {
+        tableRef.value!.toggleRowSelection(row, true)
+      }
+    })
+  }
+}
+
+// Disable selection
+const selectable = (row: any) => {
+  if (!props.disabledSelection) return true
+  const hasSelection = props.columns?.some((col) => col.type === "selection")
+  if (!hasSelection) return true
+
+  const rowKey = (tableRef.value as any)?.rowKey
+  const id = rowKey ? row[rowKey] : row.id
+  if (props.disabledSelection === true) return false
+  if (Array.isArray(props.disabledSelection)) {
+    return !props.disabledSelection.includes(id)
+  }
+  return true
+}
+
+onMounted(() => {
+  initSelection()
+})
+
+watch(
+  () => filteredData.value,
+  () => {
+    initSelection()
+  }
+)
+
 const handleRefresh = () => {
   emit("refresh")
 }
@@ -56,7 +101,6 @@ defineExpose({ tableRef })
 </script>
 <template>
   <div class="ep-table-container">
-    <!-- 工具栏 -->
     <div v-if="showRefresh || showExport || showSearch" class="ep-table-toolbar">
       <div class="ep-table-toolbar-left">
         <EpButton v-if="showRefresh" @click="handleRefresh" icon="tabler:refresh">
@@ -94,25 +138,20 @@ defineExpose({ tableRef })
         </el-input>
       </div>
     </div>
-    <!-- 表格 -->
     <el-table ref="tableRef" v-bind="$attrs" :data="filteredData" :span-method="mergedSpanMethod">
-      <el-table-column v-for="column in columns" :key="column.prop" v-bind="column">
-        <template v-if="column.slots?.header" #header="scope">
-          <slot :name="column.slots.header" v-bind="scope" />
+      <TableColumn
+        v-for="column in columns"
+        :key="column.prop || column.label"
+        :column="column.type === 'selection' ? { ...column, selectable } : column"
+        :should-format-number="shouldFormatNumber"
+        :format-cell-value="formatCellValue"
+      >
+        <template v-for="(_, name) in $slots" #[name]="scope">
+          <slot :name="name" v-bind="scope" />
         </template>
-        <template v-if="column.slots?.default" #default="scope">
-          <slot :name="column.slots.default" v-bind="scope" />
-        </template>
-        <template v-else #default="scope">
-          <span v-if="shouldFormatNumber(column, scope.row[column.prop!])">
-            {{ formatCellValue(scope.row[column.prop!]) }}
-          </span>
-          <span v-else>{{ scope.row[column.prop!] }}</span>
-        </template>
-      </el-table-column>
+      </TableColumn>
       <slot />
     </el-table>
-    <!-- 分页 -->
     <el-pagination
       v-if="paginationConfig"
       v-bind="paginationConfig"
@@ -141,10 +180,10 @@ defineExpose({ tableRef })
   gap: 8px;
 }
 .ep-search-input {
-  width: 300px;
+  width: 400px;
 }
 .ep-search-select {
-  width: 120px;
+  width: 140px;
 }
 .ep-pagination {
   margin-top: 16px;

@@ -10,18 +10,19 @@ export function MarkdownTransform(): Plugin {
     enforce: "pre",
     async transform(code, id) {
       if (!id.endsWith(".md")) return
-      
+
       const componentId = path.basename(id, ".md")
       const scriptSetups = getExampleImports(componentId)
-      
+
       if (scriptSetups.length === 0) return code
-      
+
       const scriptSetup = `\n<script setup>\n${scriptSetups.join("\n")}\n</script>\n`
-      
+
       const frontmatterEnds = code.indexOf("---\n\n")
       const firstHeader = code.search(/\n#{1,6}\s.+/)
-      const sliceIndex = firstHeader < 0 ? (frontmatterEnds < 0 ? 0 : frontmatterEnds + 4) : firstHeader
-      
+      const sliceIndex =
+        firstHeader < 0 ? (frontmatterEnds < 0 ? 0 : frontmatterEnds + 4) : firstHeader
+
       return code.slice(0, sliceIndex) + scriptSetup + code.slice(sliceIndex)
     }
   }
@@ -38,7 +39,7 @@ const getExampleImports = (componentId: string) => {
     const file = item.replace(/\.vue$/, "")
     const name = camelize(`Ep-${componentId}-${file}`)
 
-    imports.push(`import ${name} from '../../examples/${componentId}/${file}.vue'`)
+    imports.push(`import ${name} from '../../../examples/${componentId}/${file}.vue'`)
   }
 
   return imports

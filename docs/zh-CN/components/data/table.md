@@ -5,9 +5,7 @@ lang: zh-CN
 
 # Table 表格
 
-基于 Element Plus 的增强表格组件，具有搜索、分页、导出和数字格式化等附加功能。
-
-更多详情请参考 [Element Plus Table](https://element-plus.org/zh-CN/component/table)
+基于 [Element Plus Table](https://element-plus.org/zh-CN/component/table) 增强的表格组件，具有搜索、分页、导出和数字格式化等附加功能。
 
 ## 基础表格
 
@@ -63,7 +61,7 @@ table/pagination
 
 自动格式化表格单元格中的数值。
 
-:::demo 启用 `number-format` 自动格式化带千位分隔符和小数位的数字。
+:::demo 启用 `number-format` 自动格式化带千位分隔符和小数位的数字。(使用 [formatNumber](/zh-CN/utils/number/formatNumber.html))
 
 table/number-format
 

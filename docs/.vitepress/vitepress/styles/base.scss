@@ -1,0 +1,14 @@
+.example {
+  table {
+    display: table;
+    margin: unset;
+    border-collapse: separate;
+  }
+  tr:nth-child(2n) {
+    background-color: var(--el-table-tr-bg-color);
+  }
+  th,
+  td {
+    border: unset;
+  }
+}

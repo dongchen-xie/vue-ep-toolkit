@@ -1,14 +1,10 @@
 <template>
-  <ep-table
-    :raw-data="tableData"
-    :columns="columns"
-    show-search
-    @search="handleSearch"
-    :border="true"
-  />
+  <ep-table :raw-data="tableData" :columns="columns" show-search @search="handleSearch" />
 </template>
 
 <script setup lang="ts">
+import type { EpTableColumnProps } from "vue-ep-toolkit"
+
 const tableData = [
   {
     date: "2016-05-03",
@@ -32,7 +28,7 @@ const tableData = [
   }
 ]
 
-const columns = [
+const columns: EpTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

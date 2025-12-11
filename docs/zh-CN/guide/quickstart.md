@@ -69,17 +69,17 @@ $ pnpm install -D unplugin-vue-components unplugin-auto-import
 import { defineConfig } from "vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+import { VueEpToolkitResolver } from "vue-ep-toolkit"
 
 export default defineConfig({
   // ...
   plugins: [
     // ...
     AutoImport({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [VueEpToolkitResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [VueEpToolkitResolver()]
     })
   ]
 })
@@ -90,16 +90,16 @@ export default defineConfig({
 ```js [webpack.config.js]
 const AutoImport = require("unplugin-auto-import/webpack")
 const Components = require("unplugin-vue-components/webpack")
-const { ElementPlusResolver } = require("unplugin-vue-components/resolvers")
+const { VueEpToolkitResolver } = require("vue-ep-toolkit")
 
 module.exports = {
   // ...
   plugins: [
     AutoImport({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [VueEpToolkitResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [VueEpToolkitResolver()]
     })
   ]
 }

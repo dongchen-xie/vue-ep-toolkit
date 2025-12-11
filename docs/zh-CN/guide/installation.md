@@ -7,16 +7,14 @@ lang: zh-CN
 
 ## 兼容性
 
-由于 Vue EP Toolkit 是基于 Element Plus 进行组件开发的，使用其组件需要浏览器支持最新的两个版本。
-
-如果您确实需要支持过时的浏览器，请自行添加 [Babel](https://babeljs.io/) 和 Polyfill。
+Vue EP Toolkit 提供组件和工具函数，它们有不同的浏览器兼容性要求。
 
 由于 Vue 3 不再支持 IE11，Vue EP Toolkit 也不支持 IE。
 
-| 版本    | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) <br> Chrome | ![IE](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) <br> Edge | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) <br> Firefox | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) <br> Safari |
-| ------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| < 2.5.0 | Chrome ≥ 64                                                                                | Edge ≥ 79                                                                        | Firefox ≥ 78                                                                                   | Safari ≥ 12                                                                                |
-| 2.5.0 + | Chrome ≥ 85                                                                                | Edge ≥ 85                                                                        | Firefox ≥ 79                                                                                   | Safari ≥ 14.1                                                                              |
+| 功能     | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png)Chrome | ![Edge](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) Edge | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png)Firefox | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png)Safari |
+| -------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| 组件     | Chrome ≥ 85                                                                          | Edge ≥ 85                                                                     | Firefox ≥ 79                                                                             | Safari ≥ 14.1                                                                        |
+| 工具函数 | Chrome ≥ 74                                                                          | Edge ≥ 18                                                                     | Firefox ≥ 66                                                                             | Safari ≥ 11                                                                          |
 
 ### Sass
 
@@ -103,37 +101,5 @@ npm config set registry https://registry.npmmirror.com
 
 我们建议使用 CDN 引入 Vue EP Toolkit 的用户在链接地址上锁定版本，
 以免将来 Vue EP Toolkit 升级时受到非兼容性更新的影响。锁定版本的方法请查看 [unpkg.com](https://unpkg.com)。
-
-由于原生 HTML 解析行为的限制，单闭合标签可能会导致一些异常，因此请使用双闭合标签，[参考](https://cn.vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)
-
-```html
-<!-- 示例 -->
-<ep-table :raw-data="tableData" :columns="columns" />
-<script>
-  const tableData = [
-    {
-      date: "2016-05-03",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles"
-    }
-  ]
-  const columns = [
-    {
-      prop: "date",
-      label: "Date",
-      width: 180
-    },
-    {
-      prop: "name",
-      label: "Name",
-      width: 180
-    },
-    {
-      prop: "address",
-      label: "Address"
-    }
-  ]
-</script>
-```
 
 :::

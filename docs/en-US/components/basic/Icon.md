@@ -5,9 +5,7 @@ lang: en-US
 
 # Icon
 
-Icon component based on Element Plus with Iconify support.
-
-For more details please refer to [Element Plus Icon](https://element-plus.org/en-US/component/icon)
+Icon component enhanced based on [Element Plus Icon](https://element-plus.org/en-US/component/icon) with support for Iconify icons.
 
 ## Icon Usage
 
@@ -82,16 +80,3 @@ icon/basic
 | Name    | Description               |
 | ------- | ------------------------- |
 | default | customize default content |
-
-## Type Declarations
-
-<details>
-  <summary>Show declarations</summary>
-
-```ts
-export interface EpIconProps {
-  icon?: string
-}
-```
-
-</details>

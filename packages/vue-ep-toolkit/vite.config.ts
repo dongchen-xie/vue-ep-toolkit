@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "VueEpToolkit",
-      fileName: (format) => `vue-ep-toolkit.${format}.js`
+      fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
       external: ["vue"],
@@ -24,8 +24,10 @@ export default defineConfig({
           vue: "Vue"
         },
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === "style.css") return "index.css"
-          return assetInfo.name || ""
+          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+            return "index.css"
+          }
+          return assetInfo.name!
         }
       }
     }

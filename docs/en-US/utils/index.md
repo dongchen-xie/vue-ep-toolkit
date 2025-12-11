@@ -37,3 +37,7 @@ Lodash functions are organized into the following categories:
 - **Util** - Utility functions
 
 For detailed documentation of each function, please refer to the respective category pages.
+
+## Lodash Utility Functions
+
+All Lodash utility functions are available for direct use. For detailed documentation, please refer to the [Lodash Official Documentation](https://lodash.com/docs/).

@@ -5,9 +5,7 @@ lang: zh-CN
 
 # Icon 图标
 
-基于 Element Plus 的图标组件，支持 Iconify。
-
-更多详情请参考 [Element Plus Icon](https://element-plus.org/zh-CN/component/icon)
+基于 [Element Plus Icon](https://element-plus.org/zh-CN/component/icon) 增强的图标组件，支持 Iconify 图标。
 
 ## 图标使用
 
@@ -63,8 +61,8 @@ icon/basic
 
 ### Icon 属性
 
-| 名称 | 说明          | 类型      | 默认值 |
-| ---- | ------------- | --------- | ------ |
+| 名称 | 说明             | 类型      | 默认值 |
+| ---- | ---------------- | --------- | ------ |
 | icon | Iconify 图标名称 | ^[string] | —      |
 
 <details>

@@ -5,9 +5,7 @@ lang: en-US
 
 # Table
 
-Enhanced table component based on Element Plus with additional features like search, pagination, export, and number formatting.
-
-For more details please refer to [Element Plus Table](https://element-plus.org/en-US/component/table)
+Table component enhanced based on [Element Plus Table](https://element-plus.org/en-US/component/table) with additional features like search, pagination, export, and number formatting.
 
 ## Basic table
 
@@ -19,6 +17,202 @@ table/basic
 
 :::
 
+## Striped Table
+
+Striped table makes it easier to distinguish different rows.
+
+:::demo Attribute `stripe` accepts a `Boolean`. If `true`, table will be striped.
+
+table/striped
+
+:::
+
+## Table with border
+
+:::demo By default, Table has no vertical border. If you need it, you can set attribute `border` to `true`.
+
+table/with-border
+
+:::
+
+## Table with status
+
+You can highlight your table content to distinguish between "success, information, warning, danger" and other states.
+
+:::demo Use `row-class-name` in `el-table` to add custom classes to a certain row. Then you can style it with custom classes.
+
+table/with-status
+
+:::
+
+## Table with show overflow tooltip
+
+When the content is too long, it will break into multiple lines, you can use `show-overflow-tooltip` to keep it in one line.
+
+:::demo Attribute `show-overflow-tooltip`, which accepts a `Boolean` value. When set `true`, the extra content will show in tooltip when hover on the cell.
+
+table/show-overflow-tooltip
+
+:::
+
+## Table with fixed header
+
+When there are too many rows, you can use a fixed header.
+
+:::demo By setting the attribute `height` of `el-table`, you can fix the table header without any other codes.
+
+table/fixed-header
+
+:::
+
+## Table with fixed column
+
+When there are too many columns, you can fix some of them.
+
+:::demo Attribute `fixed` is used in `columns`, it accepts a `Boolean`. If `true`, the column will be fixed at left. It also accepts two string literals: 'left' and 'right', both indicating that the column will be fixed at corresponding direction.
+
+table/fixed-column
+
+:::
+
+## Table with fixed columns and header
+
+When you have huge chunks of data to put in a table, you can fix the header and columns at the same time.
+
+:::demo Fix columns and header at the same time by combining the above two examples.
+
+table/fixed-column-and-header
+
+:::
+
+## Fluid-height Table with fixed header (and columns)
+
+When the the data is dynamically changed, you might want the table to have a maximum height rather than a fixed height and to show the scroll bar if needed.
+
+:::demo By setting the attribute `max-height` of `el-table`, you can fix the table header. The table body scrolls only if the height of the rows exceeds the max height value.
+
+table/fixed-header-with-fluid-header
+
+:::
+
+## Grouping table head
+
+When the data structure is complex, you can use group header to show the data hierarchy.
+
+:::demo To create grouped headers, add a `children` array property to a column object. Each child can also have its own `children` for nested grouping.
+
+table/grouping-header
+
+:::
+
+## Single select
+
+Single row selection is supported.
+
+:::demo Table supports single row selection. You can activate it by adding the `highlight-current-row` attribute. An event called `current-change` will be triggered when row selection changes, and its parameters are the rows after and before this change: `currentRow` and `oldCurrentRow`. If you need to display row index,simply add a column object with `type: 'index'` in the `columns`, and you will see the index starting from 1.
+
+table/single-select
+
+:::
+
+## Multiple select
+
+You can also select multiple rows with default selection and disabled selection support.
+
+Activating multiple selection is easy: simply add a column with its `type` set to `selection`. Use `default-selection` prop to set initially selected rows (set to `true` for all rows, or pass an array of row IDs). Use `disabled-selection` prop to disable specific rows from selection (set to `true` to disable all, or pass an array of row IDs). Note that `row-key` attribute must be set when using these features.
+
+`toggleRowSelection` supports the third parameter `ignoreSelectable` to determine whether to ignore the selectable attribute.
+
+:::demo Activating multiple selection is easy: simply add a column object with `type: 'selection'` in the `columns` array.
+
+table/multi-select
+
+:::
+
+## Sorting
+
+Sort the data to find or compare data quickly.
+
+:::demo Set attribute `sortable` in a certain column to sort the data based on this column. It accepts `Boolean` with a default value `false`. Set table attribute `default-sort` to determine default sort column and order. To apply your own sorting rules, use `sort-method` or `sort-by`. If you need remote sorting from backend, set `sortable` to `custom`, and listen to the `sort-change` event on Table. In the event handler, you have access to the sorting column and sorting order so that you can fetch sorted table data from API. In this example we use another attribute named `formatter` to format the value of certain columns. It accepts a function which has two parameters: `row` and `column`. You can handle it according to your own needs.
+
+table/sort
+
+:::
+
+## Filter
+
+Filter the table to find desired data.
+
+:::demo Set attribute `filters` and `filter-method` in `el-table-column` makes this column filterable. `filters` is an array, and `filter-method` is a function deciding which rows are displayed. It has three parameters: `value`, `row` and `column`.
+
+table/filter
+
+:::
+
+:::demo Enable search with `show-search` prop. Users can search across all columns or select specific columns to search in.
+
+table/search
+
+:::
+
+## Custom column template
+
+Customize table column so it can be integrated with other components.
+
+:::demo You have access to the following data: row, column, $index and store (state management of Table) by [slot](https://v3.vuejs.org/guide/component-slots.html).
+
+table/custom-column
+
+:::
+
+## Table with custom header
+
+Customize table header so it can be even more customized.
+
+:::demo You can customize how the header looks by header [slots](https://v3.vuejs.org/guide/component-slots.html).
+
+table/custom-header
+
+:::
+
+## Expandable row
+
+When the row content is too long and you do not want to display the horizontal scroll bar, you can use the expandable row feature.
+
+`preserve-expanded-content` is added to control whether to preserve expanded row content in DOM when collapsed.
+
+:::demo Activate expandable row by adding type="expand" and slot. The template for el-table-column will be rendered as the contents of the expanded row, and you can access the same attributes as when you are using `slot` in custom column templates.
+
+table/expandable-row
+
+:::
+
+## Tree data and lazy mode
+
+:::demo You can display tree structure data. When row contains the `children` field, it is treated as nested data. For rendering nested data, the prop `row-key` is required. Also, child row data can be loaded asynchronously. Set `lazy` property of Table to true and the function `load`. Specify `hasChildren` attribute in row to determine which row contains children. Both `children` and `hasChildren` can be configured via `tree-props`.
+
+table/tree-and-lazy
+
+:::
+
+## Selectable tree
+
+:::demo When `treeProps.checkStrictly` is true, the selection state of parent and child nodes is no longer associated, that is, when the parent node is selected, its child nodes will not be selected; when `treeProps.checkStrictly` is false, the selection state of parent and child nodes will be associated with the selection state of child nodes, that is, when the parent node is selected, all its child nodes will be selected.
+
+table/check-strictly
+
+:::
+
+## Summary row
+
+For table of numbers, you can add an extra row at the table footer displaying each column's sum.
+
+:::demo You can add the summary row by setting `show-summary` to `true`. By default, for the summary row, the first column does not sum anything up but always displays 'Sum' (you can configure the displayed text using `sum-text`), while other columns sum every number in that column up and display them. You can of course define your own sum behaviour. To do so, pass a method to `summary-method`, which returns an array, and each element of the returned array will be displayed in the columns of the summary row, It can be a VNode or string. The second table of this example is a detailed demo.
+
+table/summary
+
+:::
+
 ## Merge Columns
 
 Automatically merge cells with the same values in specified columns.
@@ -26,16 +220,6 @@ Automatically merge cells with the same values in specified columns.
 :::demo Use `merge-columns` prop to specify which columns should have their cells merged when values are identical.
 
 table/merge-columns
-
-:::
-
-## Search Functionality
-
-Built-in search functionality with column selection.
-
-:::demo Enable search with `show-search` prop. Users can search across all columns or select specific columns to search in.
-
-table/search
 
 :::
 
@@ -63,7 +247,7 @@ table/pagination
 
 Automatically format numeric values in table cells.
 
-:::demo Enable `number-format` to automatically format numbers with thousand separators and decimal places.
+:::demo Enable `number-format` to automatically format numbers with thousand separators and decimal places. (Use [formatNumber](/en-US/utils/number/formatNumber.html))
 
 table/number-format
 
@@ -218,9 +402,9 @@ table/number-format
 
 Extends all Element Plus TableColumnCtx properties with additional features:
 
-| Name  | Description               | Type                                               | Default |
-| ----- | ------------------------- | -------------------------------------------------- | ------- |
-| slots | Custom slot configuration | ^[Function]`{ default?: string, header?: string }` | -       |
+| Name  | Description               | Type                                                                                                                                                                                                                                                                    | Default |
+| ----- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| slots | Custom slot configuration | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean }` - When set to `true`, enables both default and header slots with auto-generated names `{prop}-default` and `{prop}-header`. In object form, each property can be boolean or string | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>
@@ -270,111 +454,6 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 | header      | Custom content for table header   | ^[object]`{ column: TableColumnCtx<T>, $index: number }`           |
 | filter-icon | Custom content for filter icon    | ^[object]`{ filterOpened: boolean }`                               |
 | expand      | Custom content for expand columns | ^[object]`{ expanded: boolean }`                                   |
-
-</details>
-
-## Type Declarations
-
-<details>
-  <summary>Show declarations</summary>
-
-```ts
-interface Sort {
-  prop: string
-  order: "ascending" | "descending"
-  init?: any
-  silent?: any
-}
-
-interface TreeNode {
-  expanded?: boolean
-  loading?: boolean
-  noLazyChildren?: boolean
-  indent?: number
-  level?: number
-  display?: boolean
-}
-
-type DefaultRow = Record<PropertyKey, any>
-
-type TableColumnCtx<T extends DefaultRow = DefaultRow> = {
-  id: string
-  realWidth: number | null
-  type: string
-  label: string
-  className: string
-  labelClassName: string
-  property: string
-  prop: string
-  width?: string | number
-  minWidth: string | number
-  renderHeader: (data: CI<T>) => VNode
-  sortable: boolean | string
-  sortMethod: (a: T, b: T) => number
-  sortBy: string | ((row: T, index: number, array?: T[]) => string) | string[]
-  resizable: boolean
-  columnKey: string
-  rawColumnKey: string
-  align: string
-  headerAlign: string
-  showOverflowTooltip?: boolean | TableOverflowTooltipOptions
-  tooltipFormatter?: TableOverflowTooltipFormatter<T>
-  fixed: boolean | string
-  formatter: (row: T, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode | string
-  selectable: (row: T, index: number) => boolean
-  reserveSelection: boolean
-  filterMethod: FilterMethods<T>
-  filteredValue: string[]
-  filters: Filters
-  filterPlacement: string
-  filterMultiple: boolean
-  filterClassName: string
-  index: number | ((index: number) => number)
-  sortOrders: (TableSortOrder | null)[]
-  renderCell: (data: any) => VNode | VNode[]
-  colSpan: number
-  rowSpan: number
-  children?: TableColumnCtx<T>[]
-  level: number
-  filterable: boolean | FilterMethods<T> | Filters
-  order: TableSortOrder | null
-  isColumnGroup: boolean
-  isSubColumn: boolean
-  columns: TableColumnCtx<T>[]
-  getColumnIndex: () => number
-  no: number
-  filterOpened?: boolean
-  renderFilterIcon?: (scope: any) => VNode
-  renderExpand?: (scope: any) => VNode
-}
-
-interface EpTableColumnProps extends Partial<TableColumnCtx<any>> {
-  slots?: {
-    default?: string
-    header?: string
-  }
-}
-
-interface EpTableProps {
-  rawData?: any[]
-  columns?: EpTableColumnProps[]
-  mergeColumns?: string[]
-  showSearch?: boolean
-  searchValue?: string
-  searchColumns?: string[]
-  showRefresh?: boolean
-  showExport?: boolean
-  pagination?: boolean | PaginationProps
-  numberFormat?: boolean | FormatNumberOptions
-}
-
-interface EpTableEmits {
-  refresh: []
-  export: [data: any[], columns: EpTableColumnProps[]]
-  search: [value: string, columns: string[]]
-  "pagination-change": [page: number, size: number]
-}
-```
 
 </details>
 

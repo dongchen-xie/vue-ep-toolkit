@@ -17,6 +17,7 @@ declare module 'vue' {
     EpButton: typeof import('vue-ep-toolkit')['EpButton']
     EpIcon: typeof import('vue-ep-toolkit')['EpIcon']
     EpTable: typeof import('vue-ep-toolkit')['EpTable']
+    EpTableColumn: typeof import('vue-ep-toolkit')['EpTableColumn']
     LodashSvg: typeof import('./.vitepress/vitepress/components/globals/design/lodash-svg.vue')['default']
     VpApiTyping: typeof import('./.vitepress/vitepress/components/globals/vp-api-typing.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo.vue')['default']

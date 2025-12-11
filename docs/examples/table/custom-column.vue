@@ -1,0 +1,90 @@
+<template>
+  <ep-table :raw-data="tableData" :columns="columns" style="width: 100%">
+    <template #date="scope">
+      <div style="display: flex; align-items: center">
+        <ep-icon icon="tabler:stopwatch" />
+        <span style="margin-left: 10px">{{ scope.row.date }}</span>
+      </div>
+    </template>
+    <template #name="scope">
+      <el-popover effect="light" trigger="hover" placement="top" width="auto">
+        <template #default>
+          <div>name: {{ scope.row.name }}</div>
+          <div>address: {{ scope.row.address }}</div>
+        </template>
+        <template #reference>
+          <el-tag>{{ scope.row.name }}</el-tag>
+        </template>
+      </el-popover>
+    </template>
+    <template #operations="scope">
+      <ep-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </ep-button>
+      <ep-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
+        Delete
+      </ep-button>
+    </template>
+  </ep-table>
+</template>
+
+<script lang="ts" setup>
+import type { EpTableColumnProps } from "vue-ep-toolkit"
+
+interface User {
+  date: string
+  name: string
+  address: string
+}
+
+const handleEdit = (index: number, row: User) => {
+  console.log(index, row)
+}
+const handleDelete = (index: number, row: User) => {
+  console.log(index, row)
+}
+
+const tableData: User[] = [
+  {
+    date: "2016-05-03",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    date: "2016-05-02",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    date: "2016-05-04",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    date: "2016-05-01",
+    name: "Tom",
+    address: "No. 189, Grove St, Los Angeles"
+  }
+]
+
+const columns: EpTableColumnProps[] = [
+  {
+    label: "Date",
+    width: 180,
+    slots: {
+      default: "date"
+    }
+  },
+  {
+    label: "Name",
+    width: 180,
+    slots: {
+      default: "name"
+    }
+  },
+  {
+    label: "Operations",
+    slots: {
+      default: "operations"
+    }
+  }
+]
+</script>

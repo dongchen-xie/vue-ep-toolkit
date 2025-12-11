@@ -9,13 +9,15 @@
 </template>
 
 <script setup lang="ts">
+import type { EpTableColumnProps } from "vue-ep-toolkit"
+
 const tableData = Array.from({ length: 50 }, (_, index) => ({
   date: `2016-05-${String(index + 1).padStart(2, "0")}`,
   name: `User ${index + 1}`,
   address: `No. ${index + 1}, Grove St, Los Angeles`
 }))
 
-const columns = [
+const columns: EpTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

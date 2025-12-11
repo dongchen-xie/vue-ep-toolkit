@@ -1,4 +1,7 @@
-export interface EpIconProps {
-  /** Iconify icon name (e.g., 'refresh' for tabler:refresh) */
+import type { IconProps } from "element-plus"
+
+export interface EpIconInternalProps {
   icon?: string
 }
+
+export interface EpIconProps extends IconProps, EpIconInternalProps {}

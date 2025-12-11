@@ -26,6 +26,10 @@ export * from "./utils"
 export { provideLocale, type Language, en, zhCn } from "./locale"
 export { useLocale as useEpLocale } from "./locale"
 
+// 导出 resolver
+export { VueEpToolkitResolver } from "./resolver"
+export type { VueEpToolkitResolverOptions } from "./resolver"
+
 import "./styles/index.scss"
 
 // 安装函数

@@ -12,6 +12,13 @@ const isProd = process.env.DOC_ENV === "production"
 
 export const getViteConfig = () => {
   return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          silenceDeprecations: ["legacy-js-api"]
+        }
+      }
+    },
     server: {
       host: true,
       port: 2000

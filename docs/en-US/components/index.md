@@ -4,11 +4,11 @@ Vue EP Toolkit provides a rich set of UI components based on [Element Plus](http
 
 ## About Documentation
 
-This project has organized, trimmed, and translated the official Element Plus documentation into Chinese for easier reference and use.
+This project references the official Element Plus documentation for easier reference and use.
 
 ## Features
 
-- 🎨 **Element Plus Integration** - All Element Plus components and icons included
+- 🎨 **Element Plus Integration** - All Element Plus components included
 - 📦 **Ready to Use** - No need to install Element Plus separately
 - 🔧 **Enhanced Components** - Additional custom components built on top of Element Plus
 - 📝 **Type Support** - Full TypeScript type definitions
@@ -22,13 +22,17 @@ This project has organized, trimmed, and translated the official Element Plus do
 </template>
 ```
 
-## Component Categories
+## Custom Components
 
-- **Basic** - Button, Icon, Layout, etc.
-- **Form** - Input, Select, DatePicker, etc.
-- **Data** - Table, Pagination, Tree, etc.
-- **Navigation** - Menu, Tabs, Breadcrumb, etc.
-- **Feedback** - Dialog, Message, Notification, etc.
-- **Others** - Custom enhanced components
+### Basic Components
 
-For detailed documentation of each component, please refer to the respective component pages.
+- [Button](/en-US/components/button)
+- [Icon](/en-US/components/icon)
+
+### Data Display
+
+- [Table](/en-US/components/table)
+
+## Element Plus Components
+
+All Element Plus components are available for direct use. For detailed documentation, please refer to the [Element Plus Official Documentation](https://element-plus.org/en-US/component/overview.html).

@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "paths": {
-      "vue-ep-toolkit": ["../packages/vue-ep-toolkit"],
+      "vue-ep-toolkit": ["../packages/vue-ep-toolkit/src"],
       "~/*": ["./.vitepress/vitepress/*"],
       "vue": ["./node_modules/vue"]
     },

@@ -4,11 +4,11 @@ Vue EP Toolkit 提供了一套基于 [Element Plus](https://element-plus.org/) �
 
 ## 关于文档
 
-本项目对 Element Plus 官方文档进行了整理、精简和翻译，以便更方便地参考和使用。
+本项目对 Element Plus 官方文档进行引用，以便更方便地参考和使用。
 
 ## 特性
 
-- 🎨 **Element Plus 集成** - 包含所有 Element Plus 组件和图标
+- 🎨 **Element Plus 集成** - 包含所有 Element Plus 组件
 - 📦 **开箱即用** - 无需单独安装 Element Plus
 - 🔧 **增强组件** - 基于 Element Plus 构建的额外自定义组件
 - 📝 **类型支持** - 完整的 TypeScript 类型定义
@@ -22,13 +22,17 @@ Vue EP Toolkit 提供了一套基于 [Element Plus](https://element-plus.org/) �
 </template>
 ```
 
-## 组件分类
+## 自定义组件
 
-- **基础** - Button、Icon、Layout 等
-- **表单** - Input、Select、DatePicker 等
-- **数据** - Table、Pagination、Tree 等
-- **导航** - Menu、Tabs、Breadcrumb 等
-- **反馈** - Dialog、Message、Notification 等
-- **其他** - 自定义增强组件
+### Basic 基础组件
 
-有关每个组件的详细文档，请参阅相应的组件页面。
+- [Button 按钮](/zh-CN/components/button)
+- [Icon 图标](/zh-CN/components/icon)
+
+### Data 数据展示
+
+- [Table 表格](/zh-CN/components/table)
+
+## Element Plus 组件
+
+所有 Element Plus 组件均可直接使用，详细文档请参考 [Element Plus 官方文档](https://element-plus.org/zh-CN/component/overview.html)。

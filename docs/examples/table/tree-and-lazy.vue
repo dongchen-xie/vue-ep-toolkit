@@ -1,0 +1,159 @@
+<template>
+  <div>
+    <ep-table
+      :raw-data="tableData"
+      :columns="columns"
+      style="width: 100%; margin-bottom: 20px"
+      row-key="id"
+      border
+      default-expand-all
+    >
+    </ep-table>
+
+    <ep-table
+      :raw-data="tableData1"
+      :columns="columns1"
+      style="width: 100%"
+      row-key="id"
+      border
+      lazy
+      :load="load"
+      :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+    >
+    </ep-table>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import type { EpTableColumnProps } from "vue-ep-toolkit"
+
+interface User {
+  id: number
+  date: string
+  name: string
+  address: string
+  hasChildren?: boolean
+  children?: User[]
+}
+
+const load = (row: User, treeNode: unknown, resolve: (data: User[]) => void) => {
+  setTimeout(() => {
+    resolve([
+      {
+        id: 31,
+        date: "2016-05-01",
+        name: "wangxiaohu",
+        address: "No. 189, Grove St, Los Angeles"
+      },
+      {
+        id: 32,
+        date: "2016-05-01",
+        name: "wangxiaohu",
+        address: "No. 189, Grove St, Los Angeles"
+      }
+    ])
+  }, 1000)
+}
+
+const tableData: User[] = [
+  {
+    id: 1,
+    date: "2016-05-02",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    id: 2,
+    date: "2016-05-04",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    id: 3,
+    date: "2016-05-01",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles",
+    children: [
+      {
+        id: 31,
+        date: "2016-05-01",
+        name: "wangxiaohu",
+        address: "No. 189, Grove St, Los Angeles"
+      },
+      {
+        id: 32,
+        date: "2016-05-01",
+        name: "wangxiaohu",
+        address: "No. 189, Grove St, Los Angeles"
+      }
+    ]
+  },
+  {
+    id: 4,
+    date: "2016-05-03",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  }
+]
+
+const columns: EpTableColumnProps[] = [
+  {
+    prop: "date",
+    label: "Date",
+    sortable: true
+  },
+  {
+    prop: "name",
+    label: "Name",
+    sortable: true
+  },
+  {
+    prop: "address",
+    label: "Address",
+    sortable: true
+  }
+]
+
+const tableData1: User[] = [
+  {
+    id: 1,
+    date: "2016-05-02",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    id: 2,
+    date: "2016-05-04",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    id: 3,
+    date: "2016-05-01",
+    name: "wangxiaohu",
+    hasChildren: true,
+    address: "No. 189, Grove St, Los Angeles"
+  },
+  {
+    id: 4,
+    date: "2016-05-03",
+    name: "wangxiaohu",
+    address: "No. 189, Grove St, Los Angeles"
+  }
+]
+
+const columns1: EpTableColumnProps[] = [
+  {
+    prop: "date",
+    label: "Date"
+  },
+  {
+    prop: "name",
+    label: "Name"
+  },
+  {
+    prop: "address",
+    label: "Address"
+  }
+]
+</script>

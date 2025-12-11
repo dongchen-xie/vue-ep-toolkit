@@ -7,16 +7,14 @@ lang: en-US
 
 ## Compatibility
 
-Since Vue EP Toolkit is built on top of Element Plus for component development, using its components requires browsers that support the last two versions.
-
-If you really need to support outdated browsers, please add [Babel](https://babeljs.io/) and Polyfill yourself.
+Vue EP Toolkit provides both components and utility functions with different browser compatibility requirements.
 
 Since Vue 3 no longer supports IE11, Vue EP Toolkit does not support IE either.
 
-| version | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) <br> Chrome | ![IE](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) <br> Edge | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) <br> Firefox | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) <br> Safari |
-| ------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| < 2.5.0 | Chrome ≥ 64                                                                                | Edge ≥ 79                                                                        | Firefox ≥ 78                                                                                   | Safari ≥ 12                                                                                |
-| 2.5.0 + | Chrome ≥ 85                                                                                | Edge ≥ 85                                                                        | Firefox ≥ 79                                                                                   | Safari ≥ 14.1                                                                              |
+| Feature           | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) <br> Chrome | ![Edge](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) <br> Edge | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) <br> Firefox | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) <br> Safari |
+| ----------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Components        | Chrome ≥ 85                                                                                | Edge ≥ 85                                                                          | Firefox ≥ 79                                                                                   | Safari ≥ 14.1                                                                              |
+| Utility Functions | Chrome ≥ 74                                                                                | Edge ≥ 18                                                                          | Firefox ≥ 66                                                                                   | Safari ≥ 11                                                                                |
 
 ### Sass
 
@@ -106,37 +104,5 @@ We recommend using CDN to import Vue EP Toolkit users to lock the version
 on the link address, so as not to be affected by incompatible updates when Vue EP Toolkit
 is upgraded in the future. Please check [unpkg.com](https://unpkg.com) for
 the method to lock the version.
-
-Due to the limitations of native HTML parsing behavior, single-closed tags may cause some exceptions, so please use double-closed tags, [reference](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)
-
-```html
-<!-- examples -->
-<ep-table :raw-data="tableData" :columns="columns" />
-<script>
-  const tableData = [
-    {
-      date: "2016-05-03",
-      name: "Tom",
-      address: "No. 189, Grove St, Los Angeles"
-    }
-  ]
-  const columns = [
-    {
-      prop: "date",
-      label: "Date",
-      width: 180
-    },
-    {
-      prop: "name",
-      label: "Name",
-      width: 180
-    },
-    {
-      prop: "address",
-      label: "Address"
-    }
-  ]
-</script>
-```
 
 :::
