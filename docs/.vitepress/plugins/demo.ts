@@ -1,6 +1,5 @@
 import path from "path"
 import fs from "fs"
-import { camelize } from "@vue/shared"
 
 import type { MarkdownRenderer } from "vitepress"
 
@@ -30,15 +29,13 @@ function createDemoContainer(md: MarkdownRenderer): ContainerOpts {
           )
         }
         if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
-        const componentName = camelize(`Ex-${sourceFile.replaceAll("/", "-")}`)
-        console.log(componentName)
 
         return `<Demo source="${encodeURIComponent(
           md.render(`\`\`\` vue\n${source}\`\`\``)
         )}" path="${sourceFile}" raw-source="${encodeURIComponent(
           source
         )}" description="${encodeURIComponent(md.render(description))}">
-  <template #source><${componentName}/></template>`
+  <template #source><ex-${sourceFile.replaceAll("/", "-")}/></template>`
       } else {
         return "</Demo>\n"
       }
