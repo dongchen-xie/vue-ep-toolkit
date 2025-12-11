@@ -24,12 +24,14 @@ export const getViteConfig = () => {
       port: 2000
     },
     resolve: {
-      alias: {
-        "vue-ep-toolkit": path.resolve(
-          __dirname,
-          "../../../packages/vue-ep-toolkit/src/index.ts"
-        )
-      } as AliasOptions
+      alias: (isProd
+        ? {}
+        : {
+            "vue-ep-toolkit": path.resolve(
+              __dirname,
+              "../../../packages/vue-ep-toolkit/src/index.ts"
+            )
+          }) as AliasOptions
     },
     plugins: [
       UnoCSS(),
@@ -40,7 +42,7 @@ export const getViteConfig = () => {
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         resolvers: [
           (componentName) => {
-            if (componentName.startsWith("Ep") && !componentName.match(/^Ep[A-Z][a-z]+[A-Z]/)) {
+            if (componentName.startsWith("Ep")) {
               return {
                 name: componentName,
                 from: "vue-ep-toolkit"
