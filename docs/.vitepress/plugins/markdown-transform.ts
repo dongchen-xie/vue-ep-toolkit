@@ -39,7 +39,7 @@ const getExampleImports = (componentId: string) => {
     if (!/\.vue$/.test(item)) continue
     const file = item.replace(/\.vue$/, "")
     const name = camelize(`Ex-${componentId}-${file}`)
-    imports.push(`import ${name} from '@examples/${componentId}/${file}.vue'`)
+    imports.push(`import ${name} from '../../../examples/${componentId}/${file}.vue'`)
   }
 
   return imports
