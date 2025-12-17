@@ -27,14 +27,12 @@ export const getViteConfig = () => {
       }
     },
     resolve: {
-      alias: (isProd
-        ? {}
-        : {
-            "vue-ep-toolkit": path.resolve(
-              __dirname,
-              "../../../packages/vue-ep-toolkit/src/index.ts"
-            )
-          }) as AliasOptions
+      alias: {
+        "vue-ep-toolkit": isProd
+          ? "vue-ep-toolkit"
+          : path.resolve(__dirname, "../../../packages/vue-ep-toolkit/src/index.ts"),
+        "@examples": path.resolve(__dirname, "../../examples")
+      } as AliasOptions
     },
     plugins: [
       UnoCSS(),
