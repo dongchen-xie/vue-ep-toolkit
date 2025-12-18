@@ -1,5 +1,6 @@
 import DefaultTheme from "vitepress/theme"
 import VueEpToolkit from "vue-ep-toolkit"
+import NProgress from "nprogress"
 import "nprogress/nprogress.css"
 // import "vue-ep-toolkit/dist/index.css"
 import "./style.scss"
@@ -12,7 +13,6 @@ export default {
   enhanceApp({ app, router }: { app: any; router: Router }) {
     // 只在浏览器环境中初始化 NProgress
     if (typeof window !== "undefined") {
-      const NProgress = require("nprogress")
       NProgress.configure({ showSpinner: false })
 
       router.onBeforeRouteChange = () => {
