@@ -215,7 +215,7 @@ table/summary
 
 ## Rowspan and colspan
 
-Configuring rowspan and colspan allows you to merge cells
+Configuring rowspan and colspan allows you to merge cells.
 
 :::demo Use the `span-method` attribute to configure rowspan and colspan. It accepts a method, and passes an object to that method including current row `row`, current column `column`, current row index `rowIndex` and current column index `columnIndex`. The method should return an array of two numbers, the first number being `rowspan` and second `colspan`. It can also return an object with `rowspan` and `colspan` props.
 
@@ -223,23 +223,49 @@ table/rowspan-and-colspan
 
 :::
 
-## Merge Columns
-
-Automatically merge cells with the same values in specified columns.
-
-:::demo Use `merge-columns` prop to specify which columns should have their cells merged when values are identical.
+:::demo Alternatively, use `merge-columns` prop to automatically merge cells with the same values in specified columns.
 
 table/merge-columns
 
 :::
 
-## Refresh and Export
+## Custom index
 
-Add refresh and export buttons to the table toolbar.
+You can customize row index in `type=index` columns.
 
-:::demo Use `show-refresh` and `show-export` props to display action buttons. Listen to `refresh` and `export` events to handle user actions.
+:::demo To customize row indices, set `type: "index"` in column configuration and use the `index` property. If it is assigned to a number, all indices will have an offset of that number. It also accepts a function with each index (starting from `0`) as parameter, and the returned value will be displayed as index.
 
-table/refresh-export
+table/custom-index
+
+:::
+
+## Table Layout
+
+The [table-layout](https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout) property sets the algorithm used to lay out table cells, rows, and columns.
+
+:::demo
+
+table/table-layout
+
+:::
+
+## Tooltip formatter
+
+You can use `tooltip-formatter` to customize the tooltip content.
+
+:::demo
+
+table/tooltip-formatter
+
+:::
+
+## Toolbar
+
+Customize the table toolbar with action buttons.
+
+:::demo Use `show-refresh` and `show-export` props to display built-in action buttons, or use the `toolbar-left` slot to fully customize the toolbar content. Listen to `refresh` and `export` events to handle user actions.
+
+table/toolbar
 
 :::
 
@@ -369,6 +395,10 @@ table/number-format
 </details>
 
 ### Table Slots
+
+| Name         | Description                      |
+| ------------ | -------------------------------- |
+| toolbar-left | Custom content for toolbar left  |
 
 <details>
 <summary>Element Plus Table Slots</summary>

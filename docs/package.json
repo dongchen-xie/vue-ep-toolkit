@@ -11,9 +11,11 @@
   "dependencies": {
     "@vue/shared": "^3.5.25",
     "@vueuse/core": "^14.1.0",
+    "nprogress": "^0.2.0",
     "vue-ep-toolkit": "workspace:*"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.3",
     "markdown-it-container": "^4.0.0",
     "unocss": "^66.5.9",
     "unplugin-vue-components": "^30.0.0",

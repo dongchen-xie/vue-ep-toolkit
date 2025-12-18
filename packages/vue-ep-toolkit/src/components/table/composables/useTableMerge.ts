@@ -2,11 +2,13 @@ import type { EpTableProps } from "../types"
 
 export function useTableMerge(
   props: Pick<EpTableProps, "mergeColumns"> & { spanMethod?: any },
-  searchedData: any
+  searchedData: any,
+  attrs: Record<string, any>
 ) {
   const mergedSpanMethod = (params: any) => {
-    if (props.spanMethod) {
-      return props.spanMethod(params)
+    const customSpanMethod = attrs.spanMethod || attrs["span-method"]
+    if (customSpanMethod) {
+      return customSpanMethod(params)
     }
 
     if (props.mergeColumns?.includes(params.column.property)) {

@@ -165,7 +165,7 @@ button/tag
 
 </details>
 
-### Button 暴露
+### Button 暴露方法
 
 <details>
 <summary>Element Plus Button 暴露</summary>

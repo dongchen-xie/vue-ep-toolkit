@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue"
+import { ref, computed, onMounted, watch, useAttrs } from "vue"
 import { ElTable, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
 import type { EpTableInternalProps, EpTableEmits } from "./types"
 import { useTableSearch, useTablePagination, useTableMerge, useTableFormat } from "./composables"
@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<EpTableInternalProps>(), {
 })
 
 const emit = defineEmits<EpTableEmits>()
+const attrs = useAttrs()
 
 // el-table ref
 const tableRef = ref<InstanceType<typeof ElTable>>()
@@ -35,7 +36,7 @@ const { searchText, selectedColumns, searchableColumns, searchedData, handleSear
 const { filteredData, paginationConfig, handleSizeChange, handleCurrentChange } =
   useTablePagination(props, searchedData, emit)
 
-const { mergedSpanMethod } = useTableMerge(props, searchedData)
+const { mergedSpanMethod } = useTableMerge(props, searchedData, attrs)
 
 const { shouldFormatNumber, formatCellValue } = useTableFormat(props)
 
@@ -109,6 +110,7 @@ defineExpose({ tableRef })
         <EpButton v-if="showExport" @click="handleExport" icon="tabler:file-export">
           {{ t.export }}
         </EpButton>
+        <slot name="toolbar-left" />
       </div>
       <div class="ep-table-toolbar-right">
         <el-input

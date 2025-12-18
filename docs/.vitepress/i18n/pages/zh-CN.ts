@@ -8,9 +8,9 @@ export default {
     description: "Vue3 + TypeScript + Element Plus + Lodash 组件函数库",
     themeConfig: {
       nav: [
-        { text: "指南", link: "/zh-CN/guide/design" },
-        { text: "组件", link: "/zh-CN/components/" },
-        { text: "工具函数", link: "/zh-CN/utils/" },
+        { text: "指南", link: "/zh-CN/guide/design", activeMatch: "/zh-CN/guide/" },
+        { text: "组件", link: "/zh-CN/components/", activeMatch: "/zh-CN/components/" },
+        { text: "工具函数", link: "/zh-CN/utils/", activeMatch: "/zh-CN/utils/" },
         { text: "Element Plus", link: "https://element-plus.org/zh-CN/" },
         { text: "Lodash", link: "https://www.lodashjs.com/" }
       ],

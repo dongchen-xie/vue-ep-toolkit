@@ -9,9 +9,9 @@ export default {
     description: "Vue3 + TypeScript + Element Plus + Lodash component library",
     themeConfig: {
       nav: [
-        { text: "Guide", link: "/en-US/guide/design" },
-        { text: "Components", link: "/en-US/components/" },
-        { text: "Utils", link: "/en-US/utils/" },
+        { text: "Guide", link: "/en-US/guide/design", activeMatch: "/en-US/guide/" },
+        { text: "Components", link: "/en-US/components/", activeMatch: "/en-US/components/" },
+        { text: "Utils", link: "/en-US/utils/", activeMatch: "/en-US/utils/" },
         { text: "Element Plus", link: "https://element-plus.org/" },
         { text: "Lodash", link: "https://lodash.com/" }
       ],

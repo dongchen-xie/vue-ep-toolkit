@@ -7,7 +7,11 @@
     @refresh="handleRefresh"
     @export="handleExport"
     :border="true"
-  />
+  >
+    <template #toolbar-left>
+      <ep-button @click="handleAdd" type="primary" icon="tabler:plus">Add</ep-button>
+    </template>
+  </ep-table>
 </template>
 
 <script setup lang="ts">
@@ -52,6 +56,10 @@ const columns: EpTableColumnProps[] = [
     label: "Address"
   }
 ]
+
+const handleAdd = () => {
+  console.log("Add new row")
+}
 
 const handleRefresh = () => {
   console.log("Refresh table data")

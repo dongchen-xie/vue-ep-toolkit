@@ -11,4 +11,20 @@
   td {
     border: unset;
   }
+
+  ul,
+  ol {
+    padding-left: unset;
+  }
+}
+
+.vp-table {
+  th,
+  td {
+    max-width: 300px;
+    width: 300px;
+  }
+  tr:nth-child(2n) {
+    background-color: unset;
+  }
 }
