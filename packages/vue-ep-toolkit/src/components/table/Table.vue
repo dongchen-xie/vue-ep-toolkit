@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch, useAttrs } from "vue"
 import { ElTable, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
-import type { EpTableInternalProps, EpTableEmits } from "./types"
 import { useTableSearch, useTablePagination, useTableMerge, useTableFormat } from "./composables"
 import { useLocale } from "../../locale"
 import TableColumn from "./TableColumn.vue"
+import EpButton from "../button/Button.vue"
+import { EpTableEmits, EpTableInternalProps, EpTableProps } from "./types"
 
 defineOptions({ name: "Table", inheritAttrs: false })
 
@@ -24,7 +25,7 @@ const props = withDefaults(defineProps<EpTableInternalProps>(), {
 })
 
 const emit = defineEmits<EpTableEmits>()
-const attrs = useAttrs()
+const attrs = useAttrs() as Partial<EpTableProps>
 
 // el-table ref
 const tableRef = ref<InstanceType<typeof ElTable>>()
@@ -102,7 +103,7 @@ defineExpose({ tableRef })
 </script>
 <template>
   <div class="ep-table-container">
-    <div v-if="showRefresh || showExport || showSearch" class="ep-table-toolbar">
+    <div class="ep-table-toolbar">
       <div class="ep-table-toolbar-left">
         <EpButton v-if="showRefresh" @click="handleRefresh" icon="tabler:refresh">
           {{ t.refresh }}

@@ -28,7 +28,6 @@ export interface EpTableInternalProps {
   defaultSelection?: boolean | (string | number)[]
   disabledSelection?: boolean | (string | number)[]
 }
-
 export interface EpTableProps extends TableProps<any>, EpTableInternalProps {}
 
 export interface EpTableEmits {
