@@ -9,7 +9,7 @@ defineOptions({ name: "TableColumn" })
 const props = defineProps<{
   column: EpTableColumnProps
   shouldFormatNumber: (column: EpTableColumnProps, value: any) => boolean
-  formatCellValue: (value: any) => string
+  formatCellValue: (value: any, column?: EpTableColumnProps) => string
 }>()
 
 const getSlotName = (type: "default" | "header" | "filterIcon" | "expand") => {
@@ -39,9 +39,6 @@ const expandSlotName = computed(() => getSlotName("expand"))
     <template v-if="expandSlotName" #expand="scope">
       <slot :name="expandSlotName" v-bind="scope" />
     </template>
-    <template v-if="defaultSlotName" #default="scope">
-      <slot :name="defaultSlotName" v-bind="scope" />
-    </template>
     <template v-if="!['selection','index'].includes(column.type!)" #default="scope">
       <template v-if="column.children?.length">
         <TableColumn
@@ -53,9 +50,10 @@ const expandSlotName = computed(() => getSlotName("expand"))
         >
         </TableColumn>
       </template>
+      <slot v-else-if="defaultSlotName" :name="defaultSlotName" v-bind="scope" />
       <template v-else>
         <span v-if="shouldFormatNumber(column, scope.row[column.prop!])">
-          {{ formatCellValue(scope.row[column.prop!]) }}
+          {{ formatCellValue(scope.row[column.prop!], column) }}
         </span>
         <span v-else>{{ scope.row[column.prop!] }}</span>
       </template>

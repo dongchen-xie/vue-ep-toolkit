@@ -4,14 +4,20 @@ import type { EpTableColumnProps, EpTableProps } from "../types"
 
 export function useTableFormat(props: Pick<EpTableProps, "numberFormat">) {
   const shouldFormatNumber = (column: EpTableColumnProps, value: any) => {
-    return !!(props.numberFormat && isNumber(value) && column.prop)
+    const columnNumberFormat =
+      column.numberFormat !== undefined ? column.numberFormat : props.numberFormat
+    return !!(columnNumberFormat && isNumber(value) && column.prop)
   }
 
-  const formatCellValue = (value: number) => {
-    if (typeof props.numberFormat === "boolean") {
+  const formatCellValue = (value: number, column?: EpTableColumnProps) => {
+    // Use column-level numberFormat if available, otherwise use table-level
+    const numberFormatConfig =
+      column?.numberFormat !== undefined ? column.numberFormat : props.numberFormat
+
+    if (typeof numberFormatConfig === "boolean") {
       return formatNumber(value)
     }
-    return formatNumber(value, props.numberFormat as FormatNumberOptions)
+    return formatNumber(value, numberFormatConfig as FormatNumberOptions)
   }
 
   return {
