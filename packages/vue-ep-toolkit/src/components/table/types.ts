@@ -11,6 +11,7 @@ export interface EpTableColumnProps extends Partial<Omit<TableColumnCtx<DefaultR
         filterIcon?: string | boolean
         expand?: string | boolean
       }
+  numberFormat?: boolean | FormatNumberOptions
   children?: EpTableColumnProps[]
 }
 export interface EpTableInternalProps {
