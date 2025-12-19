@@ -3,7 +3,7 @@
     <template #operations-header>
       <el-input v-model="search" size="small" placeholder="Type to search" />
     </template>
-    <template #operations-default="scope">
+    <template #operations="scope">
       <ep-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </ep-button>
       <ep-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
         Delete

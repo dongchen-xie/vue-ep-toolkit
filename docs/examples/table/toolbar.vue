@@ -6,7 +6,6 @@
     show-export
     @refresh="handleRefresh"
     @export="handleExport"
-    :border="true"
   >
     <template #toolbar-left>
       <ep-button @click="handleAdd" type="primary" icon="tabler:plus">Add</ep-button>

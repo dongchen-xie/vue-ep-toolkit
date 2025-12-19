@@ -4,7 +4,6 @@
     :columns="columns"
     :pagination="true"
     @pagination-change="handlePaginationChange"
-    :border="true"
   />
 </template>
 

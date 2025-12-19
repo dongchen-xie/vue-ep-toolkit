@@ -6,7 +6,7 @@
     :tooltip-formatter="tableRowFormatter"
     style="width: 100%"
   >
-    <template #tags-default="{ row }">
+    <template #tags="{ row }">
       <el-tag v-for="tag in row.tags" :key="tag" class="tag-item" type="primary">
         {{ tag }}
       </el-tag>
