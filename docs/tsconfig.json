@@ -19,6 +19,6 @@
     "jsx": "preserve",
     "jsxImportSource": "vue"
   },
-  "include": ["**/*", ".vitepress/**/*", "../typings/global.d.ts"],
+  "include": ["**/*", ".vitepress/**/*", "../packages/vue-ep-toolkit/types/global.d.ts"],
   "exclude": ["node_modules"]
 }

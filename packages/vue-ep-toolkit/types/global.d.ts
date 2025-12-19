@@ -1,4 +1,3 @@
-
 import type { DefineComponent } from "vue"
 import type {
   EpButtonProps,
@@ -9,7 +8,7 @@ import type {
   EpTableEmits,
   EpTableInstance,
   EpTableProps
-} from "./index"
+} from "vue-ep-toolkit"
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {

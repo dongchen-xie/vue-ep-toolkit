@@ -11,6 +11,9 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     },
+    "./global": {
+      "types": "./types/global.d.ts"
+    },
     "./utils": {
       "types": "./dist/utils.d.ts",
       "import": "./dist/utils.es.js",
