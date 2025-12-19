@@ -4,7 +4,7 @@ import EpFormItemRender from "./renderers/FormItemRender"
 import type { EpFormInternalProps, EpFormEmits } from "./types"
 import { ElForm } from "element-plus"
 
-defineOptions({ name: "Form", inheritAttrs: false })
+defineOptions({ name: "EpForm", inheritAttrs: false })
 
 const props = withDefaults(defineProps<EpFormInternalProps>(), {
   items: () => []

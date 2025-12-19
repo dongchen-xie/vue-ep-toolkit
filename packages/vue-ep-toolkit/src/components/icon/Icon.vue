@@ -4,7 +4,7 @@ import { ElIcon } from "element-plus"
 import type { EpIconInternalProps } from "./types"
 
 defineOptions({
-  name: "Icon",
+  name: "EpIcon",
   inheritAttrs: false
 })
 

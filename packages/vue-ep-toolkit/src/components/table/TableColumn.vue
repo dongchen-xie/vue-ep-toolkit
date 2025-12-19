@@ -4,7 +4,7 @@ import { ElTableColumn } from "element-plus"
 import type { EpTableColumnProps } from "./types"
 import { omit } from "lodash-es"
 
-defineOptions({ name: "TableColumn" })
+defineOptions({ name: "EpTableColumn" })
 
 const props = defineProps<{
   column: EpTableColumnProps

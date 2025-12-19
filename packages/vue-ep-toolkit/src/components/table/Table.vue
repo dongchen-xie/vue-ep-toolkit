@@ -7,7 +7,7 @@ import TableColumn from "./TableColumn.vue"
 import EpButton from "../button/Button.vue"
 import { EpTableEmits, EpTableInternalProps, EpTableProps } from "./types"
 
-defineOptions({ name: "Table", inheritAttrs: false })
+defineOptions({ name: "EpTable", inheritAttrs: false })
 
 const props = withDefaults(defineProps<EpTableInternalProps>(), {
   rawData: () => [],

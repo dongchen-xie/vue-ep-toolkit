@@ -4,7 +4,7 @@ import { ElButton } from "element-plus"
 import type { EpButtonInternalProps } from "./types"
 import Icon from "../icon/Icon.vue"
 
-defineOptions({ name: "Button", inheritAttrs: false })
+defineOptions({ name: "EpButton", inheritAttrs: false })
 
 const props = defineProps<EpButtonInternalProps>()
 
