@@ -38,111 +38,24 @@ The options object.
 
 Returns the formatted string.
 
-## Examples
-
-### Basic Usage
+## Example
 
 ```ts
-import { formatNumber } from "vue-business-kit"
+formatNumber(1234567.89)
+// => "1,234,567.89"
 
-formatNumber(1234.567)
-// => "1235"
-
-formatNumber(1234.567, { prec: true })
-// => "1234.6"
-
-formatNumber(1234.567, { prec: 2 })
-// => "1234.57"
-```
-
-### Percentage Formatting
-
-```ts
-formatNumber(0.1234, { unit: "%" })
-// => "12.3%"
-
-formatNumber(0.1234, { unit: "%", prec: true })
-// => "12.3%"
-
-formatNumber(0.5, { unit: "%", prec: 0 })
-// => "50%"
-```
-
-### Thousand Unit Formatting
-
-```ts
-formatNumber(12345, { unit: "k" })
-// => "12.3k"
-
-formatNumber(12345, { unit: "k", prec: true })
-// => "12.3k"
-
-formatNumber(1500, { unit: "k", prec: 1 })
-// => "1.5k"
-```
-
-### Million Unit Formatting
-
-```ts
-formatNumber(1234567, { unit: "M" })
-// => "1.2M"
-
-formatNumber(1234567, { unit: "M", prec: true })
-// => "1.2M"
-
-formatNumber(5000000, { unit: "M", prec: 1 })
-// => "5.0M"
-```
-
-### Thousand Separators
-
-```ts
-formatNumber(1234567.89, { separator: true })
+formatNumber(1234567.89, { prec: true })
 // => "1,234,567.9"
 
-formatNumber(1234567, { separator: true, prec: false })
-// => "1,234,567"
-```
+formatNumber(1234567.89, { prec: 2 })
+// => "1,234,567.89"
 
-### Combined Usage
+formatNumber(0.75, { unit: "%", showUnit: true })
+// => "75%"
 
-```ts
-formatNumber(1234567, { unit: "k", separator: true, prec: true })
-// => "1,234.6k"
+formatNumber(1234567, { unit: "k", showUnit: true })
+// => "1,234.567k"
 
-formatNumber(0.12345, { unit: "%", prec: true })
-// => "12.3%"
-
-formatNumber(5000000, { unit: "M", separator: true, prec: false })
-// => "5M"
-```
-
-### Hide Unit
-
-```ts
-formatNumber(0.1234, { unit: "%", showUnit: false })
-// => "12.34"
-
-formatNumber(12345, { unit: "k", showUnit: false })
-// => "12.35"
-```
-
-### String Input
-
-```ts
-formatNumber("1234.567")
-// => "1234.57"
-
-formatNumber("0.5", { unit: "%" })
-// => "50.00%"
-```
-
-### Invalid Input Handling
-
-```ts
-formatNumber("invalid")
-// => "0"
-
-formatNumber(NaN)
-// => "0"
+formatNumber(1234567, { unit: "M", showUnit: true })
+// => "1.234567M"
 ```

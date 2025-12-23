@@ -11,16 +11,15 @@ export interface FormatNumberOptions {
  * @param options 格式化选项
  * @returns 格式化后的字符串
  * @example
- * formatNumber(1234.567) // "1235" (默认不保留小数)
- * formatNumber(1234.567, { prec: true }) // "1234.6" (保留1位小数)
- * formatNumber(1234.567, { prec: 2 }) // "1234.57" (保留2位小数)
- * formatNumber(0.1234, { unit: '%' }) // "12.3%" (默认不保留小数)
- * formatNumber(0.1234, { unit: '%', prec: true }) // "12.3%" (保留1位小数)
- * formatNumber(12345, { unit: 'k', separator: true }) // "12.3k" (默认不保留小数)
- * formatNumber(1234567, { unit: 'M', prec: 1 }) // "1.2M" (保留1位小数)
+ * formatNumber(1234567.89) // "1,234,567.89"
+ * formatNumber(1234567.89, { prec: true }) // "1,234,567.9"
+ * formatNumber(1234567.89, { prec: 2 }) // "1,234,567.89"
+ * formatNumber(0.75, { unit: "%", showUnit: true }) // "75%"
+ * formatNumber(1234567, { unit: "k", showUnit: true }) // "1,234.567k"
+ * formatNumber(1234567, { unit: "M", showUnit: true }) // "1.234567M"
  */
 export function formatNumber(value: number | string, options: FormatNumberOptions = {}): string {
-  const { prec = false, unit = "none", separator = false, showUnit = false } = options
+  const { prec = false, unit = "none", separator = true, showUnit = false } = options
 
   let num = typeof value === "string" ? parseFloat(value) : value
 
@@ -41,12 +40,8 @@ export function formatNumber(value: number | string, options: FormatNumberOption
 
   // 保留小数位数
   let result: string
-  if (num === Math.floor(num)) {
-    if (typeof prec === "boolean") {
-      result = num.toFixed(1)
-    } else {
-      result = num.toFixed(prec)
-    }
+  if (prec && num !== Math.floor(num)) {
+    result = num.toFixed(prec === true ? 1 : prec)
   } else {
     result = num.toString()
   }

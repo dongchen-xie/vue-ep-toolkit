@@ -174,7 +174,7 @@ defineExpose({ tableRef })
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .bk-table-toolbar-left {
   display: flex;

@@ -15,7 +15,10 @@ export function useTableFormat(props: Pick<BkTableProps, "numberFormat">) {
       column?.numberFormat !== undefined ? column.numberFormat : props.numberFormat
 
     if (typeof numberFormatConfig === "boolean") {
-      return formatNumber(value)
+      return formatNumber(value, {
+        prec: 1,
+        separator: true
+      })
     }
     return formatNumber(value, numberFormatConfig as FormatNumberOptions)
   }

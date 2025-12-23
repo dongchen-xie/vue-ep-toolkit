@@ -23,6 +23,8 @@
 
 > ⚠️ **Development Status**: This project is currently under active development. APIs may change before the stable release.
 
+> ℹ️ **Migration Notice**: This package replaces `vue-ep-toolkit`. If you were using `vue-ep-toolkit`, please migrate to this package for continued support and new features.
+
 ## ✨ Features
 
 - 🚀 **Vue3 + TypeScript** - Built with the latest Vue3 and TypeScript, providing complete type support
