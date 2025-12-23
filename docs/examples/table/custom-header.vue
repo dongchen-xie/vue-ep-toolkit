@@ -1,20 +1,20 @@
 <template>
-  <ep-table :raw-data="filterTableData" :columns="columns" style="width: 100%">
+  <bk-table :raw-data="filterTableData" :columns="columns" style="width: 100%">
     <template #operations-header>
       <el-input v-model="search" size="small" placeholder="Type to search" />
     </template>
     <template #operations="scope">
-      <ep-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </ep-button>
-      <ep-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
+      <bk-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </bk-button>
+      <bk-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
         Delete
-      </ep-button>
+      </bk-button>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from "vue"
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   date: string
@@ -58,7 +58,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date"

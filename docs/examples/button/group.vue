@@ -1,9 +1,9 @@
 <template>
   <el-button-group class="mb-4">
-    <ep-button type="primary" icon="tabler:chevron-left">Previous Page</ep-button>
-    <ep-button type="primary">
-      Next Page<ep-icon class="el-icon--right" icon="tabler:chevron-right" />
-    </ep-button>
+    <bk-button type="primary" icon="tabler:chevron-left">Previous Page</bk-button>
+    <bk-button type="primary">
+      Next Page<bk-icon class="el-icon--right" icon="tabler:chevron-right" />
+    </bk-button>
   </el-button-group>
   <br />
   <el-radio-group v-model="direction" class="mb-2">
@@ -13,9 +13,9 @@
   <br />
 
   <el-button-group :direction="direction">
-    <ep-button type="primary" icon="tabler:smart-home" />
-    <ep-button type="primary" icon="tabler:adjustments-horizontal" />
-    <ep-button type="primary" icon="tabler:notification" />
+    <bk-button type="primary" icon="tabler:smart-home" />
+    <bk-button type="primary" icon="tabler:adjustments-horizontal" />
+    <bk-button type="primary" icon="tabler:notification" />
   </el-button-group>
 </template>
 

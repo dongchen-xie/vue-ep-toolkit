@@ -1,5 +1,5 @@
 <template>
-  <ep-table
+  <bk-table
     ref="singleTableRef"
     :raw-data="tableData"
     :columns="columns"
@@ -7,16 +7,16 @@
     style="width: 100%"
     @current-change="handleCurrentChange"
   >
-  </ep-table>
+  </bk-table>
   <div style="margin-top: 20px">
-    <ep-button @click="setCurrent(tableData[1])">Select second row</ep-button>
-    <ep-button @click="setCurrent()">Clear selection</ep-button>
+    <bk-button @click="setCurrent(tableData[1])">Select second row</bk-button>
+    <bk-button @click="setCurrent()">Clear selection</bk-button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps, EpTableInstance } from "vue-ep-toolkit"
+import type { BkTableColumnProps, BkTableInstance } from "vue-business-kit"
 
 interface User {
   date: string
@@ -25,7 +25,7 @@ interface User {
 }
 
 const currentRow = ref()
-const singleTableRef = ref<EpTableInstance>()
+const singleTableRef = ref<BkTableInstance>()
 
 const setCurrent = (row?: User) => {
   singleTableRef.value!.tableRef!.setCurrentRow(row)
@@ -56,7 +56,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     type: "index",
     width: 50

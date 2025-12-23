@@ -20,7 +20,7 @@ const detail = computed(() => apiTypingLocale[lang.value].detail)
     <ClientOnly>
       <ElTooltip v-if="details" effect="light" trigger="click">
         <ElButton text :aria-label="detail" class="p-2 text-4">
-          <EpIcon icon="tabler:alert-circle" />
+          <BkIcon icon="tabler:alert-circle" />
         </ElButton>
         <template #content>
           <slot>

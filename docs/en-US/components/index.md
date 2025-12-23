@@ -1,6 +1,6 @@
 # Components
 
-Vue EP Toolkit provides a rich set of UI components based on [Element Plus](https://element-plus.org/), ready to use out of the box.
+Vue Business Kit provides a rich set of UI components based on [Element Plus](https://element-plus.org/), ready to use out of the box.
 
 ## About Documentation
 
@@ -17,8 +17,8 @@ This project references the official Element Plus documentation for easier refer
 
 ```vue
 <template>
-  <ep-button icon="tabler:mood-tongue-wink-2">Button</ep-button>
-  <ep-icon icon="tabler:mood-tongue-wink-2" />
+  <bk-button icon="tabler:mood-tongue-wink-2">Button</bk-button>
+  <bk-icon icon="tabler:mood-tongue-wink-2" />
 </template>
 ```
 

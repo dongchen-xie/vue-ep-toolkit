@@ -1,5 +1,5 @@
 <template>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     show-refresh
@@ -8,13 +8,13 @@
     @export="handleExport"
   >
     <template #toolbar-left>
-      <ep-button @click="handleAdd" type="primary" icon="tabler:plus">Add</ep-button>
+      <bk-button @click="handleAdd" type="primary" icon="tabler:plus">Add</bk-button>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script setup lang="ts">
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 const tableData = [
   {
@@ -39,7 +39,7 @@ const tableData = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

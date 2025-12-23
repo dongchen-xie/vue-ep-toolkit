@@ -3,19 +3,19 @@
     <el-radio-button :value="true" label="true" />
     <el-radio-button :value="false" label="false" />
   </el-radio-group>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     :tree-props="treeProps"
     row-key="id"
     default-expand-all
   >
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from "vue"
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   id: number
@@ -73,7 +73,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     type: "selection",
     width: 55,

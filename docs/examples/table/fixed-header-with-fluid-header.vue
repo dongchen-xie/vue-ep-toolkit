@@ -1,17 +1,17 @@
 <template>
-  <ep-table :raw-data="tableData" :columns="columns" style="width: 100%" max-height="250">
+  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%" max-height="250">
     <template #operations="scope">
-      <ep-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)">
+      <bk-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)">
         Remove
-      </ep-button>
+      </bk-button>
     </template>
-  </ep-table>
-  <ep-button class="mt-4" style="width: 100%" @click="onAddItem"> Add Item </ep-button>
+  </bk-table>
+  <bk-button class="mt-4" style="width: 100%" @click="onAddItem"> Add Item </bk-button>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 const now = new Date()
 
@@ -42,7 +42,7 @@ const tableData = ref([
   }
 ])
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

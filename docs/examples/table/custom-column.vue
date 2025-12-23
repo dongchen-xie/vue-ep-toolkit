@@ -1,8 +1,8 @@
 <template>
-  <ep-table :raw-data="tableData" :columns="columns" style="width: 100%">
+  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%">
     <template #date="scope">
       <div style="display: flex; align-items: center">
-        <ep-icon icon="tabler:stopwatch" />
+        <bk-icon icon="tabler:stopwatch" />
         <span style="margin-left: 10px">{{ scope.row.date }}</span>
       </div>
     </template>
@@ -18,16 +18,16 @@
       </el-popover>
     </template>
     <template #operations="scope">
-      <ep-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </ep-button>
-      <ep-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
+      <bk-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </bk-button>
+      <bk-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
         Delete
-      </ep-button>
+      </bk-button>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   date: string
@@ -65,7 +65,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     label: "Date",
     width: 180,

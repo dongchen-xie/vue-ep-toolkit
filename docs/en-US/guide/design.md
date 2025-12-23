@@ -5,7 +5,7 @@ lang: en-US
 
 # Design Philosophy
 
-Vue EP Toolkit integrates Element Plus components, Lodash utilities, and custom functions to provide a comprehensive development toolkit.
+Vue Business Kit integrates Element Plus components, Lodash utilities, and custom functions to provide a comprehensive development toolkit.
 
 <design-guide />
 

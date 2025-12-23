@@ -1,7 +1,7 @@
 <template>
-  <ep-button type="primary" loading>Loading</ep-button>
-  <ep-button type="primary" loading-icon="tabler:loader-3" loading>Loading</ep-button>
-  <ep-button type="primary" loading>
+  <bk-button type="primary" loading>Loading</bk-button>
+  <bk-button type="primary" loading-icon="tabler:loader-3" loading>Loading</bk-button>
+  <bk-button type="primary" loading>
     <template #loading>
       <div class="custom-loading">
         <svg class="circular" viewBox="-10, -10, 50, 50">
@@ -21,7 +21,7 @@
       </div>
     </template>
     Loading
-  </ep-button>
+  </bk-button>
 </template>
 
 <style scoped>
@@ -36,7 +36,7 @@
   stroke-dasharray: 90, 150;
   stroke-dashoffset: 0;
   stroke-width: 2;
-  stroke: var(--ep-button-text-color);
+  stroke: var(--bk-button-text-color);
   stroke-linecap: round;
 }
 </style>

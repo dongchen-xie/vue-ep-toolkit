@@ -7,7 +7,7 @@ lang: zh-CN
 
 基于 [Element Plus Table](https://element-plus.org/zh-CN/component/table) 增强的表格组件，增加了搜索、分页、导出、数字格式化等功能。
 
-## 基础表格
+## 基础用法
 
 使用原始数据和列配置的基础表格。
 
@@ -296,7 +296,7 @@ table/number-format
 | 名称           | 说明               | 类型                                        | 默认值  |
 | -------------- | ------------------ | ------------------------------------------- | ------- |
 | raw-data       | 表格数据源         | ^[array]`any[]`                             | `[]`    |
-| columns        | 列配置             | ^[array]`EpTableColumnProps[]`              | `[]`    |
+| columns        | 列配置             | ^[array]`BkTableColumnProps[]`              | `[]`    |
 | merge-columns  | 需要合并单元格的列 | ^[array]`string[]`                          | `[]`    |
 | show-search    | 显示搜索功能       | `boolean`                                   | `false` |
 | search-value   | 默认搜索值         | `string`                                    | `''`    |
@@ -363,7 +363,7 @@ table/number-format
 | 名称              | 说明             | 类型                                                      |
 | ----------------- | ---------------- | --------------------------------------------------------- |
 | refresh           | 点击刷新按钮触发 | ^[Function]`()`                                           |
-| export            | 点击导出按钮触发 | ^[Function]`(data: any[], columns: EpTableColumnProps[])` |
+| export            | 点击导出按钮触发 | ^[Function]`(data: any[], columns: BkTableColumnProps[])` |
 | search            | 执行搜索时触发   | ^[Function]`(value: string, columns: string[])`           |
 | pagination-change | 分页变化时触发   | ^[Function]`(page: number, size: number)`                 |
 
@@ -442,11 +442,11 @@ table/number-format
 
 继承所有 Element Plus TableColumnCtx 属性并扩展：
 
-| 名称         | 说明                                                                                                                                                                                                               | 类型                                                                                                                                             | 默认值 |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| slots        | 自定义插槽配置，为 `true` 时启用所有插槽，自动生成名称 `{prop}`、`{prop}-header`、`{prop}-filterIcon` 和 `{prop}-expand`。对象形式每个属性可为 `boolean`（true 使用自动生成名称）或 `string`（指定自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
-| numberFormat | 数字格式化配置，为 `true` 时使用默认数字格式化。为对象时提供自定义格式化选项。此设置将覆盖该列的表格级别 `numberFormat` 配置                                                                                       | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
-| children     | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`EpTableColumnProps[]`                                                                                                                   | -      |
+| 名称          | 说明                                                                                                                                                                                                               | 类型                                                                                                                                             | 默认值 |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| slots         | 自定义插槽配置，为 `true` 时启用所有插槽，自动生成名称 `{prop}`、`{prop}-header`、`{prop}-filterIcon` 和 `{prop}-expand`。对象形式每个属性可为 `boolean`（true 使用自动生成名称）或 `string`（指定自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
+| number-format | 数字格式化配置，为 `true` 时使用默认数字格式化。为对象时提供自定义格式化选项。此设置将覆盖该列的表格级别 `numberFormat` 配置                                                                                       | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
+| children      | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`BkTableColumnProps[]`                                                                                                                   | -      |
 
 <details>
 <summary>Element Plus Table-column 属性</summary>

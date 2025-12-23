@@ -1,6 +1,6 @@
 # 工具函数
 
-Vue EP Toolkit 集成了 [Lodash](https://lodash.com/) 工具函数，提供强大的数据处理能力。
+Vue Business Kit 集成了 [Lodash](https://lodash.com/) 工具函数，提供强大的数据处理能力。
 
 ## 关于文档
 
@@ -15,7 +15,7 @@ Vue EP Toolkit 集成了 [Lodash](https://lodash.com/) 工具函数，提供强�
 ## 使用方式
 
 ```ts
-import { _ } from "vue-ep-toolkit"
+import { _ } from "vue-business-kit"
 
 // 直接使用 Lodash 函数
 const result = _.chunk(["a", "b", "c", "d"], 2)

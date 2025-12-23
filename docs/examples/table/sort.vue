@@ -1,15 +1,15 @@
 <template>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     :default-sort="{ prop: 'date', order: 'descending' }"
     style="width: 100%"
   >
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { EpTableColumnProps, TableColumnCtx } from "vue-ep-toolkit"
+import type { BkTableColumnProps, TableColumnCtx } from "vue-business-kit"
 
 interface User {
   date: string
@@ -44,7 +44,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

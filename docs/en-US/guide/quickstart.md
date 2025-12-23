@@ -5,7 +5,7 @@ lang: en-US
 
 # Quick Start
 
-This section describes how to use Vue EP Toolkit in your project.
+This section describes how to use Vue Business Kit in your project.
 
 ## Usage
 
@@ -15,12 +15,12 @@ If you don’t care about the bundle size so much, it’s more convenient to use
 
 ```ts [main.ts]
 import { createApp } from "vue"
-import VueEpToolkit from "vue-ep-toolkit"
-import "vue-ep-toolkit/dist/index.css"
+import VueBusinessKit from "vue-business-kit"
+import "vue-business-kit/dist/index.css"
 import App from "./App.vue"
 
 const app = createApp(App)
-app.use(VueEpToolkit)
+app.use(VueBusinessKit)
 app.mount("#app")
 ```
 
@@ -32,7 +32,7 @@ If you use volar, please add the global component type definition to `compilerOp
 {
   "compilerOptions": {
     // ...
-    "types": ["vue-ep-toolkit"]
+    "types": ["vue-business-kit"]
   }
 }
 ```
@@ -69,17 +69,17 @@ Then add the code below into your `Vite` or `Webpack` config file.
 import { defineConfig } from "vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
-import { VueEpToolkitResolver } from "vue-ep-toolkit"
+import { VueBusinessKitResolver } from "vue-business-kit"
 
 export default defineConfig({
   // ...
   plugins: [
     // ...
     AutoImport({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     }),
     Components({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     })
   ]
 })
@@ -90,16 +90,16 @@ export default defineConfig({
 ```js [webpack.config.js]
 const AutoImport = require("unplugin-auto-import/webpack")
 const Components = require("unplugin-vue-components/webpack")
-const { VueEpToolkitResolver } = require("vue-ep-toolkit")
+const { VueBusinessKitResolver } = require("vue-business-kit")
 
 module.exports = {
   // ...
   plugins: [
     AutoImport({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     }),
     Components({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     })
   ]
 }
@@ -109,26 +109,26 @@ For more bundlers ([Rollup](https://rollupjs.org/), [Vue CLI](https://cli.vuejs.
 
 ### Manually import
 
-Vue EP Toolkit provides out of box [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+Vue Business Kit provides out of box [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 functionalities based on ES Module.
 
 ```vue [App.vue]
 <template>
-  <ep-button>I am EpButton</e-button>
+  <ep-button>I am BkButton</e-button>
 </template>
 
 <script>
-import { EpButton } from "vue-ep-toolkit"
+import { BkButton } from "vue-business-kit"
 
 export default {
-  components: { EpButton }
+  components: { BkButton }
 }
 </script>
 ```
 
 ## Global Configuration
 
-When registering Vue EP Toolkit, you can pass a global config object with `size` and
+When registering Vue Business Kit, you can pass a global config object with `size` and
 `zIndex` to set the default `size` for form components, and `zIndex` for
 popup components, the default value for `zIndex` is `2000`.
 
@@ -136,11 +136,11 @@ Full import:
 
 ```ts [main.ts]
 import { createApp } from "vue"
-import VueEpToolkit from "vue-ep-toolkit"
+import VueBusinessKit from "vue-business-kit"
 import App from "./App.vue"
 
 const app = createApp(App)
-app.use(VueEpToolkit, { size: "small", zIndex: 3000 })
+app.use(VueBusinessKit, { size: "small", zIndex: 3000 })
 ```
 
 On-demand:

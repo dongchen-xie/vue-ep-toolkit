@@ -12,13 +12,13 @@
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "paths": {
-      "vue-ep-toolkit": ["../packages/vue-ep-toolkit/src"],
+      "vue-business-kit": ["../packages/vue-business-kit/src"],
       "~/*": ["./.vitepress/vitepress/*"],
       "vue": ["./node_modules/vue"]
     },
     "jsx": "preserve",
     "jsxImportSource": "vue"
   },
-  "include": ["**/*", ".vitepress/**/*", "../packages/vue-ep-toolkit/types/global.d.ts"],
+  "include": ["**/*", ".vitepress/**/*"],
   "exclude": ["node_modules"]
 }

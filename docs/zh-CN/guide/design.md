@@ -5,7 +5,7 @@ lang: zh-CN
 
 # 设计理念
 
-Vue EP Toolkit 集成了 Element Plus 组件、Lodash 工具函数和自定义函数，提供全面的开发工具包。
+Vue Business Kit 集成了 Element Plus 组件、Lodash 工具函数和自定义函数，提供全面的开发工具包。
 
 <design-guide />
 

@@ -1,6 +1,6 @@
 # Utils
 
-Vue EP Toolkit integrates [Lodash](https://lodash.com/) utility functions, providing powerful data processing capabilities.
+Vue Business Kit integrates [Lodash](https://lodash.com/) utility functions, providing powerful data processing capabilities.
 
 ## About Documentation
 
@@ -15,7 +15,7 @@ This project has organized, trimmed, and translated the official Lodash document
 ## Usage
 
 ```ts
-import { _ } from "vue-ep-toolkit"
+import { _ } from "vue-business-kit"
 
 // Use Lodash functions directly
 const result = _.chunk(["a", "b", "c", "d"], 2)

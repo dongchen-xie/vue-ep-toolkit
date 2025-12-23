@@ -26,7 +26,7 @@ pnpm add -D @iconify-json/mdi
 然后使用 `i-` 前缀：
 
 ```vue
-<ep-icon icon="i-mdi:home" />
+<bk-icon icon="i-mdi:home" />
 ```
 
 ### 3. Element Plus 图标
@@ -96,7 +96,7 @@ icon/basic
   <summary>显示声明</summary>
 
 ```ts
-export interface EpIconProps {
+export interface BkIconProps {
   icon?: string
 }
 ```

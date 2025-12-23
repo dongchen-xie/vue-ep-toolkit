@@ -3,12 +3,12 @@
     <el-radio-button value="fixed">fixed</el-radio-button>
     <el-radio-button value="auto">auto</el-radio-button>
   </el-radio-group>
-  <ep-table :raw-data="tableData" :columns="columns" :table-layout="tableLayout"> </ep-table>
+  <bk-table :raw-data="tableData" :columns="columns" :table-layout="tableLayout"> </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps, TableInstance } from "vue-ep-toolkit"
+import type { BkTableColumnProps, TableInstance } from "vue-business-kit"
 
 const tableLayout = ref<TableInstance["tableLayout"]>("fixed")
 
@@ -35,7 +35,7 @@ const tableData = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date"

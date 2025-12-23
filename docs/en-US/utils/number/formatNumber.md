@@ -25,12 +25,12 @@ The options object.
 
 #### FormatNumberOptions
 
-| Property | Type | Default | Description |
-| --- | --- | --- | --- |
-| `prec` | `number` | `2` | Number of decimal places to keep |
-| `unit` | `"%" \| "k" \| "M" \| "none"` | `"none"` | Unit for formatting |
-| `separator` | `boolean` | `false` | Whether to add thousand separators |
-| `showUnit` | `boolean` | `true` | Whether to display unit text |
+| Property    | Type                          | Default  | Description                                                                                                                                           |
+| ----------- | ----------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `prec`      | `boolean \| number`           | `false`  | Number of decimal places to keep. If true, use 1 decimal place; if false, use 0 decimal places; if number, use the specified number of decimal places |
+| `unit`      | `"%" \| "k" \| "M" \| "none"` | `"none"` | Unit for formatting                                                                                                                                   |
+| `separator` | `boolean`                     | `false`  | Whether to add thousand separators                                                                                                                    |
+| `showUnit`  | `boolean`                     | `false`  | Whether to display unit text                                                                                                                          |
 
 ## Returns
 
@@ -43,20 +43,26 @@ Returns the formatted string.
 ### Basic Usage
 
 ```ts
-import { formatNumber } from "vue-ep-toolkit"
+import { formatNumber } from "vue-business-kit"
 
 formatNumber(1234.567)
-// => "1234.57"
+// => "1235"
 
-formatNumber(1234.5678, { prec: 3 })
-// => "1234.568"
+formatNumber(1234.567, { prec: true })
+// => "1234.6"
+
+formatNumber(1234.567, { prec: 2 })
+// => "1234.57"
 ```
 
 ### Percentage Formatting
 
 ```ts
 formatNumber(0.1234, { unit: "%" })
-// => "12.34%"
+// => "12.3%"
+
+formatNumber(0.1234, { unit: "%", prec: true })
+// => "12.3%"
 
 formatNumber(0.5, { unit: "%", prec: 0 })
 // => "50%"
@@ -66,7 +72,10 @@ formatNumber(0.5, { unit: "%", prec: 0 })
 
 ```ts
 formatNumber(12345, { unit: "k" })
-// => "12.35k"
+// => "12.3k"
+
+formatNumber(12345, { unit: "k", prec: true })
+// => "12.3k"
 
 formatNumber(1500, { unit: "k", prec: 1 })
 // => "1.5k"
@@ -76,7 +85,10 @@ formatNumber(1500, { unit: "k", prec: 1 })
 
 ```ts
 formatNumber(1234567, { unit: "M" })
-// => "1.23M"
+// => "1.2M"
+
+formatNumber(1234567, { unit: "M", prec: true })
+// => "1.2M"
 
 formatNumber(5000000, { unit: "M", prec: 1 })
 // => "5.0M"
@@ -86,23 +98,23 @@ formatNumber(5000000, { unit: "M", prec: 1 })
 
 ```ts
 formatNumber(1234567.89, { separator: true })
-// => "1,234,567.89"
+// => "1,234,567.9"
 
-formatNumber(1234567, { separator: true, prec: 0 })
+formatNumber(1234567, { separator: true, prec: false })
 // => "1,234,567"
 ```
 
 ### Combined Usage
 
 ```ts
-formatNumber(1234567, { unit: "k", separator: true, prec: 1 })
+formatNumber(1234567, { unit: "k", separator: true, prec: true })
 // => "1,234.6k"
 
-formatNumber(0.12345, { unit: "%", prec: 1 })
+formatNumber(0.12345, { unit: "%", prec: true })
 // => "12.3%"
 
-formatNumber(5000000, { unit: "M", separator: true })
-// => "5.00M"
+formatNumber(5000000, { unit: "M", separator: true, prec: false })
+// => "5M"
 ```
 
 ### Hide Unit

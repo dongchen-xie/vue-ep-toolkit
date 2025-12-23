@@ -67,7 +67,7 @@ const copyCode = async () => {
         :trigger="['hover', 'focus']"
         :trigger-keys="[]"
       >
-        <EpIcon
+        <BkIcon
           icon="tabler:copy"
           :size="16"
           :aria-label="locale['copy-code']"
@@ -91,7 +91,7 @@ const copyCode = async () => {
           class="reset-btn el-icon op-btn"
           @click="toggleSourceVisible()"
         >
-          <EpIcon icon="tabler:code" :size="16" />
+          <BkIcon icon="tabler:code" :size="16" />
         </button>
       </ElTooltip>
     </div>
@@ -109,7 +109,7 @@ const copyCode = async () => {
         @click="toggleSourceVisible(false)"
         @keydown="onSourceVisibleKeydown"
       >
-        <EpIcon icon="tabler:chevron-up" :size="16" />
+        <BkIcon icon="tabler:chevron-up" :size="16" />
         <span>{{ locale["hide-source"] }}</span>
       </div>
     </Transition>

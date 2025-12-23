@@ -1,6 +1,6 @@
 # 组件
 
-Vue EP Toolkit 提供了一套基于 [Element Plus](https://element-plus.org/) 的丰富 UI 组件，开箱即用。
+Vue Business Kit 提供了一套基于 [Element Plus](https://element-plus.org/) 的丰富 UI 组件，开箱即用。
 
 ## 关于文档
 
@@ -17,8 +17,8 @@ Vue EP Toolkit 提供了一套基于 [Element Plus](https://element-plus.org/) �
 
 ```vue
 <template>
-  <ep-button icon="tabler:mood-tongue-wink-2">按钮</ep-button>
-  <ep-icon icon="tabler:mood-tongue-wink-2" />
+  <bk-button icon="tabler:mood-tongue-wink-2">按钮</bk-button>
+  <bk-icon icon="tabler:mood-tongue-wink-2" />
 </template>
 ```
 

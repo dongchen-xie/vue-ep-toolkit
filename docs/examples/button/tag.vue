@@ -1,7 +1,7 @@
 <template>
-  <ep-button>button</ep-button>
-  <ep-button tag="div" role="button" tabindex="0">div</ep-button>
-  <ep-button
+  <bk-button>button</bk-button>
+  <bk-button tag="div" role="button" tabindex="0">div</bk-button>
+  <bk-button
     type="primary"
     tag="a"
     href="https://github.com/element-plus/element-plus"
@@ -10,5 +10,5 @@
     class="!color-#fff"
   >
     a
-  </ep-button>
+  </bk-button>
 </template>

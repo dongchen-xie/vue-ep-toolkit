@@ -7,9 +7,9 @@ lang: en-US
 
 ## Compatibility
 
-Vue EP Toolkit provides both components and utility functions with different browser compatibility requirements.
+Vue Business Kit provides both components and utility functions with different browser compatibility requirements.
 
-Since Vue 3 no longer supports IE11, Vue EP Toolkit does not support IE either.
+Since Vue 3 no longer supports IE11, Vue Business Kit does not support IE either.
 
 | Feature           | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) <br> Chrome | ![Edge](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) <br> Edge | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) <br> Firefox | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) <br> Safari |
 | ----------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
@@ -32,11 +32,11 @@ css: {
 
 ### Version
 
-Vue EP Toolkit is currently in a rapid development iteration. [![VueEpToolkit version badge](https://img.shields.io/npm/v/vue-ep-toolkit.svg?style=flat-square)](https://www.npmjs.org/package/vue-ep-toolkit)
+Vue Business Kit is currently in a rapid development iteration. [![VueBusinessKit version badge](https://img.shields.io/npm/v/vue-business-kit.svg?style=flat-square)](https://www.npmjs.org/package/vue-business-kit)
 
 ## Using Package Manager
 
-**We recommend using the package manager (NPM, [Yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) to install Vue EP Toolkit**,
+**We recommend using the package manager (NPM, [Yarn](https://classic.yarnpkg.com/lang/en/), [pnpm](https://pnpm.io/)) to install Vue Business Kit**,
 so that you can utilize bundlers like [Vite](https://vitejs.dev) and
 [webpack](https://webpack.js.org/).
 
@@ -45,15 +45,15 @@ Choose a package manager you like.
 ::: code-group
 
 ```shell [npm]
-$ npm install vue-ep-toolkit --save
+$ npm install vue-business-kit --save
 ```
 
 ```shell [yarn]
-$ yarn add vue-ep-toolkit
+$ yarn add vue-business-kit
 ```
 
 ```shell [pnpm]
-$ pnpm install vue-ep-toolkit
+$ pnpm install vue-business-kit
 ```
 
 :::
@@ -66,7 +66,7 @@ npm config set registry https://registry.npmmirror.com
 
 ## Import in Browser
 
-Import Vue EP Toolkit through browser HTML tags directly, and use global variable `VueEpToolkit`.
+Import Vue Business Kit through browser HTML tags directly, and use global variable `VueBusinessKit`.
 
 According to different CDN providers, there are different introduction methods.
 Here we use [unpkg](https://unpkg.com) and [jsDelivr](https://jsdelivr.com) as example.
@@ -77,11 +77,11 @@ You can also use other CDN providers.
 ```html
 <head>
   <!-- Import style -->
-  <link rel="stylesheet" href="//unpkg.com/vue-ep-toolkit/dist/index.css" />
+  <link rel="stylesheet" href="//unpkg.com/vue-business-kit/dist/index.css" />
   <!-- Import Vue 3 -->
   <script src="//unpkg.com/vue@3"></script>
   <!-- Import component library -->
-  <script src="//unpkg.com/vue-ep-toolkit"></script>
+  <script src="//unpkg.com/vue-business-kit"></script>
 </head>
 ```
 
@@ -90,18 +90,18 @@ You can also use other CDN providers.
 ```html
 <head>
   <!-- Import style -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/vue-ep-toolkit/dist/index.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/vue-business-kit/dist/index.css" />
   <!-- Import Vue 3 -->
   <script src="//cdn.jsdelivr.net/npm/vue@3"></script>
   <!-- Import component library -->
-  <script src="//cdn.jsdelivr.net/npm/vue-ep-toolkit"></script>
+  <script src="//cdn.jsdelivr.net/npm/vue-business-kit"></script>
 </head>
 ```
 
 :::tip
 
-We recommend using CDN to import Vue EP Toolkit users to lock the version
-on the link address, so as not to be affected by incompatible updates when Vue EP Toolkit
+We recommend using CDN to import Vue Business Kit users to lock the version
+on the link address, so as not to be affected by incompatible updates when Vue Business Kit
 is upgraded in the future. Please check [unpkg.com](https://unpkg.com) for
 the method to lock the version.
 

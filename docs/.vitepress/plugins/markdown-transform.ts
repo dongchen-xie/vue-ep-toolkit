@@ -6,7 +6,7 @@ import type { Plugin } from "vitepress"
 
 export function MarkdownTransform(): Plugin {
   return {
-    name: "vue-ep-toolkit-md-transform",
+    name: "vue-business-kit-md-transform",
     enforce: "pre",
     async transform(code, id) {
       if (!id.endsWith(".md")) return
@@ -30,18 +30,18 @@ export function MarkdownTransform(): Plugin {
 
 const getExampleImports = (componentId: string) => {
   const examplesDir = path.resolve(__dirname, "../../examples")
-  
+
   // Find the actual directory name (case-insensitive)
   let actualDirName = componentId
   if (fs.existsSync(examplesDir)) {
     const dirs = fs.readdirSync(examplesDir)
-    const found = dirs.find(dir => dir.toLowerCase() === componentId.toLowerCase())
+    const found = dirs.find((dir) => dir.toLowerCase() === componentId.toLowerCase())
     if (found) actualDirName = found
   }
-  
+
   const examplePath = path.resolve(examplesDir, actualDirName)
   if (!fs.existsSync(examplePath)) return []
-  
+
   const files = fs.readdirSync(examplePath)
   const imports: string[] = []
 

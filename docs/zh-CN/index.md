@@ -3,19 +3,19 @@ layout: home
 lang: zh-CN
 
 hero:
-  name: Vue EP Toolkit
+  name: Vue Business Kit
   text: Vue3 组件函数库
   tagline: 基于 Vue3 + TypeScript + Element Plus + Lodash 的开箱即用组件库
   image:
     src: /logo.png
-    alt: Vue EP Toolkit
+    alt: Vue Business Kit
   actions:
     - theme: brand
       text: 快速开始
       link: /zh-CN/guide/design
     - theme: alt
       text: 查看 GitHub
-      link: https://github.com/dongchen-xie/vue-ep-toolkit
+      link: https://github.com/dongchen-xie/vue-business-kit
 
 features:
   - icon: 🚀

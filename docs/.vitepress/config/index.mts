@@ -6,11 +6,11 @@ import zhCN from "../i18n/pages/zh-CN"
 import zhCNSearch from "../i18n/pages/zh-CN-search"
 
 export default defineConfig({
-  title: "Vue EP Toolkit",
+  title: "Vue Business Kit",
   description: "Vue3 + TypeScript + Element Plus + Lodash component function library",
-  base: "/vue-ep-toolkit/",
+  base: "/vue-business-kit/",
   ignoreDeadLinks: true,
-  head: [["link", { rel: "icon", href: "/vue-ep-toolkit/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: "/vue-business-kit/favicon.ico" }]],
   rewrites: {
     "index.md": "en-US/index.md"
   },
@@ -28,7 +28,7 @@ export default defineConfig({
         }
       }
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/dongchen-xie/vue-ep-toolkit" }]
+    socialLinks: [{ icon: "github", link: "https://github.com/dongchen-xie/vue-business-kit" }]
   },
   vite: getViteConfig(),
   markdown: {

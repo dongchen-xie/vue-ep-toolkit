@@ -1,21 +1,21 @@
 <template>
   <div class="button-example">
     <div class="button-row">
-      <ep-button disabled>Default</ep-button>
-      <ep-button type="primary" disabled>Primary</ep-button>
-      <ep-button type="success" disabled>Success</ep-button>
-      <ep-button type="info" disabled>Info</ep-button>
-      <ep-button type="warning" disabled>Warning</ep-button>
-      <ep-button type="danger" disabled>Danger</ep-button>
+      <bk-button disabled>Default</bk-button>
+      <bk-button type="primary" disabled>Primary</bk-button>
+      <bk-button type="success" disabled>Success</bk-button>
+      <bk-button type="info" disabled>Info</bk-button>
+      <bk-button type="warning" disabled>Warning</bk-button>
+      <bk-button type="danger" disabled>Danger</bk-button>
     </div>
 
     <div class="button-row">
-      <ep-button plain disabled>Plain</ep-button>
-      <ep-button type="primary" plain disabled>Primary</ep-button>
-      <ep-button type="success" plain disabled>Success</ep-button>
-      <ep-button type="info" plain disabled>Info</ep-button>
-      <ep-button type="warning" plain disabled>Warning</ep-button>
-      <ep-button type="danger" plain disabled>Danger</ep-button>
+      <bk-button plain disabled>Plain</bk-button>
+      <bk-button type="primary" plain disabled>Primary</bk-button>
+      <bk-button type="success" plain disabled>Success</bk-button>
+      <bk-button type="info" plain disabled>Info</bk-button>
+      <bk-button type="warning" plain disabled>Warning</bk-button>
+      <bk-button type="danger" plain disabled>Danger</bk-button>
     </div>
   </div>
 </template>

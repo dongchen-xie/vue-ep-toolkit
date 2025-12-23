@@ -1,23 +1,23 @@
 <template>
   <p>Basic text button</p>
   <div class="mb-4">
-    <ep-button v-for="button in buttons" :key="button.text" :type="button.type" text>
+    <bk-button v-for="button in buttons" :key="button.text" :type="button.type" text>
       {{ button.text }}
-    </ep-button>
+    </bk-button>
   </div>
 
   <p>Background color always on</p>
   <div class="mb-4">
-    <ep-button v-for="button in buttons" :key="button.text" :type="button.type" text bg>
+    <bk-button v-for="button in buttons" :key="button.text" :type="button.type" text bg>
       {{ button.text }}
-    </ep-button>
+    </bk-button>
   </div>
 
   <p>Disabled text button</p>
   <div>
-    <ep-button v-for="button in buttons" :key="button.text" :type="button.type" text disabled>
+    <bk-button v-for="button in buttons" :key="button.text" :type="button.type" text disabled>
       {{ button.text }}
-    </ep-button>
+    </bk-button>
   </div>
 </template>
 

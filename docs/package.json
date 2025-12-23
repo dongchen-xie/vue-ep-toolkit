@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "Vue EP Toolkit Documentation",
+  "description": "Vue Business Kit Documentation",
   "private": true,
   "scripts": {
     "dev": "vitepress dev",
@@ -12,7 +12,7 @@
     "@vue/shared": "^3.5.25",
     "@vueuse/core": "^14.1.0",
     "nprogress": "^0.2.0",
-    "vue-ep-toolkit": "workspace:*"
+    "vue-business-kit": "workspace:*"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.3",

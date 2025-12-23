@@ -5,11 +5,11 @@ lang: en-US
 
 # Dark Mode
 
-Vue EP Toolkit has built-in dark mode support, ready to use without additional configuration.
+Vue Business Kit has built-in dark mode support, ready to use without additional configuration.
 
 ## Auto Enable
 
-Vue EP Toolkit has automatically imported the Element Plus dark mode style file. You just need to add the `dark` class to the HTML root element to enable dark mode.
+Vue Business Kit has automatically imported the Element Plus dark mode style file. You just need to add the `dark` class to the HTML root element to enable dark mode.
 
 ```html
 <html class="dark">
@@ -28,9 +28,9 @@ You can dynamically toggle dark mode with JavaScript:
 
 ```vue
 <template>
-  <ep-button @click="toggleDark">
+  <bk-button @click="toggleDark">
     {{ isDark ? "Switch to Light Mode" : "Switch to Dark Mode" }}
-  </ep-button>
+  </bk-button>
 </template>
 
 <script setup>
@@ -55,9 +55,9 @@ We recommend using `useDark` and `useToggle` from [@vueuse/core](https://vueuse.
 
 ```vue
 <template>
-  <ep-button @click="toggleDark()">
+  <bk-button @click="toggleDark()">
     {{ isDark ? "Switch to Light Mode" : "Switch to Dark Mode" }}
-  </ep-button>
+  </bk-button>
 </template>
 
 <script setup>
@@ -97,27 +97,27 @@ Use SCSS variables to customize the theme at compile time:
 
 ```scss
 // styles/dark-theme.scss
-@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+@forward "element-plus/theme-chalk/src/dark/var.scss" with (
   $colors: (
-    'primary': (
-      'base': #409eff,
-    ),
+    "primary": (
+      "base": #409eff
+    )
   ),
   $bg-color: (
-    '': #1a1a1a,
-    'page': #0a0a0a,
+    "": #1a1a1a,
+    "page": #0a0a0a
   ),
   $text-color: (
-    'primary': #e5eaf3,
-    'regular': #cfd3dc,
-  ),
+    "primary": #e5eaf3,
+    "regular": #cfd3dc
+  )
 );
 ```
 
 Then import it in your entry file:
 
 ```ts
-import './styles/dark-theme.scss'
+import "./styles/dark-theme.scss"
 ```
 
 ## Follow System Theme
@@ -154,6 +154,6 @@ onMounted(() => {
 
 ## Notes
 
-- Dark mode styles are built into Vue EP Toolkit, no additional imports needed
+- Dark mode styles are built into Vue Business Kit, no additional imports needed
 - Make sure to add the `dark` class to the HTML root element (`<html>`)
 - When adapting custom components for dark mode, use CSS variables provided by Element Plus

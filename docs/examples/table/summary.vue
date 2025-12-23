@@ -1,8 +1,8 @@
 <template>
-  <ep-table :raw-data="tableData" :columns="columns" border show-summary style="width: 100%">
-  </ep-table>
+  <bk-table :raw-data="tableData" :columns="columns" border show-summary style="width: 100%">
+  </bk-table>
 
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns1"
     border
@@ -11,14 +11,14 @@
     show-summary
     style="width: 100%; margin-top: 20px"
   >
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { h } from "vue"
 
 import type { VNode } from "vue"
-import type { EpTableColumnProps, TableColumnCtx } from "vue-ep-toolkit"
+import type { BkTableColumnProps, TableColumnCtx } from "vue-business-kit"
 
 interface Product {
   id: string
@@ -97,7 +97,7 @@ const tableData: Product[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "id",
     label: "ID",
@@ -124,7 +124,7 @@ const columns: EpTableColumnProps[] = [
   }
 ]
 
-const columns1: EpTableColumnProps[] = [
+const columns1: BkTableColumnProps[] = [
   {
     prop: "id",
     label: "ID",

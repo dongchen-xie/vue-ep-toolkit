@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ep-table
+    <bk-table
       :raw-data="tableData"
       :columns="columns"
       style="width: 100%; margin-bottom: 20px"
@@ -8,9 +8,9 @@
       border
       default-expand-all
     >
-    </ep-table>
+    </bk-table>
 
-    <ep-table
+    <bk-table
       :raw-data="tableData1"
       :columns="columns1"
       style="width: 100%"
@@ -20,12 +20,12 @@
       :load="load"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
-    </ep-table>
+    </bk-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   id: number
@@ -96,7 +96,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",
@@ -142,7 +142,7 @@ const tableData1: User[] = [
   }
 ]
 
-const columns1: EpTableColumnProps[] = [
+const columns1: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date"

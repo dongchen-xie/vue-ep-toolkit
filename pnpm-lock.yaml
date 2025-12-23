@@ -29,7 +29,7 @@ importers:
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
-      vue-ep-toolkit:
+      vue-business-kit:
         specifier: workspace:*
         version: link:..
     devDependencies:

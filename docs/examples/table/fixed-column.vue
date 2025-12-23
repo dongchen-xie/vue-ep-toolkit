@@ -1,14 +1,14 @@
 <template>
-  <ep-table :raw-data="tableData" :columns="columns" style="width: 100%">
+  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%">
     <template #operations>
-      <ep-button link type="primary" size="small" @click="handleClick"> Detail </ep-button>
-      <ep-button link type="primary" size="small">Edit</ep-button>
+      <bk-button link type="primary" size="small" @click="handleClick"> Detail </bk-button>
+      <bk-button link type="primary" size="small">Edit</bk-button>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 const handleClick = () => {
   console.log("click")
@@ -53,7 +53,7 @@ const tableData = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

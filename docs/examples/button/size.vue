@@ -1,24 +1,24 @@
 <template>
   <div class="flex flex-wrap items-center mb-4">
-    <ep-button size="large">Large</ep-button>
-    <ep-button>Default</ep-button>
-    <ep-button size="small">Small</ep-button>
-    <ep-button size="large" icon="tabler:search">Search</ep-button>
-    <ep-button icon="tabler:search">Search</ep-button>
-    <ep-button size="small" icon="tabler:search">Search</ep-button>
+    <bk-button size="large">Large</bk-button>
+    <bk-button>Default</bk-button>
+    <bk-button size="small">Small</bk-button>
+    <bk-button size="large" icon="tabler:search">Search</bk-button>
+    <bk-button icon="tabler:search">Search</bk-button>
+    <bk-button size="small" icon="tabler:search">Search</bk-button>
   </div>
   <div class="flex flex-wrap items-center mb-4">
-    <ep-button size="large" round>Large</ep-button>
-    <ep-button round>Default</ep-button>
-    <ep-button size="small" round>Small</ep-button>
-    <ep-button size="large" icon="tabler:search" round>Search</ep-button>
-    <ep-button icon="tabler:search" round>Search</ep-button>
-    <ep-button size="small" icon="tabler:search" round>Search</ep-button>
+    <bk-button size="large" round>Large</bk-button>
+    <bk-button round>Default</bk-button>
+    <bk-button size="small" round>Small</bk-button>
+    <bk-button size="large" icon="tabler:search" round>Search</bk-button>
+    <bk-button icon="tabler:search" round>Search</bk-button>
+    <bk-button size="small" icon="tabler:search" round>Search</bk-button>
   </div>
   <div class="flex flex-wrap items-center">
-    <ep-button icon="tabler:search" size="large" circle />
-    <ep-button icon="tabler:search" circle />
-    <ep-button icon="tabler:search" size="small" circle />
+    <bk-button icon="tabler:search" size="large" circle />
+    <bk-button icon="tabler:search" circle />
+    <bk-button icon="tabler:search" size="small" circle />
   </div>
 </template>
 

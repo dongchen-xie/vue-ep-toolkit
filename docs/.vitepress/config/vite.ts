@@ -30,9 +30,9 @@ export const getViteConfig = () => {
       alias: (isProd
         ? {}
         : {
-            "vue-ep-toolkit": path.resolve(
+            "vue-business-kit": path.resolve(
               __dirname,
-              "../../../packages/vue-ep-toolkit/src/index.ts"
+              "../../../packages/vue-business-kit/src/index.ts"
             )
           }) as AliasOptions
     },
@@ -45,10 +45,10 @@ export const getViteConfig = () => {
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         resolvers: [
           (componentName) => {
-            if (componentName.startsWith("Ep")) {
+            if (componentName.startsWith("Bk")) {
               return {
                 name: componentName,
-                from: "vue-ep-toolkit"
+                from: "vue-business-kit"
               }
             }
           }

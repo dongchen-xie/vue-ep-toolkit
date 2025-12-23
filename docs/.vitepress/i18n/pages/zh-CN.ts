@@ -4,7 +4,7 @@ export default {
   "zh-CN": {
     label: "简体中文",
     lang: "zh-CN",
-    title: "Vue EP Toolkit",
+    title: "Vue Business Kit",
     description: "Vue3 + TypeScript + Element Plus + Lodash 组件函数库",
     themeConfig: {
       nav: [
@@ -44,6 +44,10 @@ export default {
           {
             text: "Data 数据展示",
             items: generateSidebar("zh-CN", "components/data")
+          },
+          {
+            text: "Form 表单",
+            items: generateSidebar("zh-CN", "components/form")
           }
         ],
         "/zh-CN/utils/": [
@@ -65,7 +69,7 @@ export default {
       footer: {
         message:
           '基于<a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT许可证</a>发布',
-        copyright: "由Vue EP Toolkit❤️制作"
+        copyright: "由Vue Business Kit❤️制作"
       }
     }
   }

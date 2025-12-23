@@ -1,7 +1,7 @@
 <template>
-  <ep-button @click="resetDateFilter">reset date filter</ep-button>
-  <ep-button @click="clearFilter">reset all filters</ep-button>
-  <ep-table
+  <bk-button @click="resetDateFilter">reset date filter</bk-button>
+  <bk-button @click="clearFilter">reset all filters</bk-button>
+  <bk-table
     ref="tableRef"
     row-key="date"
     :raw-data="tableData"
@@ -13,12 +13,12 @@
         scope.row.tag
       }}</el-tag>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps, EpTableInstance, TableColumnCtx } from "vue-ep-toolkit"
+import type { BkTableColumnProps, BkTableInstance, TableColumnCtx } from "vue-business-kit"
 
 interface User {
   date: string
@@ -27,7 +27,7 @@ interface User {
   tag: string
 }
 
-const tableRef = ref<EpTableInstance>()
+const tableRef = ref<BkTableInstance>()
 
 const resetDateFilter = () => {
   tableRef.value!.tableRef!.clearFilter(["date"])
@@ -73,7 +73,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

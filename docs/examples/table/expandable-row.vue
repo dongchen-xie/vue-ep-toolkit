@@ -2,7 +2,7 @@
   switch parent border: <el-switch v-model="parentBorder" /> switch child border:
   <el-switch v-model="childBorder" /> preserve expanded:
   <el-switch v-model="preserveExpanded" />
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     :border="parentBorder"
@@ -16,16 +16,16 @@
         <p m="t-0 b-2">Address: {{ props.row.address }}</p>
         <p m="t-0 b-2">Zip: {{ props.row.zip }}</p>
         <h3>Family</h3>
-        <ep-table :raw-data="props.row.family" :columns="columns2" :border="childBorder">
-        </ep-table>
+        <bk-table :raw-data="props.row.family" :columns="columns2" :border="childBorder">
+        </bk-table>
       </div>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 const parentBorder = ref(false)
 const childBorder = ref(false)
@@ -250,7 +250,7 @@ const tableData = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     type: "expand",
     slots: {
@@ -267,7 +267,7 @@ const columns: EpTableColumnProps[] = [
   }
 ]
 
-const columns2: EpTableColumnProps[] = [
+const columns2: BkTableColumnProps[] = [
   {
     prop: "name",
     label: "Name"

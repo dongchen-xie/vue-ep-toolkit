@@ -1,5 +1,5 @@
 <template>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     show-overflow-tooltip
@@ -11,12 +11,12 @@
         {{ tag }}
       </el-tag>
     </template>
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { h } from "vue"
-import { ElLink, type EpTableColumnProps, type TableTooltipData } from "vue-ep-toolkit"
+import { ElLink, type BkTableColumnProps, type TableTooltipData } from "vue-business-kit"
 
 type TableData = {
   address: string
@@ -55,7 +55,7 @@ const withVNode = (data: TableTooltipData<TableData>) => {
   return h(ElLink, { type: "primary", href: data.cellValue }, () => h("span", null, data.cellValue))
 }
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "address",
     label: "extends table formatter",

@@ -5,7 +5,7 @@ export default {
   "en-US": {
     label: "English",
     lang: "en-US",
-    title: "Vue EP Toolkit",
+    title: "Vue Business Kit",
     description: "Vue3 + TypeScript + Element Plus + Lodash component library",
     themeConfig: {
       nav: [
@@ -45,6 +45,10 @@ export default {
           {
             text: "Data",
             items: generateSidebar("en-US", "components/data")
+          },
+          {
+            text: "Form",
+            items: generateSidebar("en-US", "components/form")
           }
         ],
         "/en-US/utils/": [
@@ -66,7 +70,7 @@ export default {
       footer: {
         message:
           'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
-        copyright: "Made with ❤️ by Vue EP Toolkit"
+        copyright: "Made with ❤️ by Vue Business Kit"
       }
     }
   }

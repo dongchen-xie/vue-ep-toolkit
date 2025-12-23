@@ -1,39 +1,39 @@
 <template>
   <div class="button-example">
     <div class="button-row">
-      <ep-button>Default</ep-button>
-      <ep-button type="primary">Primary</ep-button>
-      <ep-button type="success">Success</ep-button>
-      <ep-button type="info">Info</ep-button>
-      <ep-button type="warning">Warning</ep-button>
-      <ep-button type="danger">Danger</ep-button>
+      <bk-button>Default</bk-button>
+      <bk-button type="primary">Primary</bk-button>
+      <bk-button type="success">Success</bk-button>
+      <bk-button type="info">Info</bk-button>
+      <bk-button type="warning">Warning</bk-button>
+      <bk-button type="danger">Danger</bk-button>
     </div>
 
     <div class="button-row">
-      <ep-button plain>Plain</ep-button>
-      <ep-button type="primary" plain>Primary</ep-button>
-      <ep-button type="success" plain>Success</ep-button>
-      <ep-button type="info" plain>Info</ep-button>
-      <ep-button type="warning" plain>Warning</ep-button>
-      <ep-button type="danger" plain>Danger</ep-button>
+      <bk-button plain>Plain</bk-button>
+      <bk-button type="primary" plain>Primary</bk-button>
+      <bk-button type="success" plain>Success</bk-button>
+      <bk-button type="info" plain>Info</bk-button>
+      <bk-button type="warning" plain>Warning</bk-button>
+      <bk-button type="danger" plain>Danger</bk-button>
     </div>
 
     <div class="button-row">
-      <ep-button round>Round</ep-button>
-      <ep-button type="primary" round>Primary</ep-button>
-      <ep-button type="success" round>Success</ep-button>
-      <ep-button type="info" round>Info</ep-button>
-      <ep-button type="warning" round>Warning</ep-button>
-      <ep-button type="danger" round>Danger</ep-button>
+      <bk-button round>Round</bk-button>
+      <bk-button type="primary" round>Primary</bk-button>
+      <bk-button type="success" round>Success</bk-button>
+      <bk-button type="info" round>Info</bk-button>
+      <bk-button type="warning" round>Warning</bk-button>
+      <bk-button type="danger" round>Danger</bk-button>
     </div>
 
     <div class="button-row">
-      <ep-button icon="tabler:search" circle />
-      <ep-button type="primary" icon="tabler:edit" circle />
-      <ep-button type="success" icon="tabler:check" circle />
-      <ep-button type="info" icon="tabler:message" circle />
-      <ep-button type="warning" icon="tabler:star" circle />
-      <ep-button type="danger" icon="tabler:trash" circle />
+      <bk-button icon="tabler:search" circle />
+      <bk-button type="primary" icon="tabler:edit" circle />
+      <bk-button type="success" icon="tabler:check" circle />
+      <bk-button type="info" icon="tabler:message" circle />
+      <bk-button type="warning" icon="tabler:star" circle />
+      <bk-button type="danger" icon="tabler:trash" circle />
     </div>
   </div>
 </template>

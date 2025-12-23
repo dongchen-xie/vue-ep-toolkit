@@ -1,5 +1,5 @@
 {
-  "name": "vue-ep-toolkit",
+  "name": "vue-business-kit",
   "version": "1.0.0",
   "description": "Vue3 + TypeScript + Element Plus + Lodash library",
   "private": true,
@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "build": "pnpm -r build",
-    "lib:build": "pnpm --filter vue-ep-toolkit build",
-    "lib:release": "pnpm lib:build && pnpm --filter vue-ep-toolkit generate:types && pnpm --filter vue-ep-toolkit publish --registry https://registry.npmjs.org/",
+    "lib:build": "pnpm --filter vue-business-kit build",
+    "lib:release": "pnpm lib:build && pnpm --filter vue-business-kit generate:types && pnpm --filter vue-business-kit publish --registry https://registry.npmjs.org/ --no-git-checks",
     "docs:dev": "pnpm --filter docs dev",
     "docs:build": "pnpm --filter docs build"
   },

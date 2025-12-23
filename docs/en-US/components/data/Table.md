@@ -7,7 +7,7 @@ lang: en-US
 
 Table component enhanced based on [Element Plus Table](https://element-plus.org/en-US/component/table) with additional features like search, pagination, export, and number formatting.
 
-## Basic table
+## Basic Usage
 
 Basic table with raw data and column configuration.
 
@@ -296,7 +296,7 @@ table/number-format
 | Name           | Description                     | Type                                        | Default |
 | -------------- | ------------------------------- | ------------------------------------------- | ------- |
 | raw-data       | Table data source               | ^[array]`any[]`                             | `[]`    |
-| columns        | Column configuration            | ^[array]`EpTableColumnProps[]`              | `[]`    |
+| columns        | Column configuration            | ^[array]`BkTableColumnProps[]`              | `[]`    |
 | merge-columns  | Columns to merge cells          | ^[array]`string[]`                          | `[]`    |
 | show-search    | Show search functionality       | `boolean`                                   | `false` |
 | search-value   | Default search value            | `string`                                    | `''`    |
@@ -363,7 +363,7 @@ table/number-format
 | Name              | Description                              | Type                                                      |
 | ----------------- | ---------------------------------------- | --------------------------------------------------------- |
 | refresh           | Triggered when refresh button is clicked | ^[Function]`()`                                           |
-| export            | Triggered when export button is clicked  | ^[Function]`(data: any[], columns: EpTableColumnProps[])` |
+| export            | Triggered when export button is clicked  | ^[Function]`(data: any[], columns: BkTableColumnProps[])` |
 | search            | Triggered when search is performed       | ^[Function]`(value: string, columns: string[])`           |
 | pagination-change | Triggered when pagination changes        | ^[Function]`(page: number, size: number)`                 |
 
@@ -442,11 +442,11 @@ table/number-format
 
 Extends all Element Plus TableColumnCtx properties with additional features:
 
-| Name         | Description                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                             | Default |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| slots        | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
-| numberFormat | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
-| children     | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`EpTableColumnProps[]`                                                                                                                   | -       |
+| Name          | Description                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                             | Default |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
+| number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
+| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`BkTableColumnProps[]`                                                                                                                   | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>

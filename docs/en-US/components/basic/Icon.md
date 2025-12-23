@@ -26,7 +26,7 @@ pnpm add -D @iconify-json/mdi
 Then use with `i-` prefix:
 
 ```vue
-<ep-icon icon="i-mdi:home" />
+<bk-icon icon="i-mdi:home" />
 ```
 
 ### 3. Element Plus Icons

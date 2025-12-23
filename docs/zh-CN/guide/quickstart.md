@@ -5,7 +5,7 @@ lang: zh-CN
 
 # 快速开始
 
-本节介绍如何在项目中使用 Vue EP Toolkit。
+本节介绍如何在项目中使用 Vue Business Kit。
 
 ## 用法
 
@@ -15,12 +15,12 @@ lang: zh-CN
 
 ```ts [main.ts]
 import { createApp } from "vue"
-import VueEpToolkit from "vue-ep-toolkit"
-import "vue-ep-toolkit/dist/index.css"
+import VueBusinessKit from "vue-business-kit"
+import "vue-business-kit/dist/index.css"
 import App from "./App.vue"
 
 const app = createApp(App)
-app.use(VueEpToolkit)
+app.use(VueBusinessKit)
 app.mount("#app")
 ```
 
@@ -32,7 +32,7 @@ app.mount("#app")
 {
   "compilerOptions": {
     // ...
-    "types": ["vue-ep-toolkit"]
+    "types": ["vue-business-kit"]
   }
 }
 ```
@@ -69,17 +69,17 @@ $ pnpm install -D unplugin-vue-components unplugin-auto-import
 import { defineConfig } from "vite"
 import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
-import { VueEpToolkitResolver } from "vue-ep-toolkit"
+import { VueBusinessKitResolver } from "vue-business-kit"
 
 export default defineConfig({
   // ...
   plugins: [
     // ...
     AutoImport({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     }),
     Components({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     })
   ]
 })
@@ -90,16 +90,16 @@ export default defineConfig({
 ```js [webpack.config.js]
 const AutoImport = require("unplugin-auto-import/webpack")
 const Components = require("unplugin-vue-components/webpack")
-const { VueEpToolkitResolver } = require("vue-ep-toolkit")
+const { VueBusinessKitResolver } = require("vue-business-kit")
 
 module.exports = {
   // ...
   plugins: [
     AutoImport({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     }),
     Components({
-      resolvers: [VueEpToolkitResolver()]
+      resolvers: [VueBusinessKitResolver()]
     })
   ]
 }
@@ -109,36 +109,36 @@ module.exports = {
 
 ### 手动导入
 
-Vue EP Toolkit 提供了基于 ES Module 开箱即用的 [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) 功能。
+Vue Business Kit 提供了基于 ES Module 开箱即用的 [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) 功能。
 
 ```vue [App.vue]
 <template>
-  <ep-button>我是 EpButton</e-button>
+  <bk-button>我是 BkButton</e-button>
 </template>
 
 <script>
-import { EpButton } from "vue-ep-toolkit"
+import { BkButton } from "vue-business-kit"
 
 export default {
-  components: { EpButton }
+  components: { BkButton }
 }
 </script>
 ```
 
 ## 全局配置
 
-在引入 Vue EP Toolkit 时，可以传入一个包含 `size` 和 `zIndex` 属性的全局配置对象。
+在引入 Vue Business Kit 时，可以传入一个包含 `size` 和 `zIndex` 属性的全局配置对象。
 `size` 用于设置表单组件的默认尺寸，`zIndex` 用于设置弹出组件的层级，`zIndex` 的默认值为 `2000`。
 
 完整引入：
 
 ```ts [main.ts]
 import { createApp } from "vue"
-import VueEpToolkit from "vue-ep-toolkit"
+import VueBusinessKit from "vue-business-kit"
 import App from "./App.vue"
 
 const app = createApp(App)
-app.use(VueEpToolkit, { size: "small", zIndex: 3000 })
+app.use(VueBusinessKit, { size: "small", zIndex: 3000 })
 ```
 
 按需引入：

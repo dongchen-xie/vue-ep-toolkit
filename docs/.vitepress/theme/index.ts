@@ -1,8 +1,8 @@
 import DefaultTheme from "vitepress/theme"
-import VueEpToolkit from "vue-ep-toolkit"
+import VueBusinessKit from "vue-business-kit"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
-// import "vue-ep-toolkit/dist/index.css"
+// import "vue-business-kit/dist/index.css"
 import "./style.scss"
 import "virtual:uno.css"
 import { globals } from "../vitepress"
@@ -23,7 +23,7 @@ export default {
       }
     }
 
-    app.use(VueEpToolkit)
+    app.use(VueBusinessKit)
     Object.entries(globals).forEach(([name, Comp]) => {
       app.component(name, Comp)
     })

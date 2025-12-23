@@ -1,5 +1,5 @@
 <template>
-  <ep-table
+  <bk-table
     ref="multipleTableRef"
     :raw-data="tableData"
     :columns="columns"
@@ -9,21 +9,21 @@
     :disabledSelection="disabledSelection"
     @selection-change="handleSelectionChange"
   >
-  </ep-table>
+  </bk-table>
   <div style="margin-top: 20px">
-    <ep-button @click="toggleSelection([tableData[1], tableData[2]])">
+    <bk-button @click="toggleSelection([tableData[1], tableData[2]])">
       Toggle selection status of second and third rows
-    </ep-button>
-    <ep-button @click="toggleSelection([tableData[1], tableData[2]], false)">
+    </bk-button>
+    <bk-button @click="toggleSelection([tableData[1], tableData[2]], false)">
       Toggle selection status based on selectable
-    </ep-button>
-    <ep-button @click="toggleSelection()">Clear selection</ep-button>
+    </bk-button>
+    <bk-button @click="toggleSelection()">Clear selection</bk-button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { EpTableColumnProps, EpTableInstance } from "vue-ep-toolkit"
+import type { BkTableColumnProps, BkTableInstance } from "vue-business-kit"
 
 interface User {
   id: number
@@ -32,7 +32,7 @@ interface User {
   address: string
 }
 
-const multipleTableRef = ref<EpTableInstance>()
+const multipleTableRef = ref<BkTableInstance>()
 const multipleSelection = ref<User[]>([])
 const disabledSelection = ref<number[]>([1, 2])
 const defaultSelection = ref<number[]>([7])
@@ -95,7 +95,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     type: "selection",
     width: 55

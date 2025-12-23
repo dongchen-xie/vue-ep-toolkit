@@ -1,5 +1,5 @@
 <template>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     :pagination="true"
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 const tableData = Array.from({ length: 50 }, (_, index) => ({
   date: `2016-05-${String(index + 1).padStart(2, "0")}`,
@@ -16,7 +16,7 @@ const tableData = Array.from({ length: 50 }, (_, index) => ({
   address: `No. ${index + 1}, Grove St, Los Angeles`
 }))
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

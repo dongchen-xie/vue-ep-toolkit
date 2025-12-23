@@ -1,27 +1,27 @@
 <template>
   <div>
-    <ep-table
+    <bk-table
       :raw-data="tableData"
       :columns="columns"
       :span-method="arraySpanMethod"
       border
       style="width: 100%"
     >
-    </ep-table>
+    </bk-table>
 
-    <ep-table
+    <bk-table
       :raw-data="tableData"
       :columns="columns"
       :span-method="objectSpanMethod"
       border
       style="width: 100%; margin-top: 20px"
     >
-    </ep-table>
+    </bk-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx, EpTableColumnProps } from "vue-ep-toolkit"
+import type { TableColumnCtx, BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   id: string
@@ -102,7 +102,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "id",
     label: "ID",

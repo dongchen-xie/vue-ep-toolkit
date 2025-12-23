@@ -215,7 +215,7 @@ button/tag
 import type { ButtonProps } from "element-plus"
 import type { Component } from "vue"
 
-export interface EpButtonProps extends Omit<ButtonProps, "icon"> {
+export interface BkButtonProps extends Omit<ButtonProps, "icon"> {
   icon?: string | Component
 }
 ```

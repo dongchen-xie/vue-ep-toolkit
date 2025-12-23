@@ -5,11 +5,11 @@ lang: zh-CN
 
 # 暗黑模式
 
-Vue EP Toolkit 内置了暗黑模式支持，无需额外配置即可使用。
+Vue Business Kit 内置了暗黑模式支持，无需额外配置即可使用。
 
 ## 自动启用
 
-Vue EP Toolkit 已经自动引入了 Element Plus 的暗黑模式样式文件，你只需要在 HTML 根元素上添加 `dark` 类名即可启用暗黑模式。
+Vue Business Kit 已经自动引入了 Element Plus 的暗黑模式样式文件，你只需要在 HTML 根元素上添加 `dark` 类名即可启用暗黑模式。
 
 ```html
 <html class="dark">
@@ -28,9 +28,9 @@ Vue EP Toolkit 已经自动引入了 Element Plus 的暗黑模式样式文件，
 
 ```vue
 <template>
-  <ep-button @click="toggleDark">
+  <bk-button @click="toggleDark">
     {{ isDark ? "切换到亮色模式" : "切换到暗黑模式" }}
-  </ep-button>
+  </bk-button>
 </template>
 
 <script setup>
@@ -55,9 +55,9 @@ const toggleDark = () => {
 
 ```vue
 <template>
-  <ep-button @click="toggleDark()">
+  <bk-button @click="toggleDark()">
     {{ isDark ? "切换到亮色模式" : "切换到暗黑模式" }}
-  </ep-button>
+  </bk-button>
 </template>
 
 <script setup>
@@ -97,27 +97,27 @@ html.dark {
 
 ```scss
 // styles/dark-theme.scss
-@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+@forward "element-plus/theme-chalk/src/dark/var.scss" with (
   $colors: (
-    'primary': (
-      'base': #409eff,
-    ),
+    "primary": (
+      "base": #409eff
+    )
   ),
   $bg-color: (
-    '': #1a1a1a,
-    'page': #0a0a0a,
+    "": #1a1a1a,
+    "page": #0a0a0a
   ),
   $text-color: (
-    'primary': #e5eaf3,
-    'regular': #cfd3dc,
-  ),
+    "primary": #e5eaf3,
+    "regular": #cfd3dc
+  )
 );
 ```
 
 然后在你的入口文件中引入：
 
 ```ts
-import './styles/dark-theme.scss'
+import "./styles/dark-theme.scss"
 ```
 
 ## 跟随系统主题
@@ -154,6 +154,6 @@ onMounted(() => {
 
 ## 注意事项
 
-- 暗黑模式样式已经内置在 Vue EP Toolkit 中，无需额外引入
+- 暗黑模式样式已经内置在 Vue Business Kit 中，无需额外引入
 - 确保在 HTML 根元素（`<html>`）上添加 `dark` 类名
 - 自定义组件需要适配暗黑模式时，请使用 Element Plus 提供的 CSS 变量

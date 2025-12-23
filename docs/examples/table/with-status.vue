@@ -1,15 +1,15 @@
 <template>
-  <ep-table
+  <bk-table
     :raw-data="tableData"
     :columns="columns"
     style="width: 100%"
     :row-class-name="tableRowClassName"
   >
-  </ep-table>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { EpTableColumnProps } from "vue-ep-toolkit"
+import type { BkTableColumnProps } from "vue-business-kit"
 
 interface User {
   date: string
@@ -49,7 +49,7 @@ const tableData: User[] = [
   }
 ]
 
-const columns: EpTableColumnProps[] = [
+const columns: BkTableColumnProps[] = [
   {
     prop: "date",
     label: "Date",

@@ -3,19 +3,19 @@ layout: home
 lang: en-US
 
 hero:
-  name: Vue EP Toolkit
+  name: Vue Business Kit
   text: Vue3 Component Library
   tagline: Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash
   image:
     src: /logo.png
-    alt: Vue EP Toolkit
+    alt: Vue Business Kit
   actions:
     - theme: brand
       text: Get Started
       link: /en-US/guide/design
     - theme: alt
       text: View on GitHub
-      link: https://github.com/dongchen-xie/vue-ep-toolkit
+      link: https://github.com/dongchen-xie/vue-business-kit
 
 features:
   - icon: 🚀
