@@ -52,7 +52,7 @@ importers:
         specifier: ^3.5.13
         version: 3.5.25(typescript@5.9.3)
 
-  packages/vue-ep-toolkit:
+  packages/vue-business-kit:
     dependencies:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
