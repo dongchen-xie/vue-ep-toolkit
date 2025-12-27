@@ -15,9 +15,14 @@ export default {
       operations: "操作",
       cancel: "取消",
       submit: "提交",
+      confirm: "确认",
       upload: "上传",
       deleteItems: "删除条目",
-      rowKeyWarning: "删除和修改功能需要设置row-key"
+      deleteConfirm: "确认删除此记录？",
+      rowKeyWarning: "删除和修改功能需要设置row-key",
+      fillRequired: "请填写必填项",
+      invalidData: "请输入有效的数据",
+      requiredFields: "行数据中以下字段为必填项："
     }
   }
 }

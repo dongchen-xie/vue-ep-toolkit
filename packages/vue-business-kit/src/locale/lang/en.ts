@@ -15,9 +15,14 @@ export default {
       operations: "Operations",
       cancel: "Cancel",
       submit: "Submit",
+      confirm: "Confirm",
       upload: "Upload",
       deleteItems: "Delete Items",
-      rowKeyWarning: "The deletion and modification functions require setting the row-key"
+      deleteConfirm: "Confirm to Delete this record?",
+      rowKeyWarning: "The deletion and modification functions require setting the row-key",
+      fillRequired: "Please fill in the required fields",
+      invalidData: "Please enter valid data",
+      requiredFields: "the following fields are required:"
     }
   }
 }

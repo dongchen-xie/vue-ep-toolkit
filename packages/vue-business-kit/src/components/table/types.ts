@@ -32,7 +32,7 @@ export interface TableInternalProps {
   searchColumns?: string[]
   showRefresh?: boolean
   showExport?: boolean
-  pagination?: boolean | PaginationProps
+  pagination?: boolean | Partial<PaginationProps>
   numberFormat?: boolean | FormatNumberOptions
   defaultSelection?: boolean | (string | number)[]
   disabledSelection?: boolean | (string | number)[]
@@ -51,10 +51,10 @@ export interface TableEmits {
   export: [data: any[], columns: TableColumnCtx[]]
   search: [value: string, columns: string[]]
   paginationChange: [page: number, size: number]
-  add: [form: any]
-  edit: [row: any, form: any]
-  delete: [row: any]
-  batch: [form: any]
+  add: [data: { action: "add"; data: any }]
+  edit: [data: { action: "edit"; data: any }, row: any]
+  delete: [data: { action: "delete"; data: any }]
+  batch: [data: { action: "batch"; data: any }]
 }
 
 export interface TableInstance {

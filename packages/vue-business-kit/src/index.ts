@@ -10,9 +10,6 @@ import en from "./locale/lang/en"
 import type { Language as ElLanguage } from "element-plus/es/locale"
 import type { VueBusinessKitOptions } from "./types"
 
-// 导出 Element Plus 组件
-// export * from "element-plus"
-
 // 导出自定义组件
 export * from "./components"
 

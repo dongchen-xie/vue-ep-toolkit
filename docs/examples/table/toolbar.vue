@@ -5,7 +5,6 @@
     show-refresh
     show-export
     @refresh="handleRefresh"
-    @export="handleExport"
   >
     <template #toolbar-left>
       <bk-button @click="handleAdd" type="primary" icon="tabler:plus">Add</bk-button>
@@ -62,9 +61,5 @@ const handleAdd = () => {
 
 const handleRefresh = () => {
   console.log("Refresh table data")
-}
-
-const handleExport = (data: any[], columns: any[]) => {
-  console.log("Export data:", data, columns)
 }
 </script>

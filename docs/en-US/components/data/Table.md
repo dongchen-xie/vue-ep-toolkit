@@ -291,7 +291,7 @@ table/number-format
 
 ## Edit Data
 
-:::demo
+:::dem
 
 table/edit
 

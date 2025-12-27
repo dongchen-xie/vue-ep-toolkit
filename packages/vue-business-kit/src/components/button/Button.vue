@@ -36,7 +36,7 @@ defineExpose({ buttonRef })
     :icon="iconComponent"
     :loading-icon="loadingIconComponent"
   >
-    <template v-for="(_, name) in $slots" :key="name" #[name]>
+    <template v-for="name in Object.keys($slots)" :key="name" #[name]>
       <slot :name="name" />
     </template>
   </el-button>

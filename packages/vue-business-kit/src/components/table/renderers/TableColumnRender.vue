@@ -4,8 +4,6 @@ import { ElTableColumn } from "element-plus"
 import type { TableColumnCtx } from "../types"
 import { omit } from "lodash-es"
 
-defineOptions({ name: "BkTableColumn" })
-
 const props = defineProps<{
   column: TableColumnCtx
   shouldFormatNumber: (column: TableColumnCtx, value: any) => boolean

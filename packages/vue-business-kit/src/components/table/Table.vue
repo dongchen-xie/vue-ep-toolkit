@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, useAttrs } from "vue"
-import { ElTable, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
-import { useTableSearch, useTablePagination, useTableMerge, useTableFormat } from "./composables"
+import { ref, computed, onMounted, watch, useAttrs, getCurrentInstance } from "vue"
+import {
+  useTableSearch,
+  useTablePagination,
+  useTableMerge,
+  useTableFormat,
+  useTableSelection,
+  useTableEdit
+} from "./composables"
 import { useLocale } from "../../locale"
 import TableColumnRender from "./renderers/TableColumnRender.vue"
-import BkButton from "../button/Button.vue"
 import { TableEmits, TableInternalProps, TableProps } from "./types"
+import { isEmpty } from "lodash-es"
+import { ElTable, ElTableColumn, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
+import BkButton from "../button/Button.vue"
+import { BkForm } from "../form"
 import { BkDialog } from "../dialog"
 import { BkDrawer } from "../drawer"
-import { useTableEdit } from "./composables/useTableEdit"
-import { useTableSelection } from "./composables/useTableSelection"
-import { isEmpty } from "lodash-es"
+import { exportTableToExcel } from "../../utils"
 
 defineOptions({
   name: "BkTable",
@@ -44,9 +51,11 @@ const props = withDefaults(defineProps<TableInternalProps>(), {
 
 const emits = defineEmits<TableEmits>()
 const attrs = useAttrs() as Partial<TableProps>
+const instance = getCurrentInstance()
 const locale = useLocale()
 
 const tableRef = ref<InstanceType<typeof ElTable>>()
+const formRef = ref<InstanceType<typeof BkForm>>()
 
 const t = computed(() => locale.value.bk.table)
 
@@ -63,7 +72,7 @@ const {
   handleDelete,
   handleSave,
   handleClose
-} = useTableEdit(props, attrs, emits, t)
+} = useTableEdit(props, attrs, emits, t, formRef)
 
 // 使用组合式函数
 const { searchText, selectedColumns, searchableColumns, searchedData, handleSearch } =
@@ -98,7 +107,12 @@ const handleRefresh = () => {
 }
 
 const handleExport = () => {
-  emits("export", filteredData.value, props.columns || [])
+  const hasExportListener = instance?.vnode.props?.onExport !== undefined
+  if (hasExportListener) {
+    emits("export", filteredData.value, props.columns || [])
+  } else {
+    exportTableToExcel(filteredData.value, props.columns, "Table")
+  }
 }
 
 defineExpose({ tableRef })
@@ -115,7 +129,7 @@ defineExpose({ tableRef })
         </bk-button>
         <template v-if="isEditEnabled">
           <bk-button
-            v-if="props.showAdd"
+            v-if="props.showBatch"
             @click="handleBatch"
             type="primary"
             icon="tabler:cash-edit"
@@ -197,7 +211,7 @@ defineExpose({ tableRef })
         :should-format-number="shouldFormatNumber"
         :format-cell-value="formatCellValue"
       >
-        <template v-for="(_, name) in $slots" #[name]="scope">
+        <template v-for="name in Object.keys($slots)" :key="name" #[name]="scope">
           <slot :name="name" v-bind="scope" />
         </template>
       </TableColumnRender>
@@ -220,7 +234,7 @@ defineExpose({ tableRef })
           </bk-button>
           <bk-button
             v-if="props.showDelete"
-            @click="handleDelete([row])"
+            @click="handleDelete(row)"
             type="danger"
             icon="tabler:trash"
             plain
@@ -244,8 +258,15 @@ defineExpose({ tableRef })
       v-model="editVisible"
       :title="editTitle"
       width="40%"
+      draggable
     >
-      <bk-form :model="editForm" :items="formItems" label-width="auto"></bk-form>
+      <bk-form
+        ref="formRef"
+        :model="editForm"
+        :items="formItems"
+        label-width="auto"
+        :key="editTitle"
+      ></bk-form>
       <template #footer>
         <bk-button @click="handleClose">{{ t.cancel }}</bk-button>
         <bk-button type="primary" @click="handleSave">{{ t.submit }}</bk-button>

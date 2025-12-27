@@ -1,6 +1,7 @@
 import { ref, computed } from "vue"
-import { slice, merge } from "lodash-es"
+import { slice, merge, isObject } from "lodash-es"
 import type { TableProps } from "../types"
+import type { PaginationProps } from "element-plus"
 
 export function useTablePagination(
   props: Pick<TableProps, "pagination">,
@@ -24,6 +25,9 @@ export function useTablePagination(
       total: searchedData.value.length,
       currentPage: currentPage.value,
       pageSize: pageSize.value
+    }
+    if (isObject(props.pagination)) {
+      pageSize.value = (props.pagination as PaginationProps).pageSize as number
     }
     return typeof props.pagination === "boolean"
       ? defaultConfig
