@@ -16,8 +16,8 @@ export interface ToTreeArrayOptions {
  * @param {Object} options { children: 'children', data: 'data', clear: false }
  * @return {Array}
  */
-export function toTreeArray<T>(array: T[], options?: ToTreeArrayOptions): T[] {
-  return unTreeList<T>(
+export function toTreeArray(array: any[], options?: ToTreeArrayOptions): any[] {
+  return unTreeList(
     [],
     null,
     array,

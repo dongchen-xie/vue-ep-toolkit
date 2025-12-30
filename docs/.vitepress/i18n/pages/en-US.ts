@@ -61,9 +61,19 @@ export default {
             link: "/en-US/utils/"
           },
           {
+            text: "Array",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/array")
+          },
+          {
             text: "Number",
             collapsed: true,
             items: generateSidebar("en-US", "utils/number")
+          },
+          {
+            text: "Util",
+            collapsed: true,
+            items: generateSidebar("en-US", "utils/util")
           }
         ]
       },

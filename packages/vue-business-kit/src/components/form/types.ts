@@ -11,7 +11,7 @@ export interface FormItemCtx extends Partial<EpFormItemProps> {
 }
 
 export interface FormInternalProps {
-  items: FormItemCtx[]
+  items?: FormItemCtx[]
   colNum?: number
 }
 

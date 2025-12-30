@@ -10,10 +10,10 @@
     :editPosition="configForm.editPosition"
     rowKey="id"
     highlight-current-row
-    @add="handleAdd"
-    @edit="handleEdit"
-    @delete="handleDelete"
-    @batch="handleBatch"
+    @add="handleEvent"
+    @edit="handleEvent"
+    @delete="handleEvent"
+    @batch="handleEvent"
   >
   </bk-table>
 </template>
@@ -126,26 +126,36 @@ const configFormItems: FormItemCtx[] = [
   }
 ]
 
-const handleAdd = (form: User) => {
-  tableData.value.push({
-    ...form,
-    id: tableData.value.length + 1
-  })
-}
-
-const handleEdit = (row: User, form: User) => {
-  const targetIndex = tableData.value.findIndex((user) => user.id === row.id)
-  tableData.value[targetIndex] = form
-}
-
-const handleDelete = (rows: User[]) => {
-  const delIdList = rows.map((row) => row.id)
-  tableData.value = tableData.value.filter((user) => !delIdList.includes(user.id))
-}
-
-const handleBatch = (form: any) => {
-  if (form.action == "add") {
-    form.value.map((user) => handleAdd(user))
+const handleEvent = (params: { action: string; data: any }) => {
+  switch (params.action) {
+    case "add":
+      handleAdd([params.data])
+      break
+    case "edit":
+      const targetIndex = tableData.value.findIndex((user) => user.id === params.data.id)
+      tableData.value[targetIndex] = params.data
+      break
+    case "delete":
+      handleDelete(params.data)
+      break
+    case "batch_add":
+      handleAdd(params.data)
+      break
+    case "batch_delete":
+      handleDelete(params.data)
+      break
+  }
+  function handleAdd(users: User[]) {
+    users.map((user) => {
+      tableData.value.push({
+        ...user,
+        id: tableData.value.length + 1
+      })
+    })
+  }
+  function handleDelete(users: User[]) {
+    const delIdList = users.map((row) => row.id)
+    tableData.value = tableData.value.filter((user) => !delIdList.includes(user.id))
   }
 }
 </script>

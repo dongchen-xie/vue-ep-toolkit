@@ -25,12 +25,12 @@ The options object.
 
 #### FormatNumberOptions
 
-| Property    | Type                          | Default  | Description                                                                                                                                           |
-| ----------- | ----------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `prec`      | `boolean \| number`           | `false`  | Number of decimal places to keep. If true, use 1 decimal place; if false, use 0 decimal places; if number, use the specified number of decimal places |
-| `unit`      | `"%" \| "k" \| "M" \| "none"` | `"none"` | Unit for formatting                                                                                                                                   |
-| `separator` | `boolean`                     | `false`  | Whether to add thousand separators                                                                                                                    |
-| `showUnit`  | `boolean`                     | `false`  | Whether to display unit text                                                                                                                          |
+| Property    | Type                          | Default  | Description                                                                                         |
+| ----------- | ----------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `prec`      | `boolean \| number`           | `false`  | Decimal precision: true rounds to 1 place, false skips rounding, number rounds to specified places. |
+| `unit`      | `"%" \| "k" \| "M" \| "none"` | `"none"` | Unit for formatting                                                                                 |
+| `separator` | `boolean`                     | `true`   | Whether to add thousand separators                                                                  |
+| `showUnit`  | `boolean`                     | `false`  | Whether to display unit text                                                                        |
 
 ## Returns
 

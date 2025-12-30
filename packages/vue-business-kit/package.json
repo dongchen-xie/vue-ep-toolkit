@@ -1,6 +1,6 @@
 {
   "name": "vue-business-kit",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Ready-to-use component library based on Vue3 + TypeScript + Element Plus + Lodash",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -65,6 +65,7 @@
     "vite": "^6.0.7",
     "vite-plugin-dts": "^4.3.0",
     "vue": "^3.5.13",
+    "vue-router": "^4.6.4",
     "vue-tsc": "^1.8.27"
   },
   "engines": {

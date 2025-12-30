@@ -291,7 +291,7 @@ table/number-format
 
 ## Edit Data
 
-:::dem
+:::demo
 
 table/edit
 
@@ -375,12 +375,16 @@ table/edit
 
 ### Table Events
 
-| Name              | Description                              | Type                                                  |
-| ----------------- | ---------------------------------------- | ----------------------------------------------------- |
-| refresh           | Triggered when refresh button is clicked | ^[Function]`()`                                       |
-| export            | Triggered when export button is clicked  | ^[Function]`(data: any[], columns: TableColumnCtx[])` |
-| search            | Triggered when search is performed       | ^[Function]`(value: string, columns: string[])`       |
-| pagination-change | Triggered when pagination changes        | ^[Function]`(page: number, size: number)`             |
+| Name              | Description                                  | Type                                                         |
+| ----------------- | -------------------------------------------- | ------------------------------------------------------------ |
+| refresh           | Triggered when refresh button is clicked     | ^[Function]`()`                                              |
+| export            | Triggered when export button is clicked      | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
+| search            | Triggered when search is performed           | ^[Function]`(value: string, columns: string[])`              |
+| pagination-change | Triggered when pagination changes            | ^[Function]`(page: number, size: number)`                    |
+| add               | Triggered when add operation is performed    | ^[Function]`(data: { action: 'add'; data: any })`            |
+| edit              | Triggered when edit operation is performed   | ^[Function]`(data: { action: 'edit'; data: any }, row: any)` |
+| delete            | Triggered when delete operation is performed | ^[Function]`(data: { action: 'delete'; data: any })`         |
+| batch             | Triggered when batch operation is performed  | ^[Function]`(data: { action: 'batch'; data: any })`          |
 
 <details>
 <summary>Element Plus Table Events</summary>
@@ -462,6 +466,7 @@ Extends all Element Plus TableColumnCtx properties with additional features:
 | slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
 | number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
 | children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`TableColumnCtx[]`                                                                                                                       | -       |
+| edit          | Edit form configuration, used for inline editing. When set to `FormItemCtx`, enables form-based editing for this column.                                                                                                                                                                                                 | ^[object]`FormItemCtx`                                                                                                                           | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>

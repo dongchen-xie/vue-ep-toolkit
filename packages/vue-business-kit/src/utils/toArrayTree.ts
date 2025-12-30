@@ -21,7 +21,7 @@ export interface ToArrayTreeOptions {
  * @param options {strict: false, parentKey: 'parentId', key: 'id', children: 'children', mapChildren: '', data: 'data'}
  * @returns 树结构数组
  */
-export function toArrayTree(array: any, options?: ToArrayTreeOptions): any[] {
+export function toArrayTree(array: any[], options?: ToArrayTreeOptions): any[] {
   const opts = assign(
     {},
     {

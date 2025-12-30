@@ -10,9 +10,17 @@ import {
 } from "./composables"
 import { useLocale } from "../../locale"
 import TableColumnRender from "./renderers/TableColumnRender.vue"
-import { TableEmits, TableInternalProps, TableProps } from "./types"
+import { TableEmits, TableInternalProps } from "./types"
 import { isEmpty } from "lodash-es"
-import { ElTable, ElTableColumn, ElInput, ElSelect, ElOption, ElPagination } from "element-plus"
+import {
+  ElTable,
+  ElTableColumn,
+  ElInput,
+  ElSelect,
+  ElOption,
+  ElPagination,
+  TableProps as EpTableProps
+} from "element-plus"
 import BkButton from "../button/Button.vue"
 import { BkForm } from "../form"
 import { BkDialog } from "../dialog"
@@ -27,6 +35,7 @@ defineOptions({
   },
   inheritAttrs: false
 })
+
 const props = withDefaults(defineProps<TableInternalProps>(), {
   rawData: () => [],
   columns: () => [],
@@ -50,7 +59,7 @@ const props = withDefaults(defineProps<TableInternalProps>(), {
 })
 
 const emits = defineEmits<TableEmits>()
-const attrs = useAttrs() as Partial<TableProps>
+const attrs = useAttrs() as Partial<EpTableProps<any>>
 const instance = getCurrentInstance()
 const locale = useLocale()
 
@@ -147,7 +156,7 @@ defineExpose({ tableRef })
           <template v-if="props.editPosition === 'outside'">
             <bk-button
               v-if="props.showEdit"
-              @click="handleEdit"
+              @click="handleEdit(selectedRow)"
               type="primary"
               icon="tabler:edit"
               plain
@@ -199,10 +208,10 @@ defineExpose({ tableRef })
     </div>
     <el-table
       ref="tableRef"
-      v-bind="$attrs"
+      v-bind="attrs"
       :data="filteredData"
       :span-method="mergedSpanMethod"
-      @current-change="(row) => (selectedRow = [row])"
+      @current-change="(row) => (selectedRow = row)"
     >
       <TableColumnRender
         v-for="column in columns"

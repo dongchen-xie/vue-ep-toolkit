@@ -367,12 +367,16 @@ table/number-format
 
 ### Table 事件
 
-| 名称              | 说明             | 类型                                                  |
-| ----------------- | ---------------- | ----------------------------------------------------- |
-| refresh           | 点击刷新按钮触发 | ^[Function]`()`                                       |
-| export            | 点击导出按钮触发 | ^[Function]`(data: any[], columns: TableColumnCtx[])` |
-| search            | 执行搜索时触发   | ^[Function]`(value: string, columns: string[])`       |
-| pagination-change | 分页变化时触发   | ^[Function]`(page: number, size: number)`             |
+| 名称              | 说明               | 类型                                                         |
+| ----------------- | ------------------ | ------------------------------------------------------------ |
+| refresh           | 点击刷新按钮触发   | ^[Function]`()`                                              |
+| export            | 点击导出按钮触发   | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
+| search            | 执行搜索时触发     | ^[Function]`(value: string, columns: string[])`              |
+| pagination-change | 分页变化时触发     | ^[Function]`(page: number, size: number)`                    |
+| add               | 执行添加操作时触发 | ^[Function]`(data: { action: 'add'; data: any })`            |
+| edit              | 执行编辑操作时触发 | ^[Function]`(data: { action: 'edit'; data: any }, row: any)` |
+| delete            | 执行删除操作时触发 | ^[Function]`(data: { action: 'delete'; data: any })`         |
+| batch             | 执行批量操作时触发 | ^[Function]`(data: { action: 'batch'; data: any })`          |
 
 <details>
 <summary>Element Plus Table 事件</summary>
@@ -454,6 +458,7 @@ table/number-format
 | slots         | 自定义插槽配置，为 `true` 时启用所有插槽，自动生成名称 `{prop}`、`{prop}-header`、`{prop}-filterIcon` 和 `{prop}-expand`。对象形式每个属性可为 `boolean`（true 使用自动生成名称）或 `string`（指定自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
 | number-format | 数字格式化配置，为 `true` 时使用默认数字格式化。为对象时提供自定义格式化选项。此设置将覆盖该列的表格级别 `numberFormat` 配置                                                                                       | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
 | children      | 子列配置，用于实现表头分组。每个子列也可以拥有自己的 `children` 属性实现嵌套分组。用于创建多级表头                                                                                                                 | ^[array]`TableColumnCtx[]`                                                                                                                       | -      |
+| edit          | 编辑表单配置，用于内联编辑。设置为 `FormItemCtx` 时，启用此列的表单编辑功能。                                                                                                                                      | ^[object]`FormItemCtx`                                                                                                                           | -      |
 
 <details>
 <summary>Element Plus Table-column 属性</summary>

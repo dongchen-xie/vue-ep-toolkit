@@ -60,9 +60,19 @@ export default {
             link: "/zh-CN/utils/"
           },
           {
+            text: "Array 数组",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/array")
+          },
+          {
             text: "Number 数字",
             collapsed: true,
             items: generateSidebar("zh-CN", "utils/number")
+          },
+          {
+            text: "Util 实用函数",
+            collapsed: true,
+            items: generateSidebar("zh-CN", "utils/util")
           }
         ]
       },

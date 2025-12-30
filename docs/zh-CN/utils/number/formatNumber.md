@@ -25,12 +25,12 @@ formatNumber(value: number | string, options?: FormatNumberOptions): string
 
 #### FormatNumberOptions
 
-| 属性        | 类型                          | 默认值   | 描述                                                                     |
-| ----------- | ----------------------------- | -------- | ------------------------------------------------------------------------ |
-| `prec`      | `boolean \| number`           | `false`  | 保留几位小数。true 时为 1 位，false 时为 0 位，number 时为指定的小数位数 |
-| `unit`      | `"%" \| "k" \| "M" \| "none"` | `"none"` | 格式化单位                                                               |
-| `separator` | `boolean`                     | `false`  | 是否添加千分位符号                                                       |
-| `showUnit`  | `boolean`                     | `false`  | 是否显示单位文字                                                         |
+| 属性        | 类型                          | 默认值   | 描述                                                                        |
+| ----------- | ----------------------------- | -------- | --------------------------------------------------------------------------- |
+| `prec`      | `boolean \| number`           | `false`  | 保留几位小数。true 时为 1 位，false 时为不格式化，number 时为指定的小数位数 |
+| `unit`      | `"%" \| "k" \| "M" \| "none"` | `"none"` | 格式化单位                                                                  |
+| `separator` | `boolean`                     | `true`   | 是否添加千分位符号                                                          |
+| `showUnit`  | `boolean`                     | `false`  | 是否显示单位文字                                                            |
 
 ## 返回值
 
