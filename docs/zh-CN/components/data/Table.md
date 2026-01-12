@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Table 表格
 lang: zh-CN
 ---
 
@@ -13,7 +13,7 @@ lang: zh-CN
 
 通过原始数据和列配置实现基础表格展示。
 
-:::demo 使用 `raw-data` 提供表格数据，通过 `bk-table-column` 组件或 `columns` 属性定义表格结构。每列可配置 `prop`（字段名）、`label`（列标题）、`width`（宽度）等属性。
+:::demo 在每一个 `Table` 组件中，需要使用 `raw-data` 提供表格数据，使用 `bk-table-column` 组件定义表格结构，也可通过 `items` 属性以配置化方式定义表格结构。每列支持配置 `prop`、`label` 及相关字段属性等选项。
 
 table/basic
 
@@ -71,7 +71,7 @@ table/fixed-header
 
 当表格列数过多时，可固定指定列在左侧/右侧。
 
-:::demo 在 `columns` 属性（或 `bk-table-column` 组件）配置中使用 `fixed` 属性，接受布尔值（`true` 表示固定在左侧）或字符串（`left`/`right`，分别表示固定在左/右侧）。
+:::demo 固定列需要使用 `fixed` 属性，它接受 `Boolean` 值。 如果为 `true`, 列将被左侧固定. 它还接受传入字符串，`left` 或 `right`，表示左边固定还是右边固定。
 
 table/fixed-column
 
@@ -99,9 +99,9 @@ table/fixed-header-with-fluid-header
 
 ## 表头分组
 
-数据结构复杂时，可通过表头分组展示数据层级。
+数据结构比较复杂的时候，可使用多级表头来展现数据的层次关系。
 
-:::demo 为列配置对象添加 `children` 数组属性即可实现表头分组，子列也可嵌套 `children` 实现多级分组。
+:::demo 只需要将表格列放置于表格列中，你可以实现组头。
 
 table/grouping-header
 
@@ -111,7 +111,7 @@ table/grouping-header
 
 支持单行选中功能。
 
-:::demo 表格支持单行选中，添加 `highlight-current-row` 属性即可激活。选中行变化时会触发 `current-change` 事件，参数为变化后的当前行 `currentRow` 和变化前的行 `oldCurrentRow`。如需显示行索引，只需在 `columns`属性（或 `bk-table-column` 组件）中添加 `type` 属性值为 `index` 的列配置，索引将从 1 开始显示。
+:::demo 表格支持单行选中，添加 `highlight-current-row` 属性即可激活。选中行变化时会触发 `current-change` 事件，参数为变化后的当前行 `currentRow` 和变化前的行 `oldCurrentRow`。如需显示行索引，只需为表格列配置 `type` 属性值为 `index` 的列配置，索引将从 1 开始显示。
 
 table/single-select
 
@@ -121,11 +121,11 @@ table/single-select
 
 支持多行选择，包含默认选中、禁用指定行选择等功能。
 
-激活多选功能只需添加 `type` 为 `selection` 的列。通过 `default-selection` 设置初始选中行（设为 `true` 选中所有行，或传入行 ID 数组）；通过 `disabled-selection` 禁用指定行选择（设为 `true` 禁用所有行，或传入行 ID 数组）。注意：使用这些功能时必须设置 `row-key` 属性。
+通过 `default-selection` 设置初始选中行（设为 `true` 选中所有行，或传入行 ID 数组）；通过 `disabled-selection` 禁用指定行选择（设为 `true` 禁用所有行，或传入行 ID 数组）。注意：使用这些功能时必须设置 `row-key` 属性。
 
 `toggleRowSelection` 方法支持第三个参数 `ignoreSelectable`，用于控制是否忽略行的可选状态。
 
-:::demo 激活多选功能只需在 `columns` 数组中添加 `type: 'selection'` 的列配置对象。
+:::demo 激活多选功能只需为表格列配置 `type` 属性为 `selection` 即可。
 
 table/multi-select
 
@@ -145,13 +145,13 @@ table/sort
 
 筛选表格数据，快速找到目标内容。
 
-:::demo 为 `bk-table-column` 设置 `filters` 和 `filter-method` 属性可启用列筛选功能。`filters` 为筛选选项数组，`filter-method` 为筛选方法，参数为 `value`（筛选值）、`row`（行数据）、`column`（列配置），用于判断行是否显示。
+:::demo 为表格列配置 `filters` 和 `filter-method` 属性可启用列筛选功能。`filters` 为筛选选项数组，`filter-method` 为筛选方法，参数为 `value`（筛选值）、`row`（行数据）、`column`（列配置），用于判断行是否显示。
 
 table/filter
 
 :::
 
-:::demo 通过 `show-search` 属性启用搜索功能，用户可跨所有列搜索或选择指定列搜索。
+:::demo 或者为 `bk-table` 设置 `show-search` 属性可启用筛选功能 ^(@columns)
 
 table/search
 
@@ -171,7 +171,7 @@ table/custom-column
 
 自定义表头样式，实现更个性化的展示。
 
-:::demo 通过表头 [插槽](https://cn.vuejs.org/guide/components/slots.html) 自定义表头展示形式。
+:::demo 通过表头 [Slot](https://cn.vuejs.org/guide/components/slots.html) 自定义表头展示形式。
 
 table/custom-header
 
@@ -183,7 +183,7 @@ table/custom-header
 
 新增 `preserve-expanded-content` 属性，用于控制折叠时是否保留展开行内容在 DOM 中。
 
-:::demo 添加 `type="expand"` 的列和对应插槽即可激活可展开行。`bk-table-column` 的模板将渲染为展开行内容，可访问与自定义列模板插槽相同的属性。
+:::demo 为表格列配置 `type` 属性为`expand`即可启用展开行功能，展开行可访问的属性与使用自定义列模板时的 `slot` 相同。
 
 table/expandable-row
 
@@ -281,7 +281,7 @@ table/pagination
 
 :::
 
-## 数字格式化
+## 数字格式化 ^(@columns)
 
 自动格式化表格单元格中的数值。
 
@@ -291,7 +291,7 @@ table/number-format
 
 :::
 
-## 编辑数据
+## 编辑数据 ^(@columns)
 
 表格组件支持数据编辑，包含自定义编辑模式和编辑位置。
 
@@ -305,30 +305,30 @@ table/edit
 
 ### Table 属性
 
-| 名称           | 说明                    | 类型                                        | 默认值      |
-| -------------- | ----------------------- | ------------------------------------------- | ----------- |
-| raw-data       | 表格数据源              | ^[array]`any[]`                             | `[]`        |
-| columns        | 列配置项                | ^[array]`TableColumnCtx[]`                  | `[]`        |
-| merge-columns  | 需要合并的列名数组      | ^[array]`string[]`                          | `[]`        |
-| show-search    | 是否显示搜索功能        | `boolean`                                   | `false`     |
-| search-value   | 默认搜索值              | `string`                                    | `''`        |
-| search-columns | 默认选中的搜索列        | ^[array]`string[]`                          | `[]`        |
-| show-refresh   | 是否显示刷新按钮        | `boolean`                                   | `false`     |
-| show-export    | 是否显示导出按钮        | `boolean`                                   | `false`     |
-| pagination     | 是否启用分页            | `boolean` \| ^[object]`PaginationProps`     | `false`     |
-| number-format  | 是否启用数字格式化      | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
-| edit-mode      | 编辑模式（对话框/抽屉） | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
-| edit-position  | 编辑位置（外部/行内）   | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
-| show-add       | 是否显示新增按钮        | `boolean`                                   | `true`      |
-| show-batch     | 是否显示批量操作按钮    | `boolean`                                   | `false`     |
-| show-edit      | 是否显示编辑按钮        | `boolean`                                   | `true`      |
-| show-delete    | 是否显示删除按钮        | `boolean`                                   | `true`      |
-| enable-edit    | 是否启用编辑功能        | `boolean`                                   | `false`     |
+| 属性名                  | 说明                    | 类型                                        | 默认值      |
+| ----------------------- | ----------------------- | ------------------------------------------- | ----------- |
+| raw-data                | 表格数据源              | ^[array]`any[]`                             | `[]`        |
+| columns                 | 列配置项                | ^[array]`TableColumnItem[]`                 | `[]`        |
+| merge-columns           | 需要合并的列名数组      | ^[array]`string[]`                          | `[]`        |
+| show-search ^(@columns) | 是否显示搜索功能        | `boolean`                                   | `false`     |
+| search-value            | 默认搜索值              | `string`                                    | `''`        |
+| search-columns          | 默认选中的搜索列        | ^[array]`string[]`                          | `[]`        |
+| show-refresh            | 是否显示刷新按钮        | `boolean`                                   | `false`     |
+| show-export             | 是否显示导出按钮        | `boolean`                                   | `false`     |
+| pagination              | 是否启用分页            | `boolean` \| ^[object]`PaginationProps`     | `false`     |
+| number-format           | 是否启用数字格式化      | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
+| edit-mode               | 编辑模式（对话框/抽屉） | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
+| edit-position           | 编辑位置（外部/行内）   | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
+| enable-edit ^(@columns) | 是否启用编辑功能        | `boolean`                                   | `false`     |
+| show-add                | 是否显示新增按钮        | `boolean`                                   | `true`      |
+| show-batch              | 是否显示批量操作按钮    | `boolean`                                   | `false`     |
+| show-edit               | 是否显示编辑按钮        | `boolean`                                   | `true`      |
+| show-delete             | 是否显示删除按钮        | `boolean`                                   | `true`      |
 
 <details>
-<summary>Element Plus 表格原生属性</summary>
+<summary>Element Plus Table 原生属性</summary>
 
-| 名称                      | 说明                                                                                                                                                             | 类型                                                                                                                                                                 | 默认值                                                                                                                  |
+| 属性名                    | 说明                                                                                                                                                             | 类型                                                                                                                                                                 | 默认值                                                                                                                  |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | data                      | 表格数据                                                                                                                                                         | ^[array]`any[]`                                                                                                                                                      | []                                                                                                                      |
 | height                    | 表格高度。默认自动高度；若为数字，单位为像素；若为字符串，直接赋值给 style.height，高度受外部样式影响                                                            | ^[string] / ^[number]                                                                                                                                                | —                                                                                                                       |
@@ -377,9 +377,20 @@ table/edit
 
 </details>
 
+#### TableColumnItem
+
+继承所有 Element Plus TableColumnCtx 属性，并新增以下增强功能：
+
+| 属性名        | 说明                                                                                                                                                                                                                                            | 类型                                                                                                                                             | 默认值 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| slots         | 自定义插槽配置：设为 `true` 时，自动生成 `{prop}`（列内容）、`{prop}-header`（表头）、`{prop}-filterIcon`（筛选图标）、`{prop}-expand`（展开按钮）插槽；设为对象时，每个属性支持布尔值（true 启用并使用自动生成名称）或字符串（自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
+| number-format | 数字格式化配置：设为 `true` 时使用默认数字格式化；设为对象时传入自定义格式化选项，优先级高于表格级的 `numberFormat` 设置                                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
+| children      | 表头分组的子列数组，子列可嵌套 `children` 实现多级分组，用于创建多层级表头                                                                                                                                                                      | ^[array]`TableColumnItem[]`                                                                                                                      | -      |
+| edit          | 编辑表单配置（用于行内编辑）：设为 `FormItem` 时启用该列编辑功能，`FormItem` 接口继承 Element Plus FormItemProps，包含额外属性：`type`（组件类型字符串）、`componentProps`（组件额外属性）、`children`（嵌套表单项配置）                        | ^[object]`FormItem`                                                                                                                              | -      |
+
 ### Table 事件
 
-| 名称              | 说明               | 类型                                                         |
+| 事件名            | 说明               | 类型                                                         |
 | ----------------- | ------------------ | ------------------------------------------------------------ |
 | refresh           | 点击刷新按钮时触发 | ^[Function]`()`                                              |
 | export            | 点击导出按钮时触发 | ^[Function]`(data: any[], columns: TableColumnCtx[])`        |
@@ -391,9 +402,9 @@ table/edit
 | batch             | 执行批量操作时触发 | ^[Function]`(data: { action: 'batch'; data: any })`          |
 
 <details>
-<summary>Element Plus 表格原生事件</summary>
+<summary>Element Plus Table 原生事件</summary>
 
-| 名称               | 说明                                                                                    | 类型                                                                                                    |
+| 事件名             | 说明                                                                                    | 类型                                                                                                    |
 | ------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | select             | 点击行复选框时触发                                                                      | ^[Function]`<T = any>(selection: T[], row: T) => void`                                                  |
 | select-all         | 点击表头复选框时触发                                                                    | ^[Function]`(selection: any[]) => void`                                                                 |
@@ -419,14 +430,14 @@ table/edit
 
 ### Table 插槽
 
-| 名称         | 说明                 |
+| 插槽名       | 说明                 |
 | ------------ | -------------------- |
 | toolbar-left | 工具栏左侧自定义内容 |
 
 <details>
-<summary>Element Plus 表格原生插槽</summary>
+<summary>Element Plus Table 原生插槽</summary>
 
-| 名称    | 说明                                                                                                       | 子标签       |
+| 插槽名  | 说明                                                                                                       | 子标签       |
 | ------- | ---------------------------------------------------------------------------------------------------------- | ------------ |
 | default | 表格主体自定义内容                                                                                         | Table-column |
 | append  | 插入到表格最后一行之后的内容，如需实现表格无限滚动可使用此插槽；若存在合计行，该插槽内容将显示在合计行上方 | —            |
@@ -434,12 +445,12 @@ table/edit
 
 </details>
 
-### Table 暴露的方法
+### Table Exposes
 
 <details>
-<summary>Element Plus 表格原生暴露方法</summary>
+<summary>Element Plus Table Exposes</summary>
 
-| 方法               | 说明                                                                                                   | 类型                                                                         |
+| 名称               | 说明                                                                                                   | 类型                                                                         |
 | ------------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | clearSelection     | 多选表格专用，清空用户选中的行                                                                         | ^[Function]`() => void`                                                      |
 | getSelectionRows   | 返回当前选中的行数据数组                                                                               | ^[Function]`() => any[]`                                                     |
@@ -463,19 +474,10 @@ table/edit
 
 ### TableColumn 属性
 
-继承所有 Element Plus TableColumnCtx 属性，并新增以下增强功能：
-
-| 名称          | 说明                                                                                                                                                                                                                                            | 类型                                                                                                                                             | 默认值 |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| slots         | 自定义插槽配置：设为 `true` 时，自动生成 `{prop}`（列内容）、`{prop}-header`（表头）、`{prop}-filterIcon`（筛选图标）、`{prop}-expand`（展开按钮）插槽；设为对象时，每个属性支持布尔值（true 启用并使用自动生成名称）或字符串（自定义插槽名称） | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -      |
-| number-format | 数字格式化配置：设为 `true` 时使用默认数字格式化；设为对象时传入自定义格式化选项，优先级高于表格级的 `numberFormat` 设置                                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -      |
-| children      | 表头分组的子列数组，子列可嵌套 `children` 实现多级分组，用于创建多层级表头                                                                                                                                                                      | ^[array]`TableColumnCtx[]`                                                                                                                       | -      |
-| edit          | 编辑表单配置（用于行内编辑）：设为 `FormItemCtx` 时启用该列编辑功能，`FormItemCtx` 接口继承 Element Plus FormItemProps，包含额外属性：`type`（组件类型字符串）、`componentProps`（组件额外属性）、`children`（嵌套表单项配置）                  | ^[object]`FormItemCtx`                                                                                                                           | -      |
-
 <details>
-<summary>Element Plus 表格列原生属性</summary>
+<summary>Element Plus TableColumn 原生属性</summary>
 
-| 名称                  | 说明                                                                                                                                                                                             | 类型                                                                                                                                                                        | 默认值                            |
+| 属性名                | 说明                                                                                                                                                                                             | 类型                                                                                                                                                                        | 默认值                            |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | type                  | 列类型：`selection`（复选框列）、`index`（索引列）、`expand`（展开按钮列）、`default`（默认列）                                                                                                  | ^[enum]`'default' \| 'selection' \| 'index' \| 'expand'`                                                                                                                    | default                           |
 | index                 | 索引列自定义索引：支持数字（索引偏移量）或函数（参数为原始索引，返回自定义索引），仅对 `type=index` 的列生效                                                                                     | ^[number] / ^[Function]`(index: number) => number`                                                                                                                          | —                                 |
@@ -512,9 +514,9 @@ table/edit
 ### TableColumn 插槽
 
 <details>
-<summary>Element Plus 表格列原生插槽</summary>
+<summary>Element Plus TableColumn 原生插槽</summary>
 
-| 名称        | 说明           | 类型                                                               |
+| 插槽名      | 说明           | 类型                                                               |
 | ----------- | -------------- | ------------------------------------------------------------------ |
 | default     | 列内容自定义   | ^[object]`{ row: any, column: TableColumnCtx<T>, $index: number }` |
 | header      | 表头内容自定义 | ^[object]`{ column: TableColumnCtx<T>, $index: number }`           |

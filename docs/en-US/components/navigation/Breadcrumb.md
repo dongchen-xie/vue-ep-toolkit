@@ -11,12 +11,7 @@ Displays the location of the current page, making it easier to browser back.
 
 ## Basic usage
 
-:::dem `bk-breadcrumb` 组件支持两种使用方式：
-
-1. **手动方式**：通过 `<bk-breadcrumb-item>` 标签手动定义每个面包屑项，适用于简单的、静态的面包屑导航。
-2. **数据驱动方式**：通过 `data` 和 `currentRoute` 属性自动根据路由生成面包屑路径，适用于动态的、基于树形结构的数据。
-
-两种方式都支持 `separator` 属性来设置分隔符，默认值为 '/'。
+:::demo In In each `Breadcrumb` component, you need to use the `bk-breadcrumb-item` component to represent each level starting from the homepage. You can also configure the page level data and the current level in a configuration-driven manner via the `items` and `current-item` attributes. This component has a `String` attribute `separator`, and it determines the separator. Its default value is '/'.
 
 breadcrumb/basic
 
@@ -24,7 +19,7 @@ breadcrumb/basic
 
 ## Icon separator
 
-:::dem Set `separator-icon` to use `svg icon` as the separator，it will cover `separator`
+:::demo Set `separator-icon` to use `svg icon` as the separator，it will cover `separator`
 
 breadcrumb/icon
 
@@ -34,21 +29,33 @@ breadcrumb/icon
 
 ### Breadcrumb Attributes
 
-| Name         | Description                     | Type                          | Default |
-| ------------ | ------------------------------- | ----------------------------- | ------- |
-| config       | Breadcrumb configuration object | ^[object]`BreadcrumbConfig`   | —       |
-| data         | Breadcrumb data array           | ^[array]`BreadcrumbItemCtx[]` | —       |
-| currentRoute | Current route path              | ^[string]                     | —       |
+| Name                       | Description                      | Type                        | Default |
+| -------------------------- | -------------------------------- | --------------------------- | ------- |
+| separator-icon ^(extended) | icon component of icon separator | ^[string] / ^[Component]    | —       |
+| config                     | Breadcrumb configuration object  | ^[object]`BreadcrumbConfig` | —       |
+| items                      | Breadcrumb item array            | ^[array]`BreadcrumbItem[]`  | —       |
+| currentItem                | Current item path                | ^[string]                   | —       |
 
 <details>
 <summary>Element Plus Breadcrumb Attributes</summary>
 
-| Name           | Description                      | Type                     | Default |
-| -------------- | -------------------------------- | ------------------------ | ------- |
-| separator      | separator character              | ^[string]                | /       |
-| separator-icon | icon component of icon separator | ^[string] / ^[Component] | —       |
+| Name      | Description         | Type      | Default |
+| --------- | ------------------- | --------- | ------- |
+| separator | separator character | ^[string] | /       |
 
 </details>
+
+#### BreadcrumbItem
+
+Extends all Element Plus BreadcrumbItemProps properties with additional features:
+
+| Name      | Description                    | Type                       | Default |
+| --------- | ------------------------------ | -------------------------- | ------- |
+| id        | Unique identifier for the item | ^[number] / ^[string]      | —       |
+| icon      | Icon to display                | ^[string]                  | —       |
+| menu_name | Display name for the menu item | ^[string]                  | —       |
+| link      | URL or route path              | ^[string]                  | —       |
+| children  | Child items array              | ^[array]`BreadcrumbItem[]` | —       |
 
 ### Breadcrumb Slots
 
@@ -64,14 +71,6 @@ breadcrumb/icon
 ## BreadcrumbItem API
 
 ### BreadcrumbItem Attributes
-
-| Name      | Description                    | Type                          | Default |
-| --------- | ------------------------------ | ----------------------------- | ------- |
-| id        | Unique identifier for the item | ^[number] / ^[string]         | —       |
-| icon      | Icon to display                | ^[string]                     | —       |
-| menu_name | Display name for the menu item | ^[string]                     | —       |
-| link      | URL or route path              | ^[string]                     | —       |
-| children  | Child items array              | ^[array]`BreadcrumbItemCtx[]` | —       |
 
 <details>
 <summary>Element Plus BreadcrumbItem Attributes</summary>

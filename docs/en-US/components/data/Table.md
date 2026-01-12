@@ -13,7 +13,7 @@ Display multiple data with similar format. You can sort, filter, compare your da
 
 Basic table with raw data and column configuration.
 
-:::demo Use `raw-data` to provide table data and either `bk-table-column` components or `columns` prop to define table structure. Each column can be configured with `prop`, `label`, and `width` properties.
+:::demo In each `Table` component, you need to use the `raw-data` attribute to provide table data and the `bk-table-column` component to define the table structure. You can also define the table structure in a configuration-driven manner via the `items` property. Each column supports configuring options such as `prop`, `label`, and related field attributes.
 
 table/basic
 
@@ -69,9 +69,9 @@ table/fixed-header
 
 ## Table with fixed column
 
-When there are too many columns, you can fix some of them.
+When the data structure is complex, you can use group header to show the data hierarchy.
 
-:::demo Attribute `fixed` is used in `columns` (Or the `bk-table-column` component), it accepts a `Boolean`. If `true`, the column will be fixed at left. It also accepts two string literals: 'left' and 'right', both indicating that the column will be fixed at corresponding direction.
+:::demo Attribute `fixed` is used in table column, it accepts a `Boolean`. If `true`, the column will be fixed at left. It also accepts two string literals: `left` and `right`, both indicating that the column will be fixed at corresponding direction.
 
 table/fixed-column
 
@@ -101,7 +101,7 @@ table/fixed-header-with-fluid-header
 
 When the data structure is complex, you can use group header to show the data hierarchy.
 
-:::demo To create grouped headers, add a `children` array property to a column object. Each child can also have its own `children` for nested grouping.
+:::demo Implement group headers by nesting table columns inside table columns.
 
 table/grouping-header
 
@@ -111,7 +111,7 @@ table/grouping-header
 
 Single row selection is supported.
 
-:::demo Table supports single row selection. You can activate it by adding the `highlight-current-row` attribute. An event called `current-change` will be triggered when row selection changes, and its parameters are the rows after and before this change: `currentRow` and `oldCurrentRow`. If you need to display row index,simply add a column object with `type` submits the value as `index` in the `columns` attribute (Or the `bk-table-column` component), and you will see the index starting from 1.
+:::demo Table supports single row selection. You can activate it by adding the `highlight-current-row` attribute. An event called `current-change` will be triggered when row selection changes, and its parameters are the rows after and before this change: `currentRow` and `oldCurrentRow`. If you need to display row index,simply add a column object with `type` submits the value as `index` in the table column, and you will see the index starting from 1.
 
 table/single-select
 
@@ -121,11 +121,11 @@ table/single-select
 
 You can also select multiple rows with default selection and disabled selection support.
 
-Activating multiple selection is easy: simply add a column with its `type` set to `selection`. Use `default-selection` prop to set initially selected rows (set to `true` for all rows, or pass an array of row IDs). Use `disabled-selection` prop to disable specific rows from selection (set to `true` to disable all, or pass an array of row IDs). Note that `row-key` attribute must be set when using these features.
+Use `default-selection` prop to set initially selected rows (set to `true` for all rows, or pass an array of row IDs). Use `disabled-selection` prop to disable specific rows from selection (set to `true` to disable all, or pass an array of row IDs). Note that `row-key` attribute must be set when using these features.
 
 `toggleRowSelection` supports the third parameter `ignoreSelectable` to determine whether to ignore the selectable attribute.
 
-:::demo Activating multiple selection is easy: simply add a column object with `type: 'selection'` in the `columns` array.
+:::demo To activate the multi-selection feature, simply set the `type` attribute of the table column to `selection`.
 
 table/multi-select
 
@@ -145,17 +145,17 @@ table/sort
 
 Filter the table to find desired data.
 
-:::demo Set attribute `filters` and `filter-method` in `bk-table-column` makes this column filterable. `filters` is an array, and `filter-method` is a function deciding which rows are displayed. It has three parameters: `value`, `row` and `column`.
+:::demo Configuring the `filters` and `filter-method` attributes for a table column enables the column filtering feature. `filters` is an array of filter options, and `filter-method` is a filtering function that takes `value`, `row`, and `column` as parameters to determine whether a row should be displayed.
 
 table/filter
 
 :::
 
-:::demo Enable search with `show-search` prop. Users can search across all columns or select specific columns to search in.
+:::demo or setting the `show-search` property for `bk-table` enables filtering ^(@columns)
 
 table/search
 
-:::
+: : :
 
 ## Custom column template
 
@@ -183,7 +183,7 @@ When the row content is too long and you do not want to display the horizontal s
 
 `preserve-expanded-content` is added to control whether to preserve expanded row content in DOM when collapsed.
 
-:::demo Activate expandable row by adding type="expand" and slot. The template for bk-table-column will be rendered as the contents of the expanded row, and you can access the same attributes as when you are using `slot` in custom column templates.
+:::demo You can enable the row expansion feature by configuring the `type` attribute of a table column to `expand`. The accessible properties for the expanded row are the same as the `slot` used when customizing column templates.
 
 table/expandable-row
 
@@ -281,7 +281,7 @@ table/pagination
 
 :::
 
-## Number Formatting
+## Number Formatting ^(@columns)
 
 Automatically format numeric values in table cells.
 
@@ -291,7 +291,7 @@ table/number-format
 
 :::
 
-## Edit Data
+## Edit Data ^(@columns)
 
 The Table component supports editing data with customizable edit modes and positions.
 
@@ -305,25 +305,25 @@ table/edit
 
 ### Table Attributes
 
-| Name           | Description                       | Type                                        | Default     |
-| -------------- | --------------------------------- | ------------------------------------------- | ----------- |
-| raw-data       | Table data source                 | ^[array]`any[]`                             | `[]`        |
-| columns        | Column configuration              | ^[array]`TableColumnCtx[]`                  | `[]`        |
-| merge-columns  | Columns to merge cells            | ^[array]`string[]`                          | `[]`        |
-| show-search    | Show search functionality         | `boolean`                                   | `false`     |
-| search-value   | Default search value              | `string`                                    | `''`        |
-| search-columns | Default selected search columns   | ^[array]`string[]`                          | `[]`        |
-| show-refresh   | Show refresh button               | `boolean`                                   | `false`     |
-| show-export    | Show export button                | `boolean`                                   | `false`     |
-| pagination     | Enable pagination                 | `boolean` \| ^[object]`PaginationProps`     | `false`     |
-| number-format  | Enable number formatting          | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
-| edit-mode      | Edit mode (dialog or drawer)      | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
-| edit-position  | Edit position (outside or inline) | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
-| show-add       | Show add button                   | `boolean`                                   | `true`      |
-| show-batch     | Show batch operation button       | `boolean`                                   | `false`     |
-| show-edit      | Show edit button                  | `boolean`                                   | `true`      |
-| show-delete    | Show delete button                | `boolean`                                   | `true`      |
-| enable-edit    | Enable edit functionality         | `boolean`                                   | `false`     |
+| Name                    | Description                       | Type                                        | Default     |
+| ----------------------- | --------------------------------- | ------------------------------------------- | ----------- |
+| raw-data                | Table data source                 | ^[array]`any[]`                             | `[]`        |
+| columns                 | Column configuration              | ^[array]`TableColumnItem[]`                 | `[]`        |
+| merge-columns           | Columns to merge cells            | ^[array]`string[]`                          | `[]`        |
+| show-search ^(@columns) | Show search functionality         | `boolean`                                   | `false`     |
+| search-value            | Default search value              | `string`                                    | `''`        |
+| search-columns          | Default selected search columns   | ^[array]`string[]`                          | `[]`        |
+| show-refresh            | Show refresh button               | `boolean`                                   | `false`     |
+| show-export             | Show export button                | `boolean`                                   | `false`     |
+| pagination              | Enable pagination                 | `boolean` \| ^[object]`PaginationProps`     | `false`     |
+| number-format           | Enable number formatting          | `boolean` \| ^[object]`FormatNumberOptions` | `false`     |
+| edit-mode               | Edit mode (dialog or drawer)      | ^[enum]`'dialog' \| 'drawer'`               | `'dialog'`  |
+| edit-position           | Edit position (outside or inline) | ^[enum]`'outside' \| 'inline'`              | `'outside'` |
+| enable-edit ^(@columns) | Enable edit functionality         | `boolean`                                   | `false`     |
+| show-add                | Show add button                   | `boolean`                                   | `true`      |
+| show-batch              | Show batch operation button       | `boolean`                                   | `false`     |
+| show-edit               | Show edit button                  | `boolean`                                   | `true`      |
+| show-delete             | Show delete button                | `boolean`                                   | `true`      |
 
 <details>
 <summary>Element Plus Table Attributes</summary>
@@ -376,6 +376,17 @@ table/edit
 | native-scrollbar          | whether to use native scrollbars                                                                                                                                                                                                                                           | ^[boolean]                                                                                                                                                           | false                                                                                                                   |
 
 </details>
+
+#### TableColumnItem
+
+Extends all Element Plus TableColumnCtx properties with additional features:
+
+| Name          | Description                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                             | Default |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
+| slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
+| number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                    | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
+| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                         | ^[array]`TableColumnItem[]`                                                                                                                      | -       |
+| edit          | Edit form configuration, used for inline editing. When set to `FormItem`, enables form-based editing for this column. The `FormItem` interface extends Element Plus FormItemProps and includes additional properties: `type` (string), `componentProps` (Record<string, any>), and `children` (Record<string, any>[]).   | ^[object]`FormItem`                                                                                                                              | -       |
 
 ### Table Events
 
@@ -462,15 +473,6 @@ table/edit
 ## Table Column API
 
 ### Table Column Attributes
-
-Extends all Element Plus TableColumnCtx properties with additional features:
-
-| Name          | Description                                                                                                                                                                                                                                                                                                                  | Type                                                                                                                                             | Default |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-| slots         | Custom slot configuration, When set to `true`, enables all slots with auto-generated names `{prop}`, `{prop}-header`, `{prop}-filterIcon`, and `{prop}-expand`. In object form, each property can be boolean or string for custom slot names. Boolean `true` uses auto-generated name, string specifies custom slot name     | ^[boolean] \| ^[object]`{ default?: string \| boolean, header?: string \| boolean, filterIcon?: string \| boolean, expand?: string \| boolean }` | -       |
-| number-format | Number formatting config, When set to `true`, use default number formatting. When set to an object, provide custom formatting options. This overrides the table-level `numberFormat` setting for this specific column                                                                                                        | ^[boolean] \| ^[object]`FormatNumberOptions`                                                                                                     | -       |
-| children      | Array of child columns for grouping headers. Each child column can also have its own `children` for nested grouping. Used for creating multi-level table headers                                                                                                                                                             | ^[array]`TableColumnCtx[]`                                                                                                                       | -       |
-| edit          | Edit form configuration, used for inline editing. When set to `FormItemCtx`, enables form-based editing for this column. The `FormItemCtx` interface extends Element Plus FormItemProps and includes additional properties: `type` (string), `componentProps` (Record<string, any>), and `children` (Record<string, any>[]). | ^[object]`FormItemCtx`                                                                                                                           | -       |
 
 <details>
 <summary>Element Plus Table Column Attributes</summary>

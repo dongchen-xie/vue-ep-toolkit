@@ -17,9 +17,9 @@ The component has been upgraded with a flex layout to replace the old float layo
 
 ## Basic Usage
 
-It includes all kinds of input items, such as `input`, `select`, `radio`, `checkbox`, `date-picker`, `time-picker`, and `switch`.
+The most basic form includes various input form items, such as `input`, `select`, `radio`, `checkbox`, etc.
 
-:::demo Use the `items` prop to define form structure in a configuration-driven way, or use `bk-form-item` components to define form items manually. Each form item supports configuration options such as `prop`, `label`, and related field attributes.
+:::demo In each `Form` component, you need to use the `bk-form-item` component as the container for input items. You can also define the form structure in a configuration-driven manner through the `items` property. Each form item supports configuring options such as `prop`, `label`, and related field attributes.
 
 form/basic
 
@@ -35,7 +35,7 @@ To prevent this behavior, you can add `@submit.prevent` on `<bk-form>`.
 
 :::
 
-## Multi-Column Form
+## Multi-Column Form ^(@items)
 
 When the vertical space is limited and the form is relatively simple, you can put it in one line.
 
@@ -61,7 +61,7 @@ form/alignment
 
 Form component allows you to verify your data, helping you find and correct errors.
 
-:::demo Just add the `rules` attribute to the `Form` component and provide validation rules. Each form item should define a `prop` field in the `items` configuration(Or the `bk-form-item` component) to bind validation to the corresponding model field. See more information at [async-validator](https://github.com/yiminghe/async-validator).
+:::demo You only need to add the `rules` attribute to the `bk-form` component and pass in the validation rules, then set the `prop` attribute of the form item to the specific key value that needs to be validated. For validation rules, refer to [async-validator](https://github.com/yiminghe/async-validator).
 
 form/validation
 
@@ -101,7 +101,7 @@ form/number-validate
 
 :::tip
 
-When an `bk-form-item` is nested in another `bk-form-item`, its label width will be `0`. You can set `label-width` on that `bk-form-item` if needed.
+When a form item is nested within another form item, its label width is set to `0`. If necessary, you can manually set the `label-width` attribute on the nested form item.
 
 :::
 
@@ -117,7 +117,7 @@ form/size-control
 
 ## Accessibility
 
-When only a single input (or related control such as select or checkbox) is inside of a `bk-form-item`, the form item's label will automatically be attached to that input. However, if multiple inputs are inside of the `bk-form-item`, the form item will be assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [group](https://www.w3.org/TR/wai-aria/#group) instead. In this case, it is your responsibility to assign assistive labels to the individual inputs.
+When only a single input (or related control such as select or checkbox) is inside of a form item, the form item's label will automatically be attached to that input. However, if multiple inputs are inside of the form item, the form item will be assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [group](https://www.w3.org/TR/wai-aria/#group) instead. In this case, it is your responsibility to assign assistive labels to the individual inputs.
 
 :::demo
 
@@ -129,10 +129,10 @@ form/accessibility
 
 ### Form Attributes
 
-| Name   | Description                                                                                  | Type                    | Default |
-| ------ | -------------------------------------------------------------------------------------------- | ----------------------- | ------- |
-| items  | Configuration array for form items, each item can specify type, componentProps, and children | ^[array]`FormItemCtx[]` | —       |
-| colNum | Number of columns for multi-column form layout                                               | ^[number]               | 1       |
+| Name   | Description                                                                                  | Type                 | Default |
+| ------ | -------------------------------------------------------------------------------------------- | -------------------- | ------- |
+| items  | Configuration array for form items, each item can specify type, componentProps, and children | ^[array]`FormItem[]` | —       |
+| colNum | Number of columns for multi-column form layout                                               | ^[number]            | 1       |
 
 <details>
 <summary>Element Plus Form Attributes</summary>
@@ -157,6 +157,16 @@ form/accessibility
 | scroll-into-view-options  | When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView). | ^[object]`ScrollIntoViewOptions` / ^[boolean]  | true    |
 
 </details>
+
+#### FormItem
+
+Extends all Element Plus FormItemProps properties with additional features:
+
+| Name             | Description                                                        | Type                            | Default |
+| ---------------- | ------------------------------------------------------------------ | ------------------------------- | ------- |
+| type ^(required) | Type of the form item component (e.g., 'input', 'select', 'radio') | ^[string]                       | —       |
+| componentProps   | Additional props to pass to the underlying component               | ^[object]`Record<string, any>`  | —       |
+| children         | Nested form items for complex layouts                              | ^[array]`Record<string, any>[]` | —       |
 
 ### Form Events
 
@@ -200,12 +210,6 @@ form/accessibility
 ## FormItem API
 
 ### FormItem Attributes
-
-| Name             | Description                                                        | Type                            | Default |
-| ---------------- | ------------------------------------------------------------------ | ------------------------------- | ------- |
-| type ^(required) | Type of the form item component (e.g., 'input', 'select', 'radio') | ^[string]                       | —       |
-| componentProps   | Additional props to pass to the underlying component               | ^[object]`Record<string, any>`  | —       |
-| children         | Nested form items for complex layouts                              | ^[array]`Record<string, any>[]` | —       |
 
 <details>
 <summary>Element Plus FormItem Attributes</summary>

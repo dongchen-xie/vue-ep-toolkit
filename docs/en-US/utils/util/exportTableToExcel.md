@@ -5,7 +5,7 @@ Exports JSON data to an XLSX file.
 ## Syntax
 
 ```typescript
-exportTableToExcel(data: any[], columns: TableColumnCtx[], filename: string): void
+exportTableToExcel(data: any[], columns: TableColumnItem[], filename: string): void
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ exportTableToExcel(data: any[], columns: TableColumnCtx[], filename: string): vo
 
 ### columns
 
-- **Type**: `TableColumnCtx[]`
+- **Type**: `TableColumnItem[]`
 - **Required**: Yes
 - **Description**: The table column configuration array
 

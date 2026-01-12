@@ -81,7 +81,7 @@ export default {
         ]
       },
       outline: {
-        level: [2, 6] as [number, number],
+        level: [2, 3] as [number, number],
         label: "页面导航"
       },
       footer: {

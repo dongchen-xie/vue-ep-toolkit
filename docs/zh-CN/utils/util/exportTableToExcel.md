@@ -5,7 +5,7 @@
 ## 语法
 
 ```typescript
-exportTableToExcel(data: any[], columns: TableColumnCtx[], filename: string): void
+exportTableToExcel(data: any[], columns: TableColumnItem[], filename: string): void
 ```
 
 ## 参数
@@ -18,7 +18,7 @@ exportTableToExcel(data: any[], columns: TableColumnCtx[], filename: string): vo
 
 ### columns
 
-- **类型**: `TableColumnCtx[]`
+- **类型**: `TableColumnItem[]`
 - **必需**: 是
 - **描述**: 表格列配置数组
 

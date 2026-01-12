@@ -1,5 +1,5 @@
 ---
-title: Button
+title: Button 按钮
 lang: zh-CN
 ---
 
@@ -123,7 +123,7 @@ button/tag
 
 ### Button 属性
 
-| 名称                     | 说明                        | 类型                     | 默认值  |
+| 属性名                   | 说明                        | 类型                     | 默认值  |
 | ------------------------ | --------------------------- | ------------------------ | ------- |
 | icon ^(extended)         | 图标组件或 Iconify 图标名称 | ^[string] / ^[Component] | —       |
 | loading-icon ^(extended) | 自定义加载图标组件          | ^[string] / ^[Component] | Loading |
@@ -131,7 +131,7 @@ button/tag
 <details>
 <summary>Element Plus Button 原生属性</summary>
 
-| 名称              | 说明                                                                      | 类型                                                                                                     | 默认值 |
+| 属性名            | 说明                                                                      | 类型                                                                                                     | 默认值 |
 | ----------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------ |
 | size              | 按钮尺寸                                                                  | ^[enum]`'large' \| 'default' \| 'small'`                                                                 | —      |
 | type              | 按钮类型，设置 `color` 时优先级高于 `type`                                | ^[enum]`'default' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' \| '' \| 'text' (已废弃)` | —      |
@@ -157,7 +157,7 @@ button/tag
 <details>
 <summary>Element Plus Button 原生插槽</summary>
 
-| 名称    | 说明           |
+| 插槽名  | 说明           |
 | ------- | -------------- |
 | default | 自定义默认内容 |
 | loading | 自定义加载组件 |
@@ -165,10 +165,10 @@ button/tag
 
 </details>
 
-### Button 暴露的属性
+### Button Exposes
 
 <details>
-<summary>Element Plus Button 原生暴露属性</summary>
+<summary>Element Plus Button Exposes</summary>
 
 | 名称           | 说明             | 类型                                                                                                           |
 | -------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -187,7 +187,7 @@ button/tag
 <details>
 <summary>Element Plus ButtonGroup 原生属性</summary>
 
-| 名称      | 说明                     | 类型                                                               | 默认值     |
+| 属性名    | 说明                     | 类型                                                               | 默认值     |
 | --------- | ------------------------ | ------------------------------------------------------------------ | ---------- |
 | size      | 控制按钮组内所有按钮尺寸 | ^[enum]`'large' \| 'default' \| 'small'`                           | —          |
 | type      | 控制按钮组内所有按钮类型 | ^[enum]`'primary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | —          |
@@ -200,7 +200,7 @@ button/tag
 <details>
 <summary>Element Plus ButtonGroup 原生插槽</summary>
 
-| 名称    | 说明             | 子标签 |
+| 插槽名  | 说明             | 子标签 |
 | ------- | ---------------- | ------ |
 | default | 自定义按钮组内容 | Button |
 

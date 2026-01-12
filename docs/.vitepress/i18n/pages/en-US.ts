@@ -82,7 +82,7 @@ export default {
         ]
       },
       outline: {
-        level: [2, 6] as [number, number],
+        level: [2, 3] as [number, number],
         label: "On this page"
       },
       footer: {
