@@ -1,4 +1,5 @@
 <template>
+  <el-button type="primary" loading>Loading</el-button>
   <bk-button type="primary" loading>Loading</bk-button>
   <bk-button type="primary" loading-icon="tabler:loader-3" loading>Loading</bk-button>
   <bk-button type="primary" loading>

@@ -3,19 +3,16 @@
     <el-radio-button :value="true" label="true" />
     <el-radio-button :value="false" label="false" />
   </el-radio-group>
-  <bk-table
-    :raw-data="tableData"
-    :columns="columns"
-    :tree-props="treeProps"
-    row-key="id"
-    default-expand-all
-  >
+  <bk-table :raw-data="tableData" :tree-props="treeProps" row-key="id" default-expand-all>
+    <bk-table-column type="selection" width="55" :selectable="selectable" />
+    <bk-table-column prop="date" label="Date" />
+    <bk-table-column prop="name" label="Name" />
+    <bk-table-column prop="address" label="Address" />
   </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from "vue"
-import type { TableColumnCtx } from "vue-business-kit"
 
 interface User {
   id: number
@@ -70,26 +67,6 @@ const tableData: User[] = [
     date: "2016-05-03",
     name: "wangxiaohu",
     address: "No. 189, Grove St, Los Angeles"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    type: "selection",
-    width: 55,
-    selectable
-  },
-  {
-    prop: "date",
-    label: "Date"
-  },
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 </script>

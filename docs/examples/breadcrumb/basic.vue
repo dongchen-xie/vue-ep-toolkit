@@ -1,5 +1,4 @@
 <template>
-  <!-- 手动方式：通过 bk-breadcrumb-item 标签手动定义每个面包屑项 -->
   <bk-breadcrumb separator="/">
     <bk-breadcrumb-item :to="{ path: '/' }">homepage</bk-breadcrumb-item>
     <bk-breadcrumb-item>
@@ -11,32 +10,31 @@
 
   <el-divider></el-divider>
 
-  <!-- 数据驱动方式：通过 data 和 currentRoute 属性自动根据路由生成面包屑路径 -->
-  <bk-breadcrumb separator="/" :data="data" :currentRoute="currentRoute"></bk-breadcrumb>
+  <bk-breadcrumb :items="items" :currentItem="currentItem" separator="/"></bk-breadcrumb>
 </template>
 <script lang="ts" setup>
 import { ref, reactive } from "vue"
-import type { BreadcrumbItemCtx } from "vue-business-kit"
+import type { BreadcrumbItem } from "vue-business-kit"
 
-const data = reactive<BreadcrumbItemCtx[]>([
+const items = reactive<BreadcrumbItem[]>([
   {
     id: 1,
-    menu_name: "homepage",
+    menuName: "homepage",
     link: "/",
     children: [
       {
         id: 2,
-        menu_name: "promotion management",
+        menuName: "promotion management",
         link: "/promotion_management",
         children: [
           {
             id: 3,
-            menu_name: "promotion list",
+            menuName: "promotion list",
             link: "/promotion_management/promotion_list",
             children: [
               {
                 id: 4,
-                menu_name: "promotion detail",
+                menuName: "promotion detail",
                 link: "/promotion_management/promotion_list/promotion_detail"
               }
             ]
@@ -46,5 +44,5 @@ const data = reactive<BreadcrumbItemCtx[]>([
     ]
   }
 ])
-const currentRoute = ref("/promotion_management/promotion_list/promotion_detail")
+const currentItem = ref("/promotion_management/promotion_list/promotion_detail")
 </script>

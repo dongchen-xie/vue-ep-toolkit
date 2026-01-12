@@ -1,4 +1,4 @@
-import { ButtonProps as EpButtonProps, ButtonInstance as EpButtonInstance } from "element-plus"
+import { ButtonProps as ElButtonProps, ButtonInstance as ElButtonInstance } from "element-plus"
 import type { Component } from "vue"
 
 export interface ButtonInternalProps {
@@ -7,11 +7,19 @@ export interface ButtonInternalProps {
 }
 
 export interface ButtonProps
-  extends Omit<EpButtonProps, "icon" | "loadingIcon">,
+  extends Omit<ElButtonProps, "icon" | "loadingIcon">,
     ButtonInternalProps {}
 
 export interface ButtonInstance {
-  epButton?: EpButtonInstance
+  elButtonRef?: ElButtonInstance
 }
 
-export type { ButtonGroupInstance, buttonEmits } from "element-plus"
+export type {
+  ButtonType,
+  ButtonEmits,
+  ButtonNativeType,
+  ButtonPropsPublic,
+  ButtonConfigContext,
+  ButtonGroupContext,
+  ButtonGroupInstance
+} from "element-plus"

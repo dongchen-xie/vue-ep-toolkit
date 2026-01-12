@@ -1,8 +1,9 @@
 import type {
-  BreadcrumbProps as EpBreadcrumbProps,
-  BreadcrumbInstance as EpBreadcrumbInstance,
-  BreadcrumbItemProps as EpBreadcrumbItemProps
+  BreadcrumbProps as ElBreadcrumbProps,
+  BreadcrumbInstance as ElBreadcrumbInstance,
+  BreadcrumbItemProps as ElBreadcrumbItemProps
 } from "element-plus"
+import type { Component } from "vue"
 
 export interface BreadcrumbConfig {
   idKey?: string
@@ -12,25 +13,33 @@ export interface BreadcrumbConfig {
   childrenKey?: string
 }
 
-export interface BreadcrumbItemCtx extends Partial<EpBreadcrumbItemProps> {
+export interface BreadcrumbItem extends Partial<ElBreadcrumbItemProps> {
   id: number | string
   icon?: string
-  menu_name?: string
+  menuName?: string
   link?: string
-  children?: BreadcrumbItemCtx[]
+  children?: BreadcrumbItem[]
   [key: string]: any
 }
 
 export interface BreadcrumbInternalProps {
+  separatorIcon?: string | Component
   config?: BreadcrumbConfig
-  data?: BreadcrumbItemCtx[]
-  currentRoute?: string
+  items?: BreadcrumbItem[]
+  currentItem?: string
 }
 
-export interface BreadcrumbProps extends EpBreadcrumbProps, BreadcrumbInternalProps {}
+export interface BreadcrumbProps
+  extends Omit<ElBreadcrumbProps, "separatorIcon">,
+    BreadcrumbInternalProps {}
 
 export interface BreadcrumbInstance {
-  epBreadcrumb?: EpBreadcrumbInstance
+  elBreadcrumbRef?: ElBreadcrumbInstance
 }
 
-export type { BreadcrumbItemInstance } from "element-plus"
+export type {
+  BreadcrumbPropsPublic,
+  BreadcrumbItemProps,
+  BreadcrumbItemInstance,
+  BreadcrumbItemPropsPublic
+} from "element-plus"

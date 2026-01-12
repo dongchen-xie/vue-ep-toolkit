@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, useAttrs, getCurrentInstance } from "vue"
+import { ref, computed, onMounted, watch, useAttrs, getCurrentInstance, useSlots } from "vue"
+import type { Slots } from "vue"
 import {
   useTableSearch,
   useTablePagination,
@@ -19,7 +20,8 @@ import {
   ElSelect,
   ElOption,
   ElPagination,
-  TableProps as EpTableProps
+  TableProps as ElTableProps,
+  TableInstance as ElTableInstance
 } from "element-plus"
 import BkButton from "../button/Button.vue"
 import { BkForm } from "../form"
@@ -59,11 +61,12 @@ const props = withDefaults(defineProps<TableInternalProps>(), {
 })
 
 const emits = defineEmits<TableEmits>()
-const attrs = useAttrs() as Partial<EpTableProps<any>>
+const attrs: Partial<ElTableProps<any>> = useAttrs()
+const slots: Readonly<Slots> = useSlots()
 const instance = getCurrentInstance()
 const locale = useLocale()
 
-const epTable = ref<InstanceType<typeof ElTable>>()
+const elTableRef = ref<ElTableInstance | null>(null)
 const formRef = ref<InstanceType<typeof BkForm>>()
 
 const t = computed(() => locale.value.bk.table)
@@ -96,7 +99,7 @@ const { shouldFormatNumber, formatCellValue } = useTableFormat(props)
 
 const { selectedRow, initSelection, selectable, selectedRows } = useTableSelection(
   props,
-  epTable,
+  elTableRef,
   filteredData
 )
 
@@ -124,7 +127,7 @@ const handleExport = () => {
   }
 }
 
-defineExpose({ epTable })
+defineExpose({ elTableRef })
 </script>
 <template>
   <div class="bk-table">
@@ -207,11 +210,11 @@ defineExpose({ epTable })
       </div>
     </div>
     <el-table
-      ref="epTable"
+      ref="elTableRef"
       v-bind="attrs"
       :data="filteredData"
       :span-method="mergedSpanMethod"
-      @current-change="(row) => (selectedRow = row)"
+      @current-change="(row : any) => (selectedRow = row)"
     >
       <TableColumnRender
         v-for="column in columns"
@@ -220,11 +223,10 @@ defineExpose({ epTable })
         :should-format-number="shouldFormatNumber"
         :format-cell-value="formatCellValue"
       >
-        <template v-for="name in Object.keys($slots)" :key="name" #[name]="scope">
+        <template v-for="name in Object.keys(slots)" :key="name" #[name]="scope">
           <slot :name="name" v-bind="scope" />
         </template>
       </TableColumnRender>
-      <!-- 行内编辑操作列 -->
       <el-table-column
         v-if="isEditEnabled && props.editPosition === 'inline'"
         :label="t.operations"

@@ -4,28 +4,35 @@
   <el-switch v-model="preserveExpanded" />
   <bk-table
     :raw-data="tableData"
-    :columns="columns"
     :border="parentBorder"
     :preserve-expanded-content="preserveExpanded"
     style="width: 100%"
   >
-    <template #expand="props">
-      <div m="4">
-        <p m="t-0 b-2">State: {{ props.row.state }}</p>
-        <p m="t-0 b-2">City: {{ props.row.city }}</p>
-        <p m="t-0 b-2">Address: {{ props.row.address }}</p>
-        <p m="t-0 b-2">Zip: {{ props.row.zip }}</p>
-        <h3>Family</h3>
-        <bk-table :raw-data="props.row.family" :columns="columns2" :border="childBorder">
-        </bk-table>
-      </div>
-    </template>
+    <bk-table-column type="expand">
+      <template #default="props">
+        <div m="4">
+          <p m="t-0 b-2">State: {{ props.row.state }}</p>
+          <p m="t-0 b-2">City: {{ props.row.city }}</p>
+          <p m="t-0 b-2">Address: {{ props.row.address }}</p>
+          <p m="t-0 b-2">Zip: {{ props.row.zip }}</p>
+          <h3>Family</h3>
+          <bk-table :data="props.row.family" :border="childBorder">
+            <bk-table-column label="Name" prop="name" />
+            <bk-table-column label="State" prop="state" />
+            <bk-table-column label="City" prop="city" />
+            <bk-table-column label="Address" prop="address" />
+            <bk-table-column label="Zip" prop="zip" />
+          </bk-table>
+        </div>
+      </template>
+    </bk-table-column>
+    <bk-table-column label="Date" prop="date" />
+    <bk-table-column label="Name" prop="name" />
   </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { TableColumnCtx } from "vue-business-kit"
 
 const parentBorder = ref(false)
 const childBorder = ref(false)
@@ -247,46 +254,6 @@ const tableData = [
         zip: "CA 94114"
       }
     ]
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    type: "expand",
-    slots: {
-      default: "expand"
-    }
-  },
-  {
-    prop: "date",
-    label: "Date"
-  },
-  {
-    prop: "name",
-    label: "Name"
-  }
-]
-
-const columns2: TableColumnCtx[] = [
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "state",
-    label: "State"
-  },
-  {
-    prop: "city",
-    label: "City"
-  },
-  {
-    prop: "address",
-    label: "Address"
-  },
-  {
-    prop: "zip",
-    label: "Zip"
   }
 ]
 </script>

@@ -1,4 +1,6 @@
-import { graphic, type CustomSeriesRenderItemParams } from "echarts"
+import { graphic } from "echarts"
+import type { SeriesOption } from "echarts"
+import type { CallbackDataParams } from "echarts/types/dist/shared"
 import { castArray, isNumber, isObject } from "lodash-es"
 import type { BaselineConfig, SparklineInternalProps } from "../types"
 
@@ -6,13 +8,13 @@ export const getLineTrendSeries = (
   props: SparklineInternalProps,
   data: { name: string; value: number }[],
   baseline: BaselineConfig | BaselineConfig[]
-) => {
-  const series = [
+): SeriesOption[] => {
+  const series: SeriesOption[] = [
     {
       type: "line",
       data,
       smooth: props.smooth,
-      symbolSize: (_value: number, params: CustomSeriesRenderItemParams) =>
+      symbolSize: (_value: number, params: CallbackDataParams) =>
         params.dataIndex === data!.length - 1 ? 6 : 0,
       symbol: "circle",
       itemStyle: {

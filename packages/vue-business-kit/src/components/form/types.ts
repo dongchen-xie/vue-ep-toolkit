@@ -1,24 +1,34 @@
 import type {
-  FormProps as EpFormProps,
-  FormItemProps as EpFormItemProps,
-  FormInstance as EpFormInstance
+  FormProps as ElFormProps,
+  FormItemProps as ElFormItemProps,
+  FormInstance as ElFormInstance
 } from "element-plus"
 
-export interface FormItemCtx extends Partial<EpFormItemProps> {
+export interface FormItem extends Partial<ElFormItemProps> {
   type: string
   componentProps?: Record<string, any>
   children?: Record<string, any>[]
 }
 
 export interface FormInternalProps {
-  items?: FormItemCtx[]
+  items?: FormItem[]
   colNum?: number
 }
 
-export interface FormProps extends EpFormProps, FormInternalProps {}
+export interface FormProps extends ElFormProps, FormInternalProps {}
 
 export interface FormInstance {
-  epForm?: EpFormInstance
+  elFormRef?: ElFormInstance
 }
 
-export type { FormRules, FormEmits } from "element-plus"
+export type {
+  FormRules,
+  FormEmits,
+  FormItemRule,
+  FormItemProp,
+  FormItemProps,
+  FormItemContext,
+  FormItemInstance,
+  FormItemPropsPublic,
+  FormItemValidateState
+} from "element-plus"

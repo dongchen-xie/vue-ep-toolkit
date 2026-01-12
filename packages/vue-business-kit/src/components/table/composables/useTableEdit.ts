@@ -142,7 +142,7 @@ export function useTableEdit(
   // 验证必填字段
   const validateRequiredFields = (): boolean | string => {
     if (editType.value === "add" || editType.value === "edit") {
-      return formRef.value.epForm
+      return formRef.value.elFormRef
         .validate()
         .then(() => true)
         .catch(() => t.value.fillRequired)

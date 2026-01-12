@@ -1,10 +1,21 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%"> </bk-table>
+  <bk-table :raw-data="tableData" style="width: 100%">
+    <bk-table-column type="selection" width="55" />
+    <bk-table-column label="Date" width="120">
+      <template #default="scope">{{ scope.row.date }}</template>
+    </bk-table-column>
+    <bk-table-column property="name" label="Name" width="120" />
+    <bk-table-column
+      property="address"
+      label="use show-overflow-tooltip"
+      width="240"
+      show-overflow-tooltip
+    />
+    <bk-table-column property="address" label="address" />
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 interface User {
   date: string
   name: string
@@ -30,33 +41,6 @@ const tableData: User[] = [
     date: "2016-05-01",
     name: "Margie Smith",
     address: "23618 Windsor Drive, West Ricardoview, Idaho"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    type: "selection",
-    width: 55
-  },
-  {
-    prop: "date",
-    label: "Date",
-    width: 120
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 120
-  },
-  {
-    prop: "address",
-    label: "use show-overflow-tooltip",
-    width: 240,
-    showOverflowTooltip: true
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 </script>

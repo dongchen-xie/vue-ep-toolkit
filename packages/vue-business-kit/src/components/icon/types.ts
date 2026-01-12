@@ -1,11 +1,13 @@
-import type { IconProps as EpIconProps, IconInstance as EpIconInstance } from "element-plus"
+import type { IconProps as ElIconProps, IconInstance as ElIconInstance } from "element-plus"
 
 export interface IconInternalProps {
   icon?: string
 }
 
-export interface IconProps extends EpIconProps, IconInternalProps {}
+export interface IconProps extends ElIconProps, IconInternalProps {}
 
 export interface IconInstance {
-  epIcon?: EpIconInstance
+  elIconRef?: ElIconInstance
 }
+
+export type { IconComponentMap, IconPropsPublic } from "element-plus"

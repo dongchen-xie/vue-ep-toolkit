@@ -1,10 +1,15 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%" height="250"> </bk-table>
+  <bk-table :raw-data="tableData" style="width: 100%" height="250">
+    <bk-table-column fixed prop="date" label="Date" width="150" />
+    <bk-table-column prop="name" label="Name" width="120" />
+    <bk-table-column prop="state" label="State" width="120" />
+    <bk-table-column prop="city" label="City" width="320" />
+    <bk-table-column prop="address" label="Address" width="600" />
+    <bk-table-column prop="zip" label="Zip" />
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 const tableData = [
   {
     date: "2016-05-03",
@@ -61,39 +66,6 @@ const tableData = [
     city: "Los Angeles",
     address: "No. 189, Grove St, Los Angeles",
     zip: "CA 90036"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    width: 150,
-    fixed: true
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 120
-  },
-  {
-    prop: "state",
-    label: "State",
-    width: 120
-  },
-  {
-    prop: "city",
-    label: "City",
-    width: 320
-  },
-  {
-    prop: "address",
-    label: "Address",
-    width: 600
-  },
-  {
-    prop: "zip",
-    label: "Zip"
   }
 ]
 </script>

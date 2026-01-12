@@ -1,33 +1,41 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { computed, h, ref } from "vue"
 import { ElBreadcrumb, ElBreadcrumbItem } from "element-plus"
 import type { BreadcrumbInternalProps } from "./types"
 import { useBreadcrumb } from "./composables"
 import { BkIcon } from "../icon"
 
 defineOptions({
-  name: "BkBreadcrumb",
+  name: "Breadcrumb",
   inheritAttrs: false
 })
 
 const props = defineProps<BreadcrumbInternalProps>()
 
-const epBreadcrumb = ref<InstanceType<typeof ElBreadcrumb>>()
+const elBreadcrumbRef = ref<InstanceType<typeof ElBreadcrumb>>()
 
 const { breadcrumbItems } = useBreadcrumb(props)
 
-defineExpose({ epBreadcrumb })
+const separatorIconComponent = computed(() => {
+  if (!props.separatorIcon) return undefined
+  if (typeof props.separatorIcon === "string") {
+    return h(BkIcon, { icon: props.separatorIcon, size: 16 })
+  }
+  return props.separatorIcon
+})
+
+defineExpose({ elBreadcrumbRef })
 </script>
 
 <template>
   <div class="bk-breadcrumb">
-    <el-breadcrumb ref="epBreadcrumb" v-bind="$attrs">
+    <el-breadcrumb ref="elBreadcrumbRef" v-bind="$attrs" :separator-icon="separatorIconComponent">
       <template v-if="breadcrumbItems && breadcrumbItems.length">
         <el-breadcrumb-item v-for="item in breadcrumbItems" :key="item.id" :to="item.link">
           <template v-if="item.icon">
             <bk-icon :icon="item.icon" :size="24"></bk-icon>
           </template>
-          {{ item.menu_name }}
+          {{ item.menuName }}
         </el-breadcrumb-item>
       </template>
       <slot />

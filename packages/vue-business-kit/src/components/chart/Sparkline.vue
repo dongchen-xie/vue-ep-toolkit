@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { computed } from "vue"
 import { use } from "echarts/core"
 import { CanvasRenderer } from "echarts/renderers"
 import { LineChart } from "echarts/charts"
 import { TitleComponent, TooltipComponent, GridComponent } from "echarts/components"
 import VChart from "vue-echarts"
 import { formatNumber } from "../../utils/formatNumber"
-import type { SparklineInstance, SparklineInternalProps } from "./types"
+import type { SparklineInternalProps } from "./types"
 import { type EChartsOption } from "echarts"
 import { isArray, isNumber, isObject, map } from "lodash-es"
 import { BkIcon } from "../icon"
-import { getLineTrendSeries } from "./composables/useLineTrend"
-import { getColumnDeviationSeries } from "./composables/useColumnDeviation"
+import { getLineTrendSeries, getColumnDeviationSeries } from "./composables"
 
 use([CanvasRenderer, LineChart, TitleComponent, TooltipComponent, GridComponent])
 
@@ -31,8 +30,6 @@ const props = withDefaults(defineProps<SparklineInternalProps>(), {
   autoresize: true,
   showTooltip: false
 })
-
-const chartRef = ref<InstanceType<typeof VChart>>()
 
 const chartOption = computed<EChartsOption>(() => {
   const data = (props.data || []).map((v, index) => {
@@ -97,39 +94,6 @@ const chartOption = computed<EChartsOption>(() => {
     }
   } as EChartsOption
 })
-
-const getInstance = () => {
-  return (chartRef.value as any)?.getInstance()
-}
-
-const refresh = () => {
-  const instance = getInstance()
-  if (instance) {
-    instance.clear()
-    instance.setOption(chartOption.value)
-  }
-}
-
-const setOption = (option: any, notMerge?: boolean, lazyUpdate?: boolean) => {
-  const instance = getInstance()
-  if (instance) {
-    instance.setOption(option, notMerge, lazyUpdate)
-  }
-}
-
-const resize = () => {
-  const instance = getInstance()
-  if (instance) {
-    instance.resize()
-  }
-}
-
-defineExpose<SparklineInstance>({
-  getInstance,
-  refresh,
-  setOption,
-  resize
-})
 </script>
 
 <template>
@@ -162,7 +126,6 @@ defineExpose<SparklineInstance>({
 
     <div v-if="showChart" class="bk-sparkline-chart-wrapper">
       <v-chart
-        ref="chartRef"
         class="bk-sparkline-chart"
         :style="{
           height: typeof chartHeight === 'number' ? `${chartHeight}px` : chartHeight,

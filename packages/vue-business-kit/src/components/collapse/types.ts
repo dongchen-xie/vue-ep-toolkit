@@ -1,11 +1,15 @@
 import type {
-  CollapseItemProps as EpCollapseItemProps,
-  CollapseItemInstance as EpCollapseItemInstance
+  CollapseItemProps as ElCollapseItemProps,
+  CollapseItemInstance as ElCollapseItemInstance
 } from "element-plus"
+import type { Component } from "vue"
 
 export interface CollapseItemInternalProps {
   title?: string
   subtitle?: string
+  icon?: string | Component
+  iconColor?: string
+  iconSize?: number | string
   showReset?: boolean
   showExport?: boolean
   showRefresh?: boolean
@@ -13,11 +17,21 @@ export interface CollapseItemInternalProps {
 }
 
 export interface CollapseItemProps
-  extends Omit<EpCollapseItemProps, "title">,
+  extends Omit<ElCollapseItemProps, "title" | "icon">,
     CollapseItemInternalProps {}
 
 export interface CollapseItemInstance {
-  epCollapseItem?: EpCollapseItemInstance
+  elCollapseItemRef?: ElCollapseItemInstance
 }
 
-export type { CollapseProps, CollapseEmits, CollapseInstance } from "element-plus"
+export type {
+  CollapseProps,
+  CollapseEmits,
+  CollapseContext,
+  CollapseInstance,
+  CollapseModelValue,
+  CollapseActiveName,
+  CollapsePropsPublic,
+  CollapseIconPositionType,
+  CollapseItemPropsPublic
+} from "element-plus"

@@ -1,21 +1,24 @@
 <template>
   <div>
-    <bk-table
-      :raw-data="tableData"
-      :columns="columns"
-      :span-method="arraySpanMethod"
-      border
-      style="width: 100%"
-    >
+    <bk-table :raw-data="tableData" :span-method="arraySpanMethod" border style="width: 100%">
+      <bk-table-column prop="id" label="ID" width="180" />
+      <bk-table-column prop="name" label="Name" />
+      <bk-table-column prop="amount1" sortable label="Amount 1" />
+      <bk-table-column prop="amount2" sortable label="Amount 2" />
+      <bk-table-column prop="amount3" sortable label="Amount 3" />
     </bk-table>
 
     <bk-table
       :raw-data="tableData"
-      :columns="columns"
       :span-method="objectSpanMethod"
       border
       style="width: 100%; margin-top: 20px"
     >
+      <bk-table-column prop="id" label="ID" width="180" />
+      <bk-table-column prop="name" label="Name" />
+      <bk-table-column prop="amount1" label="Amount 1" />
+      <bk-table-column prop="amount2" label="Amount 2" />
+      <bk-table-column prop="amount3" label="Amount 3" />
     </bk-table>
   </div>
 </template>
@@ -99,33 +102,6 @@ const tableData: User[] = [
     amount1: "539",
     amount2: "4.1",
     amount3: 15
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "id",
-    label: "ID",
-    width: 180
-  },
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "amount1",
-    label: "Amount 1",
-    sortable: true
-  },
-  {
-    prop: "amount2",
-    label: "Amount 2",
-    sortable: true
-  },
-  {
-    prop: "amount3",
-    label: "Amount 3",
-    sortable: true
   }
 ]
 </script>

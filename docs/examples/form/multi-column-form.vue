@@ -1,14 +1,14 @@
 <template>
   <bk-form :model="formData" :items="items" :col-num="3" class="demo-form-multi">
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit">Query</el-button>
-    </el-form-item>
+    <bk-form-item>
+      <bk-button type="primary" @click="onSubmit">Query</bk-button>
+    </bk-form-item>
   </bk-form>
 </template>
 
 <script lang="ts" setup>
 import { reactive } from "vue"
-import type { FormItemCtx } from "vue-business-kit"
+import type { FormItem } from "vue-business-kit"
 
 const formData = reactive({
   user: "",
@@ -16,7 +16,7 @@ const formData = reactive({
   date: ""
 })
 
-const items: FormItemCtx[] = [
+const items: FormItem[] = [
   {
     label: "Approved by",
     type: "input",

@@ -2,17 +2,18 @@
   <div>
     <bk-table
       :raw-data="tableData"
-      :columns="columns"
       style="width: 100%; margin-bottom: 20px"
       row-key="id"
       border
       default-expand-all
     >
+      <bk-table-column prop="date" label="Date" sortable />
+      <bk-table-column prop="name" label="Name" sortable />
+      <bk-table-column prop="address" label="Address" sortable />
     </bk-table>
 
     <bk-table
       :raw-data="tableData1"
-      :columns="columns1"
       style="width: 100%"
       row-key="id"
       border
@@ -20,13 +21,14 @@
       :load="load"
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
+      <bk-table-column prop="date" label="Date" />
+      <bk-table-column prop="name" label="Name" />
+      <bk-table-column prop="address" label="Address" />
     </bk-table>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 interface User {
   id: number
   date: string
@@ -96,24 +98,6 @@ const tableData: User[] = [
   }
 ]
 
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    sortable: true
-  },
-  {
-    prop: "name",
-    label: "Name",
-    sortable: true
-  },
-  {
-    prop: "address",
-    label: "Address",
-    sortable: true
-  }
-]
-
 const tableData1: User[] = [
   {
     id: 1,
@@ -139,21 +123,6 @@ const tableData1: User[] = [
     date: "2016-05-03",
     name: "wangxiaohu",
     address: "No. 189, Grove St, Los Angeles"
-  }
-]
-
-const columns1: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date"
-  },
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 </script>

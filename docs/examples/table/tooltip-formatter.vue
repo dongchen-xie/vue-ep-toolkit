@@ -1,22 +1,30 @@
 <template>
   <bk-table
     :raw-data="tableData"
-    :columns="columns"
     show-overflow-tooltip
     :tooltip-formatter="tableRowFormatter"
     style="width: 100%"
   >
-    <template #tags="{ row }">
-      <el-tag v-for="tag in row.tags" :key="tag" class="tag-item" type="primary">
-        {{ tag }}
-      </el-tag>
-    </template>
+    <bk-table-column prop="address" label="extends table formatter" width="240" />
+    <bk-table-column
+      prop="tags"
+      label="formatter object"
+      width="240"
+      :tooltip-formatter="({ row }) => row.tags.join(', ')"
+    >
+      <template #default="{ row }">
+        <el-tag v-for="tag in row.tags" :key="tag" class="tag-item" type="primary">
+          {{ tag }}
+        </el-tag>
+      </template>
+    </bk-table-column>
+    <bk-table-column prop="url" label="with vnode" width="240" :tooltip-formatter="withVNode" />
   </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { h } from "vue"
-import { ElLink, type TableColumnCtx, type TableTooltipData } from "vue-business-kit"
+import { ElLink, type TableTooltipData } from "vue-business-kit"
 
 type TableData = {
   address: string
@@ -54,29 +62,6 @@ const tableRowFormatter = (data: TableTooltipData<TableData>) => {
 const withVNode = (data: TableTooltipData<TableData>) => {
   return h(ElLink, { type: "primary", href: data.cellValue }, () => h("span", null, data.cellValue))
 }
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "address",
-    label: "extends table formatter",
-    width: 240
-  },
-  {
-    prop: "tags",
-    label: "formatter object",
-    width: 240,
-    tooltipFormatter: ({ row }) => row.tags.join(", "),
-    slots: {
-      default: true
-    }
-  },
-  {
-    prop: "url",
-    label: "with vnode",
-    width: 240,
-    tooltipFormatter: withVNode
-  }
-]
 </script>
 
 <style scoped>

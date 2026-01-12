@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import type { FormItemCtx, TableColumnCtx } from "vue-business-kit"
+import type { FormItemCtx, TableColumnItem } from "vue-business-kit"
 
 interface User {
   id: number
@@ -63,7 +63,7 @@ const tableData = ref<User[]>([
   }
 ])
 
-const columns: TableColumnCtx[] = [
+const columns: TableColumnItem[] = [
   { type: "selection" },
   {
     prop: "id",

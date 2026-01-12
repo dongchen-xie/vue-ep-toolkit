@@ -1,10 +1,13 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%"> </bk-table>
+  <bk-table :raw-data="tableData" style="width: 100%">
+    <bk-table-column type="index" :index="indexMethod" />
+    <bk-table-column prop="date" label="Date" width="180" />
+    <bk-table-column prop="name" label="Name" width="180" />
+    <bk-table-column prop="address" label="Address" />
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 const indexMethod = (index: number) => {
   return index * 2
 }
@@ -44,27 +47,6 @@ const tableData = [
     address: "No. 189, Grove St, Los Angeles",
     zip: "CA 90036",
     tag: "Office"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    type: "index",
-    index: indexMethod
-  },
-  {
-    prop: "date",
-    label: "Date",
-    width: 180
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 180
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 </script>

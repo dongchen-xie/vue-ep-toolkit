@@ -1,34 +1,38 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%">
-    <template #date="scope">
-      <div style="display: flex; align-items: center">
-        <bk-icon icon="tabler:stopwatch" />
-        <span style="margin-left: 10px">{{ scope.row.date }}</span>
-      </div>
-    </template>
-    <template #name="scope">
-      <el-popover effect="light" trigger="hover" placement="top" width="auto">
-        <template #default>
-          <div>name: {{ scope.row.name }}</div>
-          <div>address: {{ scope.row.address }}</div>
-        </template>
-        <template #reference>
-          <el-tag>{{ scope.row.name }}</el-tag>
-        </template>
-      </el-popover>
-    </template>
-    <template #operations="scope">
-      <bk-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </bk-button>
-      <bk-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
-        Delete
-      </bk-button>
-    </template>
+  <bk-table :raw-data="tableData" style="width: 100%">
+    <bk-table-column label="Date" width="180">
+      <template #default="scope">
+        <div style="display: flex; align-items: center">
+          <bk-icon icon="tabler:stopwatch"></bk-icon>
+          <span style="margin-left: 10px">{{ scope.row.date }}</span>
+        </div>
+      </template>
+    </bk-table-column>
+    <bk-table-column label="Name" width="180">
+      <template #default="scope">
+        <el-popover effect="light" trigger="hover" placement="top" width="auto">
+          <template #default>
+            <div>name: {{ scope.row.name }}</div>
+            <div>address: {{ scope.row.address }}</div>
+          </template>
+          <template #reference>
+            <el-tag>{{ scope.row.name }}</el-tag>
+          </template>
+        </el-popover>
+      </template>
+    </bk-table-column>
+    <bk-table-column label="Operations">
+      <template #default="scope">
+        <bk-button size="small" @click="handleEdit(scope.$index, scope.row)"> Edit </bk-button>
+        <bk-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">
+          Delete
+        </bk-button>
+      </template>
+    </bk-table-column>
   </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 interface User {
   date: string
   name: string
@@ -62,29 +66,6 @@ const tableData: User[] = [
     date: "2016-05-01",
     name: "Tom",
     address: "No. 189, Grove St, Los Angeles"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    label: "Date",
-    width: 180,
-    slots: {
-      default: "date"
-    }
-  },
-  {
-    label: "Name",
-    width: 180,
-    slots: {
-      default: "name"
-    }
-  },
-  {
-    label: "Operations",
-    slots: {
-      default: "operations"
-    }
   }
 ]
 </script>

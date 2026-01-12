@@ -1,20 +1,15 @@
 <template>
-  <bk-table
-    :raw-data="tableData"
-    :columns="columns"
-    show-refresh
-    show-export
-    @refresh="handleRefresh"
-  >
+  <bk-table :raw-data="tableData" show-refresh show-export @refresh="handleRefresh">
     <template #toolbar-left>
       <bk-button @click="handleAdd" type="primary" icon="tabler:plus">Add</bk-button>
     </template>
+    <bk-table-column prop="date" label="Date" width="180" />
+    <bk-table-column prop="name" label="Name" width="180" />
+    <bk-table-column prop="address" label="Address" />
   </bk-table>
 </template>
 
 <script setup lang="ts">
-import type { TableColumnCtx } from "vue-business-kit"
-
 const tableData = [
   {
     date: "2016-05-03",
@@ -35,23 +30,6 @@ const tableData = [
     date: "2016-05-01",
     name: "Bob",
     address: "No. 189, Grove St, Chicago"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    width: 180
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 180
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 

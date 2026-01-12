@@ -1,17 +1,24 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%" max-height="250">
-    <template #operations="scope">
-      <bk-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)">
-        Remove
-      </bk-button>
-    </template>
+  <bk-table :raw-data="tableData" style="width: 100%" max-height="250">
+    <bk-table-column fixed prop="date" label="Date" width="150" />
+    <bk-table-column prop="name" label="Name" width="120" />
+    <bk-table-column prop="state" label="State" width="120" />
+    <bk-table-column prop="city" label="City" width="120" />
+    <bk-table-column prop="address" label="Address" width="600" />
+    <bk-table-column prop="zip" label="Zip" width="120" />
+    <bk-table-column fixed="right" label="Operations" min-width="120">
+      <template #default="scope">
+        <bk-button link type="primary" size="small" @click.prevent="deleteRow(scope.$index)">
+          Remove
+        </bk-button>
+      </template>
+    </bk-table-column>
   </bk-table>
   <bk-button class="mt-4" style="width: 100%" @click="onAddItem"> Add Item </bk-button>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { TableColumnCtx } from "vue-business-kit"
 
 const now = new Date()
 
@@ -41,48 +48,6 @@ const tableData = ref([
     zip: "CA 90036"
   }
 ])
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    width: 150,
-    fixed: true
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 120
-  },
-  {
-    prop: "state",
-    label: "State",
-    width: 120
-  },
-  {
-    prop: "city",
-    label: "City",
-    width: 120
-  },
-  {
-    prop: "address",
-    label: "Address",
-    width: 600
-  },
-  {
-    prop: "zip",
-    label: "Zip",
-    width: 120
-  },
-  {
-    label: "Operations",
-    minWidth: 120,
-    fixed: "right",
-    slots: {
-      default: "operations"
-    }
-  }
-]
 
 const deleteRow = (index: number) => {
   tableData.value.splice(index, 1)

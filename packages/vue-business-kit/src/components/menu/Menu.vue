@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, useAttrs } from "vue"
-import { ElMenu } from "element-plus"
+import { ElMenu, MenuInstance } from "element-plus"
+import type { MenuProps as ElMenuProps } from "element-plus"
 import { useMenu } from "./composables"
 import type { MenuInternalProps } from "./types"
 
@@ -10,25 +11,25 @@ defineOptions({
 })
 
 const props = defineProps<MenuInternalProps>()
-const attrs = useAttrs()
+const attrs: Partial<ElMenuProps> = useAttrs()
 
-const epMenu = ref<InstanceType<typeof ElMenu>>()
+const elMenuRef = ref<MenuInstance | null>(null)
 
 const { menuItems, defaultActive } = useMenu(props)
 
 const mergedAttrs = computed(() => {
   const mergedAttrs = { ...attrs }
   if (menuItems && defaultActive.value) {
-    mergedAttrs["default-active"] = defaultActive.value
+    mergedAttrs["defaultActive"] = defaultActive.value
   }
   return mergedAttrs
 })
 
-defineExpose({ epMenu })
+defineExpose({ elMenuRef })
 </script>
 
 <template>
-  <el-menu class="bk-menu" ref="epMenu" v-bind="mergedAttrs">
+  <el-menu class="bk-menu" ref="elMenuRef" v-bind="mergedAttrs">
     <template v-if="menuItems">
       <component :is="item" v-for="(item, index) in menuItems" :key="item.key || index" />
     </template>

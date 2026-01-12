@@ -1,15 +1,15 @@
 import type {
   PaginationProps,
-  TableColumnCtx as EpTableColumnCtx,
-  TableProps as EpTableProps,
-  TableInstance as EpTableInstance
+  TableColumnCtx as ElTableColumnCtx,
+  TableProps as ElTableProps,
+  TableInstance as ElTableInstance
 } from "element-plus"
 import type { FormatNumberOptions } from "../../utils/formatNumber"
 import { DefaultRow } from "element-plus/es/components/table/src/table/defaults.mjs"
 import type { FormItemCtx } from "../form/types"
 
-export interface TableColumnCtx<T extends DefaultRow = DefaultRow>
-  extends Partial<Omit<EpTableColumnCtx<T>, "children">> {
+export interface TableColumnItem<T extends DefaultRow = DefaultRow>
+  extends Partial<Omit<ElTableColumnCtx<T>, "children">> {
   slots?:
     | boolean
     | {
@@ -19,13 +19,13 @@ export interface TableColumnCtx<T extends DefaultRow = DefaultRow>
         expand?: string | boolean
       }
   numberFormat?: boolean | FormatNumberOptions
-  children?: TableColumnCtx[]
+  children?: TableColumnItem[]
   edit?: FormItemCtx
 }
 
 export interface TableInternalProps {
   rawData?: any[]
-  columns?: TableColumnCtx[]
+  columns?: TableColumnItem[]
   mergeColumns?: string[]
   showSearch?: boolean
   searchValue?: string
@@ -44,11 +44,11 @@ export interface TableInternalProps {
   showDelete?: boolean
   enableEdit?: boolean
 }
-export interface TableProps extends EpTableProps<any>, TableInternalProps {}
+export interface TableProps extends ElTableProps<any>, TableInternalProps {}
 
 export interface TableEmits {
   refresh: []
-  export: [data: any[], columns: TableColumnCtx[]]
+  export: [data: any[], columns: TableColumnItem[]]
   search: [value: string, columns: string[]]
   paginationChange: [page: number, size: number]
   add: [data: { action: "add"; data: any }]
@@ -58,18 +58,19 @@ export interface TableEmits {
 }
 
 export interface TableInstance {
-  epTable?: EpTableInstance
+  elTableRef?: ElTableInstance
 }
 
 export type {
-  TableColumnInstance,
-  SummaryMethod,
   Table,
   TableRefs,
+  TableColumnCtx,
+  TableColumnInstance,
   ColumnCls,
   ColumnStyle,
   CellCls,
   CellStyle,
+  SummaryMethod,
   TreeNode,
   RenderRowData,
   Sort,

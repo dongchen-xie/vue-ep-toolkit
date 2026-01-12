@@ -1,11 +1,11 @@
 import { computed } from "vue"
-import type { BreadcrumbItemCtx, BreadcrumbInternalProps } from "../types"
+import type { BreadcrumbItem, BreadcrumbInternalProps } from "../types"
 
 export function useBreadcrumb(props: BreadcrumbInternalProps) {
   const defaultConfig = {
     idKey: "id",
     iconKey: "icon",
-    menuNameKey: "menu_name",
+    menuNameKey: "menuName",
     linkKey: "link",
     childrenKey: "children"
   }
@@ -13,10 +13,7 @@ export function useBreadcrumb(props: BreadcrumbInternalProps) {
   const mergedConfig = { ...defaultConfig, ...props.config }
 
   // 查找当前路由对应的面包屑路径
-  const findBreadcrumbPath = (
-    items: BreadcrumbItemCtx[],
-    currentPath: string
-  ): BreadcrumbItemCtx[] => {
+  const findBreadcrumbPath = (items: BreadcrumbItem[], currentPath: string): BreadcrumbItem[] => {
     for (const item of items) {
       const itemLink = item[mergedConfig.linkKey]
       if (itemLink === currentPath) {
@@ -25,7 +22,7 @@ export function useBreadcrumb(props: BreadcrumbInternalProps) {
 
       if (item[mergedConfig.childrenKey]) {
         const childPath = findBreadcrumbPath(
-          item[mergedConfig.childrenKey] as BreadcrumbItemCtx[],
+          item[mergedConfig.childrenKey] as BreadcrumbItem[],
           currentPath
         )
         if (childPath.length > 0) {
@@ -38,21 +35,21 @@ export function useBreadcrumb(props: BreadcrumbInternalProps) {
 
   // 生成面包屑项
   const breadcrumbItems = computed(() => {
-    if (!props.currentRoute || !props.data?.length) return []
+    if (!props.currentItem || !props.items?.length) return []
 
-    const path = findBreadcrumbPath(props.data, props.currentRoute)
+    const path = findBreadcrumbPath(props.items, props.currentItem)
     return path.map((item) => {
       const {
         [mergedConfig.idKey]: id,
         [mergedConfig.iconKey]: icon,
-        [mergedConfig.menuNameKey]: menu_name,
+        [mergedConfig.menuNameKey]: menuName,
         [mergedConfig.linkKey]: link,
         ...rest
       } = item
       return {
         id,
         icon,
-        menu_name,
+        menuName,
         link,
         ...rest
       }

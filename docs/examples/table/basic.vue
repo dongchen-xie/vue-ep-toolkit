@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TableColumnCtx } from "vue-business-kit"
+import type { TableColumnItem } from "vue-business-kit"
 
 const tableData = [
   {
@@ -34,7 +34,7 @@ const tableData = [
   }
 ]
 
-const columns: TableColumnCtx[] = [
+const columns: TableColumnItem[] = [
   {
     prop: "date",
     label: "Date",

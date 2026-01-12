@@ -2,11 +2,28 @@
   <bk-form
     ref="formRef"
     :model="dynamicValidateForm"
-    :items="items"
     label-width="auto"
     style="max-width: 600px"
     class="demo-dynamic"
   >
+    <bk-form-item
+      prop="email"
+      label="Email"
+      :rules="[
+        {
+          required: true,
+          message: 'Please input email address',
+          trigger: 'blur'
+        },
+        {
+          type: 'email',
+          message: 'Please input correct email address',
+          trigger: ['blur', 'change']
+        }
+      ]"
+    >
+      <el-input v-model="dynamicValidateForm.email" />
+    </bk-form-item>
     <bk-form-item
       v-for="(domain, index) in dynamicValidateForm.domains"
       :key="domain.key"
@@ -32,27 +49,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue"
 
-import type { FormInstance, FormItemCtx } from "vue-business-kit"
-
-const items: FormItemCtx[] = [
-  {
-    label: "Email",
-    type: "input",
-    prop: "email",
-    rules: [
-      {
-        required: true,
-        message: "Please input email address",
-        trigger: "blur"
-      },
-      {
-        type: "email",
-        message: "Please input correct email address",
-        trigger: ["blur", "change"]
-      }
-    ]
-  }
-]
+import type { FormInstance } from "vue-business-kit"
 
 const formRef = ref<FormInstance>()
 const dynamicValidateForm = reactive<{
@@ -89,7 +86,7 @@ const addDomain = () => {
 
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.epForm?.validate((valid) => {
+  formEl.elFormRef?.validate((valid) => {
     if (valid) {
       console.log("submit!")
     } else {
@@ -100,6 +97,6 @@ const submitForm = (formEl: FormInstance | undefined) => {
 
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.epForm?.resetFields()
+  formEl.elFormRef?.resetFields()
 }
 </script>

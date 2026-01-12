@@ -1,7 +1,7 @@
 import type {
-  MenuProps as EpMenuProps,
-  MenuInstance as EpMenuInstance,
-  MenuItemProps as EpMenuItemProps
+  MenuProps as ElMenuProps,
+  MenuInstance as ElMenuInstance,
+  MenuItemProps as ElMenuItemProps
 } from "element-plus"
 
 export interface MenuConfig {
@@ -12,7 +12,7 @@ export interface MenuConfig {
   childrenKey?: string
 }
 
-export interface MenuItemCtx extends Partial<EpMenuItemProps> {
+export interface MenuItemCtx extends Partial<ElMenuItemProps> {
   id: number | string
   icon?: string
   menu_name?: string
@@ -27,10 +27,10 @@ export interface MenuInternalProps {
   currentRoute?: string
 }
 
-export interface MenuProps extends EpMenuProps, MenuInternalProps {}
+export interface MenuProps extends ElMenuProps, MenuInternalProps {}
 
 export interface MenuInstance {
-  epMenu?: EpMenuInstance
+  elMenuRef?: ElMenuInstance
 }
 
 export type { MenuItemInstance, MenuItemGroupInstance, SubMenuInstance } from "element-plus"

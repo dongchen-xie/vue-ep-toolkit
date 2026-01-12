@@ -3,12 +3,20 @@
     ref="ruleFormRef"
     style="max-width: 600px"
     :model="ruleForm"
-    :items="items"
     :rules="rules"
     label-width="auto"
     status-icon
     class="demo-ruleForm"
   >
+    <bk-form-item label="Password" prop="pass">
+      <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
+    </bk-form-item>
+    <bk-form-item label="Confirm" prop="checkPass">
+      <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
+    </bk-form-item>
+    <bk-form-item label="Age" prop="age">
+      <el-input v-model.number="ruleForm.age" />
+    </bk-form-item>
     <bk-form-item>
       <bk-button type="primary" @click="submitForm(ruleFormRef)"> Create </bk-button>
       <bk-button @click="resetForm(ruleFormRef)">Reset</bk-button>
@@ -19,33 +27,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue"
 
-import type { FormInstance, FormRules, FormItemCtx } from "vue-business-kit"
-
-const items: FormItemCtx[] = [
-  {
-    label: "Password",
-    type: "input",
-    componentProps: {
-      type: "password",
-      autocomplete: "off"
-    },
-    prop: "pass"
-  },
-  {
-    label: "Confirm",
-    type: "input",
-    prop: "checkPass",
-    componentProps: {
-      type: "password",
-      autocomplete: "off"
-    }
-  },
-  {
-    label: "Age",
-    type: "input",
-    prop: "age"
-  }
-]
+import type { FormInstance, FormRules } from "vue-business-kit"
 
 const ruleFormRef = ref<FormInstance>()
 
@@ -72,7 +54,7 @@ const validatePass = (rule: any, value: any, callback: any) => {
   } else {
     if (ruleForm.checkPass !== "") {
       if (!ruleFormRef.value) return
-      ruleFormRef.value.epForm?.validateField("checkPass")
+      ruleFormRef.value.elFormRef?.validateField("checkPass")
     }
     callback()
   }
@@ -101,7 +83,7 @@ const rules = reactive<FormRules<typeof ruleForm>>({
 
 const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.epForm?.validate((valid) => {
+  formEl.elFormRef?.validate((valid) => {
     if (valid) {
       console.log("submit!")
     } else {
@@ -112,6 +94,6 @@ const submitForm = (formEl: FormInstance | undefined) => {
 
 const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.epForm?.resetFields()
+  formEl.elFormRef?.resetFields()
 }
 </script>

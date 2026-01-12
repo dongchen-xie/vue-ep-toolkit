@@ -1,10 +1,12 @@
 <template>
   <bk-table
     :raw-data="tableData"
-    :columns="columns"
     :default-sort="{ prop: 'date', order: 'descending' }"
     style="width: 100%"
   >
+    <bk-table-column prop="date" label="Date" sortable width="180" />
+    <bk-table-column prop="name" label="Name" width="180" />
+    <bk-table-column prop="address" label="Address" :formatter="formatter" />
   </bk-table>
 </template>
 
@@ -41,25 +43,6 @@ const tableData: User[] = [
     date: "2016-05-01",
     name: "Tom",
     address: "No. 189, Grove St, Los Angeles"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    width: 180,
-    sortable: true
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 180
-  },
-  {
-    prop: "address",
-    label: "Address",
-    formatter: formatter
   }
 ]
 </script>

@@ -1,76 +1,47 @@
 <template>
   <bk-form
-    :label-position="formLabelAlign.labelPosition"
+    :label-position="labelPosition"
     label-width="auto"
     :model="formLabelAlign"
-    :items="items"
     style="max-width: 600px"
   >
+    <bk-form-item label="Form Align" label-position="right">
+      <el-radio-group v-model="labelPosition" aria-label="label position">
+        <el-radio-button value="left">Left</el-radio-button>
+        <el-radio-button value="right">Right</el-radio-button>
+        <el-radio-button value="top">Top</el-radio-button>
+      </el-radio-group>
+    </bk-form-item>
+    <bk-form-item label="Form Item Align" label-position="right">
+      <el-radio-group v-model="itemLabelPosition" aria-label="item label position">
+        <el-radio-button value="">Empty</el-radio-button>
+        <el-radio-button value="left">Left</el-radio-button>
+        <el-radio-button value="right">Right</el-radio-button>
+        <el-radio-button value="top">Top</el-radio-button>
+      </el-radio-group>
+    </bk-form-item>
+    <bk-form-item label="Name" :label-position="itemLabelPosition">
+      <el-input v-model="formLabelAlign.name" />
+    </bk-form-item>
+    <bk-form-item label="Activity zone" :label-position="itemLabelPosition">
+      <el-input v-model="formLabelAlign.region" />
+    </bk-form-item>
+    <bk-form-item label="Activity form" :label-position="itemLabelPosition">
+      <el-input v-model="formLabelAlign.type" />
+    </bk-form-item>
   </bk-form>
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from "vue"
+import { reactive, ref } from "vue"
+import type { FormItemProps, FormProps } from "vue-business-kit"
 
-import type { FormItemCtx } from "vue-business-kit"
+const labelPosition = ref<FormProps["labelPosition"]>("right")
+const itemLabelPosition = ref<FormItemProps["labelPosition"]>("")
 
 const formLabelAlign = reactive({
-  labelPosition: "right",
-  itemLabelPosition: "",
   name: "",
   region: "",
   type: ""
-})
-
-const items = computed(() => {
-  return [
-    {
-      label: "Form Align",
-      type: "radio-group",
-      prop: "labelPosition",
-      labelPosition: "right",
-      componentProps: {
-        ariaLabel: "label position",
-        type: "button"
-      },
-      children: [
-        { label: "Left", value: "left" },
-        { label: "Right", value: "right" },
-        { label: "Top", value: "top" }
-      ]
-    },
-    {
-      label: "Form Item Align",
-      type: "radio-group",
-      prop: "itemLabelPosition",
-      componentProps: {
-        ariaLabel: "item label position",
-        type: "button"
-      },
-      children: [
-        { label: "Empty", value: "" },
-        { label: "Left", value: "left" },
-        { label: "Right", value: "right" },
-        { label: "Top", value: "top" }
-      ]
-    },
-    {
-      label: "Name",
-      type: "input",
-      prop: "name",
-      labelPosition: formLabelAlign.itemLabelPosition
-    },
-    {
-      label: "Activity zone",
-      type: "input",
-      prop: "region",
-      labelPosition: formLabelAlign.itemLabelPosition
-    },
-    {
-      label: "Activity form",
-      type: "input",
-      prop: "type"
-    }
-  ] as FormItemCtx[]
 })
 </script>

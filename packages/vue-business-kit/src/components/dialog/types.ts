@@ -1,1 +1,10 @@
-export type { DialogProps, DialogEmits, DialogInstance } from "element-plus"
+export type {
+  DialogProps,
+  DialogEmits,
+  DialogContext,
+  DialogInstance,
+  DialogTransition,
+  DialogPropsPublic,
+  DialogConfigContext,
+  DialogBeforeCloseFn
+} from "element-plus"

@@ -66,11 +66,4 @@ export interface SparklineInternalProps {
 
 export interface SparklineProps extends SparklineInternalProps, VChartProps {}
 
-export interface SparklineInstance {
-  getInstance: () => any
-  refresh: () => void
-  setOption: (option: EChartsOption, notMerge?: boolean, lazyUpdate?: boolean) => void
-  resize: () => void
-}
-
 export type { EChartsOption } from "echarts"

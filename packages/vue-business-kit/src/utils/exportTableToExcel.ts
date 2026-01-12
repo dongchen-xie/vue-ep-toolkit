@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx"
-import type { TableColumnCtx } from "../components/table/types"
+import type { TableColumnItem } from "../components/table/types"
 
 /**
  * 将JSON数据导出为XLSX文件
@@ -7,7 +7,7 @@ import type { TableColumnCtx } from "../components/table/types"
  * @param columns 表格列配置
  * @param filename 导出文件名
  */
-export function exportTableToExcel(data: any[], columns: TableColumnCtx[], filename: string) {
+export function exportTableToExcel(data: any[], columns: TableColumnItem[], filename: string) {
   const wb = XLSX.utils.book_new()
 
   const headers = columns.map((col) => col.label || col.prop)

@@ -2,13 +2,17 @@
   <bk-table
     ref="multipleTableRef"
     :raw-data="tableData"
-    :columns="columns"
     row-key="id"
     style="width: 100%"
     :defaultSelection="defaultSelection"
     :disabledSelection="disabledSelection"
     @selection-change="handleSelectionChange"
   >
+    <bk-table-column label="Date" width="120">
+      <template #default="scope">{{ scope.row.date }}</template>
+    </bk-table-column>
+    <bk-table-column property="name" label="Name" width="120" />
+    <bk-table-column property="address" label="Address" />
   </bk-table>
   <div style="margin-top: 20px">
     <bk-button @click="toggleSelection([tableData[1], tableData[2]])">
@@ -23,7 +27,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import type { TableColumnCtx, TableInstance } from "vue-business-kit"
+import type { TableInstance } from "vue-business-kit"
 
 interface User {
   id: number
@@ -40,10 +44,10 @@ const defaultSelection = ref<number[]>([7])
 const toggleSelection = (rows?: User[], ignoreSelectable?: boolean) => {
   if (rows) {
     rows.forEach((row) => {
-      multipleTableRef.value!.epTable!.toggleRowSelection(row, undefined, ignoreSelectable)
+      multipleTableRef.value!.elTableRef!.toggleRowSelection(row, undefined, ignoreSelectable)
     })
   } else {
-    multipleTableRef.value!.epTable!.clearSelection()
+    multipleTableRef.value!.elTableRef!.clearSelection()
   }
 }
 const handleSelectionChange = (val: User[]) => {
@@ -92,27 +96,6 @@ const tableData: User[] = [
     date: "2016-05-07",
     name: "Tom",
     address: "No. 189, Grove St, Los Angeles"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    type: "selection",
-    width: 55
-  },
-  {
-    prop: "date",
-    label: "Date",
-    width: 120
-  },
-  {
-    prop: "name",
-    label: "Name",
-    width: 120
-  },
-  {
-    prop: "address",
-    label: "Address"
   }
 ]
 </script>

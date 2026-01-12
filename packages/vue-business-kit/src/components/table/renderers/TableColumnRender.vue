@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { ElTableColumn } from "element-plus"
-import type { TableColumnCtx } from "../types"
+import type { TableColumnItem } from "../types"
 import { omit } from "lodash-es"
 
 const props = defineProps<{
-  column: TableColumnCtx
-  shouldFormatNumber: (column: TableColumnCtx, value: any) => boolean
-  formatCellValue: (value: any, column?: TableColumnCtx) => string
+  column: TableColumnItem
+  shouldFormatNumber: (column: TableColumnItem, value: any) => boolean
+  formatCellValue: (value: any, column?: TableColumnItem) => string
 }>()
 
 const isSpecialType = computed(() =>

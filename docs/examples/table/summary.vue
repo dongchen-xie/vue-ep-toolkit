@@ -1,22 +1,30 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" border show-summary style="width: 100%">
+  <bk-table :raw-data="tableData" border show-summary style="width: 100%">
+    <bk-table-column prop="id" label="ID" width="180" />
+    <bk-table-column prop="name" label="Name" />
+    <bk-table-column prop="amount1" sortable label="Amount 1" />
+    <bk-table-column prop="amount2" sortable label="Amount 2" />
+    <bk-table-column prop="amount3" sortable label="Amount 3" />
   </bk-table>
 
   <bk-table
     :raw-data="tableData"
-    :columns="columns1"
     border
     height="200"
     :summary-method="getSummaries"
     show-summary
     style="width: 100%; margin-top: 20px"
   >
+    <bk-table-column prop="id" label="ID" width="180" />
+    <bk-table-column prop="name" label="Name" />
+    <bk-table-column prop="amount1" label="Cost 1 ($)" />
+    <bk-table-column prop="amount2" label="Cost 2 ($)" />
+    <bk-table-column prop="amount3" label="Cost 3 ($)" />
   </bk-table>
 </template>
 
 <script lang="ts" setup>
 import { h } from "vue"
-
 import type { VNode } from "vue"
 import type { TableColumnCtx } from "vue-business-kit"
 
@@ -94,57 +102,6 @@ const tableData: Product[] = [
     amount1: "539",
     amount2: "4.1",
     amount3: 15
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "id",
-    label: "ID",
-    width: 180
-  },
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "amount1",
-    label: "Amount 1",
-    sortable: true
-  },
-  {
-    prop: "amount2",
-    label: "Amount 2",
-    sortable: true
-  },
-  {
-    prop: "amount3",
-    label: "Amount 3",
-    sortable: true
-  }
-]
-
-const columns1: TableColumnCtx[] = [
-  {
-    prop: "id",
-    label: "ID",
-    width: 180
-  },
-  {
-    prop: "name",
-    label: "Name"
-  },
-  {
-    prop: "amount1",
-    label: "Cost 1 ($)"
-  },
-  {
-    prop: "amount2",
-    label: "Cost 2 ($)"
-  },
-  {
-    prop: "amount3",
-    label: "Cost 3 ($)"
   }
 ]
 </script>

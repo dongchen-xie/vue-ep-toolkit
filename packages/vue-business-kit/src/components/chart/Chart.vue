@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import { type EChartsOption } from "echarts"
-import { computed } from "vue"
+import type { EChartsOption } from "echarts"
+import { computed, useSlots } from "vue"
+import type { Slots } from "vue"
 import type { ChartInternalProps } from "./types"
 import VChart from "vue-echarts"
 import { isArray, isObject, map } from "lodash-es"
 import { formatNumber } from "../../utils"
-import { getBarSeries } from "./composables/useBar"
 import { CanvasRenderer } from "echarts/renderers"
 import { GridComponent, TitleComponent, TooltipComponent } from "echarts/components"
 import { BarChart, LineChart } from "echarts/charts"
 import { use } from "echarts/core"
+import { getBarSeries } from "./composables"
 
 use([CanvasRenderer, LineChart, BarChart, TitleComponent, TooltipComponent, GridComponent])
 
@@ -27,6 +28,8 @@ const props = withDefaults(defineProps<ChartInternalProps>(), {
   autoresize: true,
   showTooltip: true
 })
+
+const slots: Readonly<Slots> = useSlots()
 
 const chartOption = computed<EChartsOption>(() => {
   const {
@@ -108,7 +111,6 @@ const chartOption = computed<EChartsOption>(() => {
 
 <template>
   <v-chart
-    ref="chartRef"
     class="bk-sparkline-chart"
     :style="{
       height: typeof chartHeight === 'number' ? `${chartHeight}px` : chartHeight,
@@ -117,8 +119,8 @@ const chartOption = computed<EChartsOption>(() => {
     :option="chartOption"
     v-bind="$attrs"
   >
-    <template v-for="name in Object.keys($slots)" :key="name" #[name]="scope">
-      <slot :name="name" v-bind="scope" />
+    <template v-for="name in Object.keys(slots)" #[name]="slotProps">
+      <slot :name="name" v-bind="slotProps" />
     </template>
   </v-chart>
 </template>

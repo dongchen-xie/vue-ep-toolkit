@@ -1,10 +1,19 @@
 <template>
-  <bk-table :raw-data="tableData" :columns="columns" style="width: 100%"> </bk-table>
+  <bk-table :raw-data="tableData" style="width: 100%">
+    <bk-table-column prop="date" label="Date" width="150" />
+    <bk-table-column label="Delivery Info">
+      <bk-table-column prop="name" label="Name" width="120" />
+      <bk-table-column label="Address Info">
+        <bk-table-column prop="state" label="State" width="120" />
+        <bk-table-column prop="city" label="City" width="120" />
+        <bk-table-column prop="address" label="Address" />
+        <bk-table-column prop="zip" label="Zip" width="120" />
+      </bk-table-column>
+    </bk-table-column>
+  </bk-table>
 </template>
 
 <script lang="ts" setup>
-import type { TableColumnCtx } from "vue-business-kit"
-
 const tableData = [
   {
     date: "2016-05-03",
@@ -61,48 +70,6 @@ const tableData = [
     city: "Los Angeles",
     address: "No. 189, Grove St, Los Angeles",
     zip: "CA 90036"
-  }
-]
-
-const columns: TableColumnCtx[] = [
-  {
-    prop: "date",
-    label: "Date",
-    width: 150
-  },
-  {
-    label: "Delivery Info",
-    children: [
-      {
-        prop: "name",
-        label: "Name",
-        width: 120
-      },
-      {
-        label: "Address Info",
-        children: [
-          {
-            prop: "state",
-            label: "State",
-            width: 120
-          },
-          {
-            prop: "city",
-            label: "City",
-            width: 120
-          },
-          {
-            prop: "address",
-            label: "Address"
-          },
-          {
-            prop: "zip",
-            label: "Zip",
-            width: 120
-          }
-        ]
-      }
-    ]
   }
 ]
 </script>
