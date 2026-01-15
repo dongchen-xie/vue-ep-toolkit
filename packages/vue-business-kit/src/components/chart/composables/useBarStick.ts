@@ -1,17 +1,18 @@
-import { subtract } from "lodash-es"
-import type { BaselineConfig, SparklineInternalProps } from "../types"
+import { isNumber, subtract } from "lodash-es"
+import type { BaselineConfig, EChartsOption, SparklineInternalProps, SeriesOption } from "../types"
 
-export const getColumnDeviationSeries = (
+export const useBarStick = (
   _props: SparklineInternalProps,
   data: { name: string; value: number }[],
-  baseline: BaselineConfig
-) => {
+  baseline: BaselineConfig,
+  isDetail: boolean = false
+): EChartsOption => {
   const processedData = data!.map((val) => ({
     ...val,
     value: subtract(val.value, baseline.value)
   }))
 
-  return [
+  const series: SeriesOption[] = [
     {
       type: "line",
       data: Array(processedData.length).fill(0),
@@ -32,4 +33,19 @@ export const getColumnDeviationSeries = (
       label: { show: false }
     }
   ]
+
+  const max = Math.max(
+    ...data!.map((item) => {
+      const value = isNumber(item) ? item : item.value
+      return Math.abs(value)
+    })
+  )
+  const yAxis = {
+    min: -max,
+    max
+  }
+  return {
+    series,
+    yAxis
+  }
 }

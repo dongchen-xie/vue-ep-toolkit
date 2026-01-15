@@ -25,10 +25,10 @@ import {
   ElInputTag
 } from "element-plus"
 import { omit } from "lodash-es"
-import type { FormItemCtx } from "../types"
+import type { FormItem } from "../types"
 
 interface Props {
-  item: FormItemCtx
+  item: FormItem
   model: Record<string, any>
 }
 

@@ -53,8 +53,6 @@ defineExpose({ elCollapseItemRef })
         <bk-icon
           title="Export to Excel"
           icon="tabler:file-download"
-          :color="iconColor"
-          :size="iconSize"
           v-if="showExport"
           @click.stop="handleExport"
         />
@@ -88,6 +86,8 @@ defineExpose({ elCollapseItemRef })
     align-items: center;
     justify-content: center;
     gap: 12px;
+    font-size: var(--bk-collapse-icon-size);
+    color: var(--bk-collapse-icon-color);
   }
 }
 </style>

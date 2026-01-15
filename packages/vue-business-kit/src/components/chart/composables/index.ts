@@ -1,3 +1,4 @@
 export * from "./useBar"
 export * from "./useLineTrend"
-export * from "./useColumnDeviation"
+export * from "./useBarTrend"
+export * from "./useBarStick"

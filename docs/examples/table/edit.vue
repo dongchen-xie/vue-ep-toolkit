@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import type { FormItemCtx, TableColumnItem } from "vue-business-kit"
+import type { FormItem, TableColumnItem } from "vue-business-kit"
 
 interface User {
   id: number
@@ -98,7 +98,7 @@ const columns: TableColumnItem[] = [
   }
 ]
 
-const configFormItems: FormItemCtx[] = [
+const configFormItems: FormItem[] = [
   {
     label: "Edit Mode",
     type: "radio-group",

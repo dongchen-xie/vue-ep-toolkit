@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed, ref } from "vue"
 import { use } from "echarts/core"
 import { CanvasRenderer } from "echarts/renderers"
 import { LineChart } from "echarts/charts"
 import { TitleComponent, TooltipComponent, GridComponent } from "echarts/components"
 import VChart from "vue-echarts"
-import { formatNumber } from "../../utils/formatNumber"
+import { formatNumber } from "../../utils"
+import type { FormatNumberOptions } from "../../utils"
 import type { SparklineInternalProps } from "./types"
-import { type EChartsOption } from "echarts"
-import { isArray, isNumber, isObject, map } from "lodash-es"
-import { BkIcon } from "../icon"
-import { getLineTrendSeries, getColumnDeviationSeries } from "./composables"
+import type { EChartsOption } from "echarts"
+import { has, isArray, isNumber, isObject } from "lodash-es"
+import { BkIcon, BkDialog } from "../"
+import { useLineTrend, useBarTrend, useBarStick } from "./composables"
 
 use([CanvasRenderer, LineChart, TitleComponent, TooltipComponent, GridComponent])
 
@@ -21,17 +22,18 @@ defineOptions({
 
 const props = withDefaults(defineProps<SparklineInternalProps>(), {
   layout: "vertical",
-  chartHeight: "100%",
-  chartWidth: "100%",
   showChart: true,
+  showDetail: false,
   animation: true,
   smooth: true,
   color: "#409eff",
-  autoresize: true,
-  showTooltip: false
+  autoresize: true
 })
 
-const chartOption = computed<EChartsOption>(() => {
+const showDetail = ref(false)
+
+const useChartOption = (isDetail: boolean) => {
+  if (!props.showChart || !props.data) return undefined
   const data = (props.data || []).map((v, index) => {
     return isObject(v) ? v : { name: String(index), value: v }
   }) as { name: string; value: number }[]
@@ -43,25 +45,17 @@ const chartOption = computed<EChartsOption>(() => {
       : { value: props.baseline }
     : []
 
-  let series: any[] = []
-  let yAxis = {}
+  let options: EChartsOption = {}
 
   switch (props.chartType) {
     case "line-trend":
-      series = getLineTrendSeries(props, data, baseline)
+      options = useLineTrend(props, data, baseline, isDetail)
       break
-    case "column-deviation":
-      series = getColumnDeviationSeries(props, data, baseline)
-      const max = Math.max(
-        ...data!.map((item) => {
-          const value = isNumber(item) ? item : item.value
-          return Math.abs(value)
-        })
-      )
-      yAxis = {
-        min: -max,
-        max
-      }
+    case "bar-trend":
+      options = useBarTrend(props, data, baseline, isDetail)
+      break
+    case "bar-stick":
+      options = useBarStick(props, data, baseline, isDetail)
       break
   }
 
@@ -71,33 +65,27 @@ const chartOption = computed<EChartsOption>(() => {
       top: 3,
       left: 3,
       right: 3,
-      bottom: 3
+      bottom: 3,
+      ...props.config?.grid
     },
-    xAxis: {
-      type: "category",
-      show: false,
-      data: map(data, "name"),
-      boundaryGap: false
-    },
-    yAxis: {
-      show: false,
-      boundaryGap: false,
-      ...yAxis
-    },
-    series,
-    tooltip: {
-      show: props.showTooltip,
-      trigger: "axis",
-      axisPointer: {
-        type: "line"
-      }
-    }
+    ...options
   } as EChartsOption
+}
+
+const chartOption = computed<EChartsOption | undefined>(() => useChartOption(false))
+
+const detailChartOption = computed<EChartsOption | undefined>(() => useChartOption(true))
+const chartHeight = computed(() => {
+  return isNumber(props.chartHeight) ? `${props.chartHeight}px` : props.chartHeight
+})
+
+const chartWidth = computed(() => {
+  return isNumber(props.chartWidth) ? `${props.chartWidth}px` : props.chartWidth
 })
 </script>
 
 <template>
-  <div class="bk-sparkline" :class="`bk-sparkline--${layout}`">
+  <div class="bk-sparkline" :class="`bk-sparkline--${layout}`" @dblclick="showDetail = true">
     <div class="bk-sparkline-main">
       <div v-if="title || subtitle" class="bk-sparkline-titles">
         <h3 class="bk-sparkline-title">{{ title }}</h3>
@@ -108,34 +96,63 @@ const chartOption = computed<EChartsOption>(() => {
         <span class="bk-sparkline-value-main">
           {{ formatNumber(value as number | string, valueFormat) }}
         </span>
-        <span v-if="auxiliaryValue" class="bk-sparkline-value-auxiliary">
-          ({{ formatNumber(auxiliaryValue, auxiliaryValueFormat) }})
+        <span v-if="subvalue" class="bk-sparkline-value-subvalue">
+          ({{
+            formatNumber(
+              isObject(subvalue) ? subvalue.value : subvalue,
+              isObject(subvalue) ? subvalue.valueFormat : valueFormat
+            )
+          }})
         </span>
       </div>
 
       <div class="bk-sparkline-footer">
-        <span v-if="changeValue" class="bk-sparkline-change" :style="{ color: changeValueColor }">
-          {{ formatNumber(changeValue, changeValueFormat) }}
-          <bk-icon :icon="changeValueIcon" v-if="changeValueIcon" size="14" />
+        <span
+          v-if="trend"
+          class="bk-sparkline-trend"
+          :style="{ color: isObject(trend) ? trend.color : color }"
+        >
+          {{
+            formatNumber(
+              isObject(trend) ? trend.value : trend,
+              (has(trend, "valueFormat") ? trend.valueFormat : valueFormat) as FormatNumberOptions
+            )
+          }}
+          <bk-icon :icon="(trend.icon as string)" v-if="has(trend, 'icon')" size="14" />
         </span>
         <span v-if="description" class="bk-sparkline-description">
           {{ description }}
         </span>
       </div>
     </div>
-
-    <div v-if="showChart" class="bk-sparkline-chart-wrapper">
+    <v-chart
+      v-if="showChart"
+      class="bk-sparkline-chart"
+      :style="{
+        height: chartHeight,
+        width: chartWidth
+      }"
+      :option="chartOption"
+      v-bind="$attrs"
+    >
+    </v-chart>
+    <bk-dialog width="56%" v-model="showDetail" v-if="showChart && props.showDetail">
+      <template #title>
+        <div class="flex-1">
+          <div class="text-20px">{{ detailTitle || title }}</div>
+          <div class="text-[var(--dell-gray-800)] text-14px lh-20px">{{ subtitle }}</div>
+        </div>
+      </template>
       <v-chart
-        class="bk-sparkline-chart"
         :style="{
-          height: typeof chartHeight === 'number' ? `${chartHeight}px` : chartHeight,
-          width: typeof chartWidth === 'number' ? `${chartWidth}px` : chartWidth
+          height: '27vh',
+          width: '53.8vw'
         }"
-        :option="chartOption"
+        :option="detailChartOption"
         v-bind="$attrs"
       >
       </v-chart>
-    </div>
+    </bk-dialog>
   </div>
 </template>
 
@@ -143,7 +160,7 @@ const chartOption = computed<EChartsOption>(() => {
 .bk-sparkline {
   width: 100%;
   display: flex;
-  gap: 16px;
+  gap: 12px;
 
   &--vertical {
     flex-direction: column;
@@ -153,12 +170,11 @@ const chartOption = computed<EChartsOption>(() => {
     .bk-sparkline-main {
       display: flex;
       flex-direction: column;
-      gap: 4px;
       position: relative;
       z-index: 2;
     }
 
-    .bk-sparkline-chart-wrapper {
+    .bk-sparkline-chart {
       position: absolute;
       z-index: 1;
     }
@@ -172,18 +188,15 @@ const chartOption = computed<EChartsOption>(() => {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
     }
 
-    .bk-sparkline-chart-wrapper {
-      flex: 1;
-    }
+    // .bk-sparkline-chart {
+    // }
   }
 
   &-titles {
     display: flex;
     flex-direction: column;
-    gap: 4px;
   }
 
   &-title {
@@ -205,6 +218,7 @@ const chartOption = computed<EChartsOption>(() => {
     display: flex;
     align-items: baseline;
     gap: 8px;
+    padding-top: 4px;
   }
 
   &-value-main {
@@ -214,35 +228,27 @@ const chartOption = computed<EChartsOption>(() => {
     color: var(--el-text-color-primary);
   }
 
-  &-value-auxiliary {
-    font-size: 14px;
+  &-value-subvalue {
+    font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.5%;
-    color: var(--el-text-color-regular);
+    color: var(--el-text-color-primary);
   }
 
   &-footer {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 4px;
     line-height: 20px;
     font-size: 12px;
     font-weight: bold;
     color: var(--el-text-color-regular);
   }
 
-  &-change {
+  &-trend {
     display: flex;
     align-items: center;
     gap: 4px;
-  }
-
-  &-change-up {
-    color: var(--el-color-success);
-  }
-
-  &-change-down {
-    color: var(--el-color-danger);
   }
 }
 </style>

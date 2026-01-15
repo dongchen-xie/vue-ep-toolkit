@@ -7,7 +7,7 @@ import { isArray } from "lodash-es"
  * @param {Object} com - 通用列属性。
  * @returns {any[]} 列配置。
  */
-function toColumns(data: any[], spcs?: any, com = {}) {
+export function toColumns(data: any[], spcs?: any, com = {}) {
   if (!isArray(data)) {
     // throw 'input table data is not Array'
     console.error("input table data is not Array")
@@ -42,5 +42,3 @@ function toColumns(data: any[], spcs?: any, com = {}) {
     return mergeProperty(spcs, e, com)
   })
 }
-
-export default toColumns

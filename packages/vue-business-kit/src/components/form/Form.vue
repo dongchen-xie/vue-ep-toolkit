@@ -21,6 +21,7 @@ defineExpose({ elFormRef })
       <el-col :span="24 / colNum" v-for="(item, _index) in props.items" :key="_index">
         <BkFormItemRender :item="item" :model="($attrs.model as any)"> </BkFormItemRender>
       </el-col>
+      <slot name="toolbar" />
     </el-row>
     <slot />
   </el-form>

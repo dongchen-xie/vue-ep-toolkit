@@ -1,7 +1,7 @@
 import { ref, computed, ComputedRef } from "vue"
 import type { TableInternalProps } from "../types"
 import { chain, isEmpty, isUndefined, map, pick, toLower, trim, zipObject } from "lodash-es"
-import { FormItemCtx } from "@/components/form"
+import { FormItem } from "@/components/form"
 import { ElMessageBox } from "element-plus"
 
 export function useTableEdit(
@@ -70,7 +70,7 @@ export function useTableEdit(
                   type: "input"
                 })
           }))
-    ) as FormItemCtx[]
+    ) as FormItem[]
   })
 
   const convertTextToObjectArray = (text: string) => {
